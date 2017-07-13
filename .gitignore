@@ -1,5 +1,5 @@
 node_modules/
 *npm-debug.log
 *.DS_Store
-dist/bundle.js
+public/bundle.js
 package-lock.json

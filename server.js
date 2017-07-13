@@ -2,12 +2,15 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
+const api = require('./backend/routes');
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/dist/index.html');
+    response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
+
+app.use('/api', api);
 
 app.listen(PORT, error => {
     error

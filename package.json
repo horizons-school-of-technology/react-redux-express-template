@@ -6,6 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server --hot --inline",
+    "frontend": "webpack --watch",
+    "backend": "nodemon server.js",
     "lint": "eslint src/**",
     "lint:watch": "esw -w src/**",
     "start": "npm run build && NODE_ENV=production node server.js",
