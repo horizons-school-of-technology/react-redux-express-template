@@ -2,31 +2,35 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import Title from '../components/Title';
+import ChatRoom from '../components/ChatRoom';
 
 const AppContainer = ({ name }) => {
-    return (
-        <div>
-            <Title name={name} />
-        </div>
-    );
+  return (
+    <div>
+      <Title name={name} />
+
+      {/*test chatroom*/}
+      <ChatRoom grade={5} subject={"Physics"} username="Amanda"/>
+    </div>
+  );
 };
 
 AppContainer.propTypes = {
-    name: PropTypes.string,
+  name: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
-    return {
-        name: state.name
-    };
+  return {
+    name: state.name
+  };
 };
 
 const mapDispatchToProps = (/* dispatch */) => {
-    return {
-    };
+  return {
+  };
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(AppContainer);
