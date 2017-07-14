@@ -1,5 +1,9 @@
 import React from 'react';
+// const io = require('socket.io-client');
 // import ReactDOM from 'react-dom';
+
+var socket = io('http://localhost');
+
 import ChatRoomMessages from './ChatRoomMessages';
 
 class ChatRoom extends React.Component {
@@ -25,10 +29,10 @@ class ChatRoom extends React.Component {
         {/*title and number of people in room*/}
         <div className="chatroom_header">
           <h1 className="chatroom_title">Grade {this.props.grade} {this.props.subject}</h1>
-          <h1 className="chatroom_count">{this.state.activeUsers.length}</h1>
           <div className="chatroom_countDescrip">
-            <h4>Active</h4>
-            <h4>Users</h4>
+            <h1 className="chatroom_count">{this.state.activeUsers.length}</h1>
+            <h4>Active Users</h4>
+            {/* <h4></h4> */}
           </div>
         </div>
 

@@ -7,17 +7,19 @@ h1 {
 
 //CHATROOM component -- currently inside APPCONTAINER
 .chatroom {
+  // width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  // align-items: center;
+  padding: 5%;
 
 }
 .chatroom_header {
   flex: 1;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
 }
 .chatroom_title {
@@ -96,5 +98,5 @@ h1 {
   flex: 1;
   margin-left: 5px;
   // background-color: __INSERT COLOR__
-  
+
 }
