@@ -1,8 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
+import { configureStore, history } from './store/configureStore';
+import Root from './containers/Root';
+
+import './assets/stylesheets/base.scss';
+
+const store = configureStore();
 
 render(
-    <App name="Jeremy!" />,
+    <Root store={store} history={history} />,
     document.getElementById('root')
 );

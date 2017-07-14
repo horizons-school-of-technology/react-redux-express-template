@@ -3,3 +3,5 @@ node_modules/
 *.DS_Store
 public/bundle.js
 package-lock.json
+*hot-update.js
+*hot-update.json
