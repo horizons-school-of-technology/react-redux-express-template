@@ -2,13 +2,46 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const api = require('./backend/routes');
+const api = require('./backend/api');
+var passport = require('passport');
+var passportConfig = require('./backend/config/passport.js')(passport);
+var session = require('express-session');
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/public/login.html');
+})
+
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+// the callback after google has authenticated the user
+app.get('/auth/google/callback',
+        passport.authenticate('google', {
+                successRedirect : '/',
+                failureRedirect : '/login'
+        }));
+
+app.use((req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+});
+
+//-------LOGIN WALL-----
+
+//Route that leads to the Authentiction Part
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
+
+
 
 app.use('/api', api);
 
