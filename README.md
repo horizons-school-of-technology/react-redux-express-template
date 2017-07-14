@@ -1,3 +1,15 @@
+# Horizons Hackathon 2017
+Team: Amanda, Andre, Dominic, Max
+Project: Volunteer Tutor Platform
+CategorY: Social Impact
+
+
+
+
+
+
+
+
 # React + Node Starter
 _for [Heroku](https://www.heroku.com/) deployment_
 
@@ -54,8 +66,3 @@ Heroku will follow the `build` command in your `package.json` and compile assets
 
 If you're unfamiliar with Heroku deployment (or just need a refresher), they have a really great walkthrough [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
 
-## Running on Glitch
-
-1. Go to https://glitch.com/edit/#!/horizons-hackathon-react and click
-  `Remix this 🎤`
-1. Click `Show` at the top to preview your app!
