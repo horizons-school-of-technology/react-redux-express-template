@@ -1,25 +1,24 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
-//var User       = require('./models/user');
+var User       = require('../models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
-console.log(configAuth.googleAuth.callbackURL);
 
 module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
+        console.log('inside serialize: ', user);
         done(null, user.id);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        done(err, id);
-        // User.findById(id, function(err, user) {
-        //     done(err, user);
-        // });
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
     });
 
     // code for login (use('local-login', new LocalStategy))
@@ -47,36 +46,35 @@ module.exports = function(passport) {
 
         // make the code asynchronous
         // User.findOne won't fire until we have all our data back from Google
-        //process.nextTick(function() {
-            done(null, profile.id);
+        process.nextTick(function() {
             // try to find the user based on their google id
-            // User.findOne({ 'google.id' : profile.id }, function(err, user) {
-            //     if (err)
-            //         return done(err);
+            User.findOne({ 'google.id' : profile.id }, function(err, user) {
+                if (err)
+                    return done(err);
 
-            //     if (user) {
+                if (user) {
 
-            //         // if a user is found, log them in
-            //         return done(null, user);
-            //     } else {
-            //         // if the user isnt in our database, create a new user
-            //         var newUser          = new User();
+                    // if a user is found, log them in
+                    return done(null, user);
+                } else {
+                    // if the user isnt in our database, create a new user
+                    var newUser          = new User();
 
-            //         // set all of the relevant information
-            //         newUser.google.id    = profile.id;
-            //         newUser.google.token = token;
-            //         newUser.google.name  = profile.displayName;
-            //         newUser.google.email = profile.emails[0].value; // pull the first email
+                    // set all of the relevant information
+                    newUser.google.id    = profile.id;
+                    newUser.google.token = token;
+                    newUser.google.name  = profile.displayName;
+                    newUser.google.email = profile.emails[0].value; // pull the first email
 
-            //         // save the user
-            //         newUser.save(function(err) {
-            //             if (err)
-            //                 throw err;
-            //             return done(null, newUser);
-            //         });
-            //     }
-            // });
-        //});
+                    // save the user
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
+            });
+        });
 
     }));
 

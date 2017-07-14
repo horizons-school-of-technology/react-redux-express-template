@@ -7,6 +7,7 @@ const AppContainer = ({ name }) => {
     return (
         <div>
             <Title name={name} />
+            <a href="/logout" class="btn btn-danger"><span class="fa fa-google-plus"></span> Logout</a>
         </div>
     );
 };
