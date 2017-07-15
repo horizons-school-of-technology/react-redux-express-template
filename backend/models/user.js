@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
 
     local            : {
-        school        : String,
-        password     : String,
+        school       : String,
+        role         : String,
+        preferences  : Array
     },
     google           : {
         id           : String,
