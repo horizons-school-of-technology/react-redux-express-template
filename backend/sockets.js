@@ -6,7 +6,7 @@ module.exports = function(io) {
   io.on('connection', socket => {
     console.log('connected');
     /**  REPLACE WITH NEW ROOM  **/
-    socket.room = 'DEFAULT';
+    socket.room = '8 Physics';
     /**  REPLACE WITH NEW ROOM  **/
 
 
@@ -23,6 +23,7 @@ module.exports = function(io) {
     /** LISTENERS FOR CHAT ROOM **/
     // RECEIVE ROOM
     socket.on('room', ({requestedRoom, username}) => {
+      console.log('RECEIVED ROOM JOIN TO', requestedRoom);
       if (!requestedRoom) {
         return socket.emit('errorMessage', 'No room!');
       }
@@ -50,7 +51,7 @@ module.exports = function(io) {
       //join new room:
       socket.room = requestedRoom;
       socket.join(requestedRoom, () => {
-        console.log('reached room on server');
+        console.log('reached JOIN room on server');
 
         socket.to(requestedRoom).emit('message', {
           username: 'System',
@@ -61,6 +62,7 @@ module.exports = function(io) {
         var newNew = newRoomUsers.slice();
         newNew.push(socket.username);
         roomUsers[socket.room] = newNew;
+        console.log('rooms now: ', roomUsers);
         io.to(requestedRoom).emit('updateusers', roomUsers[socket.room]);
       });
     });

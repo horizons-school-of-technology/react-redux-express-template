@@ -36,21 +36,27 @@ class ChatRoom extends React.Component {
   render () {
     console.log('ACTIVE USERS: ', this.state.activeUsers);
     return (
+      <div>
+      <div className="chatcontainer">
 
-      <div className="chatroom">
         {/*title and number of people in room*/}
-        <div className="chatroom_header">
-          <h1 className="chatroom_title">Grade {this.props.grade} {this.props.subject}</h1>
-          <div className="chatroom_countDescrip">
-            <h4>Active Users:</h4>
-            <h1 className="chatroom_count">{this.state.activeUsers.length}</h1>
+        <div className="chatboxheader">
+
+          <div>
+            <span className="h1">Grade {this.props.grade} {this.props.subject}</span>
           </div>
+            {/* <div className = "chatbutton pink">
+              <span className = "h4">Active Users: {this.state.activeUsers.length}</span>
+            </div> */}
+        </div>
+
+        <div class = "infoimg">
+            <img src="/img/chatinstruct.png" class = "info"/>
         </div>
 
         <div id="chatroom_messages_box">
-          <h2>While waiting for a tutor, chat with students in this room: </h2>
 
-          <h4 className="text-center"> Current users: {this.state.activeUsers.map((user, index) => {
+          <h4 className="text-center h5"> Current users: {this.state.activeUsers.map((user, index) => {
             var returnUser = user;
             if (index !== this.state.activeUsers.length-1) {
               returnUser += ", ";
@@ -65,6 +71,8 @@ class ChatRoom extends React.Component {
           />
         </div>
       </div>
+      <center><img src="/img/desk.png" className = "desk"/></center>
+    </div>
     )
   }
 

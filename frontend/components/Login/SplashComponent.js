@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeHeaderComponent from '../components/Header';
-import SplashTop from '../components/SplashTop';
-import HomeBottomComponent from '../components/Bottom';
+import HomeHeaderComponent from '../Header';
+import SplashTop from './SplashTop';
+import HomeBottomComponent from './SplashBottom';
 
 const HomeComponent = () => {
     return (

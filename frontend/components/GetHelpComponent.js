@@ -25,27 +25,28 @@ class GetHelpComponent extends React.Component {
 
     handleChangeGrade(e){
         this.setState({grade: e.target.value})
-        console.log('grade', this.state.grade, 'subject', this.state.subject)
+        // console.log('grade', this.state.grade, 'subject', this.state.subject)
 
     }
 
     handleChangeSubject(e){
         this.setState({subject: e.target.value})
-        console.log('grade', this.state.grade, 'subject', this.state.subject)
+        // console.log('grade', this.state.grade, 'subject', this.state.subject)
 
     }
 
     handleSubmit(e){
-      console.log('grade', this.state.grade, 'subject', this.state.subject)
+      console.log('submitting grade', this.state.grade, 'subject', this.state.subject)
         this.setState({currentRoom: true})
         e.preventDefault();
 
-        const roomName = this.state.grade + ' ' + this.state.subject;
-        // this.state.socket.emit('room', {this.socket.});
+        const requestedRoom = this.state.grade + ' ' + this.state.subject;
+        this.state.socket.emit('room', {requestedRoom, username: this.state.username});
+        console.log('EMITTED ROOM FROM GET HELP');
     }
 
     render(){
-      console.log('GET HELP: ');
+      // console.log('GET HELP: ');
 
         const linkTo = "/chatroom/"+this.state.grade+"/"+this.state.subject;
         return (

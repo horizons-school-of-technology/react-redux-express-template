@@ -9,17 +9,16 @@ import Title from '../components/Title';
 // import HomeComponent from '../components/HomeComponent';
 import Routes from '../routes';
 
-
 const AppContainer = (props) => {
   return (
     <div>
       <Link to="/">
-      <span className={'hometitle'}>
-        OUR FIRST WEBPAGE
-      </span>
-    </Link>
-    { Routes }
-  </div>
+        <span className={'hometitle'}>
+          OUR FIRST WEBPAGE
+        </span>
+      </Link>
+      { Routes }
+    </div>
   );
 }
 

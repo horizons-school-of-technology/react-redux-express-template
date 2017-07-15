@@ -6,8 +6,6 @@
   height: 120px
 }
 
-//CONTAINERS/BUTTONS
-
 .chatcontainer {
   display: flex;
   justify-content: center;
@@ -83,14 +81,12 @@
   width: 500px;
 }
 
-//CHAT
-
 .chatboxheader {
   display: flex;
   width: 80vw;
   padding-top: 2vh;
   padding-bottom: 2vh;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .chatbox {
@@ -121,31 +117,10 @@
 }
 
 .inputfield {
-  height: 6vh;
-  border-radius: 20px;
-  margin-top: 2vh
+  margin-top: 3vh;
+  height: 3vh;
+  border-radius: 20px
 }
-
-.sendbutton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 6vh;
-  width: 10vh;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  background-image: none;
-  border-color: #eb6a6a;
-  margin-top: 2vh
-}
-
-
-//IMAGES
 
 .logo {
   height: 130px;
@@ -171,8 +146,6 @@
   padding-top: 50px;
   height: 220px
 }
-
-//FONTS
 
 .h1 {
   padding-bottom: 50px;
@@ -204,31 +177,11 @@
   color: #00568c
 }
 
-.h5 {
-  font-family: 'Source Sans Pro';
-  font-weight: 600;
-  font-size: 25px;
-  color: #eb6a6a;
-  padding-top: 25px;
-}
-
-.chatred {
-  font-family: 'Source Sans Pro';
-  font-weight: 200;
-  font-size: 20px;
-  color: #eb6a6a
-}
-
-.chatblue {
+.chat {
   font-family: 'Source Sans Pro';
   font-weight: 200;
   font-size: 20px;
   color: #00568c
-}
-
-//COLORS
-.red {
-  background-color: #eb6a6a
 }
 
 .pink {
@@ -247,7 +200,6 @@
   padding-top: 50px
 }
 
-//CHATROOM component -- currently inside APPCONTAINER
 .chatroom {
   // width: 100%;
   display: flex;
@@ -294,67 +246,43 @@
   flex: 1;
 
 }
-// CHATROOMMESSAGES component -- inside CHATROOM
+
 .chatroom_messages {
   flex: 6;
 
 }
 .chatroom_msg {
+  font-size: 18px;
   margin: 5px 10px;
   // font-weight: 400;
 
 }
 .own_msg {
   color: grey; // any color but different from other msgs!
-  font-family: 'Source Sans Pro';
-  font-weight: 200;
-  font-size: 20px;
 
 }
 .system_msg {
   color: grey; // any color but different from other msgs!
   font-style: italic;
-  font-family: 'Source Sans Pro';
-  font-weight: 200;
-  font-size: 20px;
-}
-
-.hometitle {
-    background-color: pink;
-    display: flex;
-    font-size: 50px;
-    width: 100%;
-    height: 80px;
-    align-items: center;
-    justify-content: center;
-}
-
-.flexbox {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.classbutton {
-    width: 150px;
-    height: 100px;
 
 }
+.chatroom_msg_username {
+  font-weight: bold;
 
-.flexboxcol {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
+}
+.chatroom_msg_content {
+  //any style for each message body
+}
+.typing_user {
+  font-style: italic;
+
 }
 .chatroom_new_message {
   display: flex;
   flex-basis: none;
   align-items: center;
-  justify-content: center;
 }
 .chatroom_new_message_text {
-  height: 20px;
   width: 80%;
   flex: 7;
   // background-color: __INSERT COLOR__
@@ -363,4 +291,6 @@
 .chatroom_new_message_btn {
   flex: 1;
   margin-left: 5px;
+  // background-color: __INSERT COLOR__
+
 }
