@@ -1,12 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AppContainer from './containers/AppContainer';
+import TutorHomeComponent from './components/TutorHomeComponent';
+import TutorRegisterComponent from './components/TutorRegisterComponent';
+import StudentHomeComponent from './components/StudentHomeComponent';
+import HomeComponent from './components/HomeComponent';
 
 export default (
 	<Switch>
-    <Route exact path="/" render={() => (<HomeComponent /> )} />
-    <Route exact path="/student/home" render={() => (<StudentHomeComponent socket={socket}/> )} />
-    <Route exact path="/tutor/register" render={() => (<TutorRegisterComponent socket={socket}/> )} />
-    <Route exact path="/tutor/home" render={() => (<TutorHomeComponent socket={socket}/> )} />
+    <Route exact path="/student/home" component={StudentHomeComponent} />
+    <Route exact path="/tutor/register" component={TutorRegisterComponent} />
+    <Route exact path="/tutor/home" component={TutorHomeComponent} />
+    <Route exact path="/" component={HomeComponent} />
 	</Switch>
 );

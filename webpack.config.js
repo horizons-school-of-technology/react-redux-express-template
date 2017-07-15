@@ -26,13 +26,17 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '/public'),
-        publicPath: '/',
+        publicPath: '/public',
         filename: 'bundle.js'
     },
     devtool: 'cheap-eval-source-map',
     devServer: {
+        historyApiFallback: {
+          index: './index.html'
+        },
         contentBase: './public',
-        hot: true
+        hot: true,
+
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),

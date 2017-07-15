@@ -8,11 +8,10 @@ import Routes from '../routes';
 class GetHelpComponent extends React.Component {
     constructor(props){
         super(props);
-        console.log('PROPS:', this.props);
+        console.log('PROPS:');
         const defaultUsername = "Guest"+Math.round(Math.random()*100);
 
         this.state = {
-            socket: this.props.socket,
             grade: '',
             subject: '',
             currentRoom: false,
@@ -42,11 +41,10 @@ class GetHelpComponent extends React.Component {
     }
 
     render(){
-      console.log('GET HELP: ', this.props.socket);
+      console.log('GET HELP: ');
 
         const linkTo = "/chatroom/"+this.state.grade+"/"+this.state.subject;
         return (
-          {Routes}
             <div className={'flexboxcol'}>
                 <h2 style={{flex:1}}>I need help in ....</h2>
                 <form onSubmit={this.handleSubmit} className={'flexbox'}>
@@ -84,9 +82,9 @@ class GetHelpComponent extends React.Component {
                   <ChatRoom grade={this.state.grade}
                   subject={this.state.subject}
                   username={this.state.username}
-                  socket={this.state.socket} />
+                   />
                   :
-                  <RoomListComponent socket={this.state.socket}
+                  <RoomListComponent
                     grade={this.state.grade}
                     subject={this.state.subject}/>
                 }

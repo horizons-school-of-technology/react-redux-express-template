@@ -6,22 +6,27 @@ import StudentHomeComponent from '../components/StudentHomeComponent';
 
 
 const displayMessage =
-  'home Component!';
+'home Component!';
 
 // class component
 const HomeComponent = (props) => {
-    return (
-        <div>
-            <h1>Amanda{props.amanda}</h1>
-            <button style={{width: 100, height: 50}}>
-                <Link to="/student/home">Student</Link>
-            </button>
+  return (
+    <div>
+      <h1>{props.amanda}</h1>
 
-            <button style={{width: 100, height: 50}}>
-                <Link to="/tutor/register">Tutor</Link>
-            </button>
-        </div>
-    );
+      <Link to="/student/home">
+        <button style={{width: 100, height: 50}}>
+          Student
+        </button>
+      </Link>
+
+      <Link to="/tutor/register">
+        <button style={{width: 100, height: 50}}>
+          Tutor
+        </button>
+      </Link>
+    </div>
+  );
 };
 
 

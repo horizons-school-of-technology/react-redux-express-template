@@ -1,13 +1,11 @@
 import React from 'react';
 import GetHelpComponent from './GetHelpComponent';
 // class component
-const StudentHomeComponent = (props) => {
-  console.log('STUDENT HOME: ', props.socket);
-  const socket = props.socket;
+const StudentHomeComponent = () => {
   return (
     <div>
       <div style={{marginBottom: 100}}>
-        <GetHelpComponent socket={socket} />
+        <GetHelpComponent />
       </div>
     </div>
   );
