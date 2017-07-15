@@ -41,7 +41,7 @@ class GetHelpComponent extends React.Component {
         e.preventDefault();
 
         const roomName = this.state.grade + ' ' + this.state.subject;
-        this.state.socket.emit('room', {this.socket})
+        // this.state.socket.emit('room', {this.socket.});
     }
 
     render(){
