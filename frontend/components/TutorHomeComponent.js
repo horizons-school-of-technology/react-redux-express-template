@@ -9,7 +9,6 @@ const displayMessage =
 const TutorHomeComponent = () => {
     return (
         <div>
-            <div>{displayMessage}</div>
             <RoomListComponent />
         </div>
     );

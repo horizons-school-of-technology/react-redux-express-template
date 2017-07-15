@@ -4,45 +4,26 @@ import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import Title from '../components/Title';
 import TutorHomeComponent from '../components/TutorHomeComponent';
+import TutorRegisterComponent from '../components/TutorRegisterComponent';
 import StudentHomeComponent from '../components/StudentHomeComponent';
+import HomeComponent from '../components/HomeComponent';
 
 
 
 const AppContainer = (props) => {
     return (
         <div>
-            <h1 className={'hometitle'}>Chat Rooms currently in Need</h1>
-            <Route exact path="/tutor/home" component={TutorHomeComponent} />
+            <Link to="/">
+                <span className={'hometitle'}>
+                    LOGO
+                </span>
+            </Link>
+            <Route exact path="/" component={HomeComponent} />
             <Route exact path="/student/home" component={StudentHomeComponent} />
-            <footer>
-                <div>
-                    <Link to="/tutor/home">/Tutor/Home</Link>
-                </div>
-                <div>
-                    <Link to="/student/home">/Student/Home</Link>
-                </div>
-                <div>
-                    <Link to="/">Home</Link>
-                </div>
-            </footer>
-
+            <Route exact path="/tutor/register" component={TutorRegisterComponent} />
+            <Route exact path="/tutor/home" component={TutorHomeComponent} />
         </div>
-    );
+);
 };
-
-// AppContainer.propTypes = {
-//     name: PropTypes.string,
-// };
-//
-// const mapStateToProps = (state) => {
-//     return {
-//         name: state.name
-//     };
-// };
-//
-// const mapDispatchToProps = (/* dispatch */) => {
-//     return {
-//     };
-// };
 
 export default AppContainer;

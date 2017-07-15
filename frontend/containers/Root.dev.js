@@ -12,7 +12,6 @@ export const history = createHistory();
 export default function Root() {
     return (
             <div>
-                {console.log(history)}
                 <Router history={history}>
                     <Route path="/" component={AppContainer}/>
                 </Router>

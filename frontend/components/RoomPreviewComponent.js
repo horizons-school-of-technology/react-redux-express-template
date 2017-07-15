@@ -1,26 +1,28 @@
 import React from 'react';
-
-
-const displayMessage =
-    'Room Preview Component';
 // class component
 class RoomPreviewComponent extends React.Component {
     constructor() {
         super();
         this.state = {
             courses: [
-                {Grade: '5', Course: 'Math'},
-                {Grade: '6', Course: 'Math'},
-                {Grade: '7', Course: 'Math'},
-                {Grade: '8', Course: 'Math'},
-                {Grade: '5', Course: 'History'},
-                {Grade: '7', Course: 'History'}]
+                {Grade: '5', Course: 'Math', Count: 0},
+                {Grade: '6', Course: 'Math', Count: 0},
+                {Grade: '7', Course: 'Math', Count: 0},
+                {Grade: '8', Course: 'Math', Count: 0},
+                {Grade: '5', Course: 'History', Count: 0},
+                {Grade: '7', Course: 'History', Count: 0}]
         };
     }
     render() {
         return(
         <div>
-            <div style={{color: 'red'}}>{displayMessage}</div>
+            {
+                this.state.courses.forEach((course) => {
+                    if(course.Grade === this.props.grade){
+                        console.log(course.Course)
+                    }
+                })}
+
             <div className={'flexbox'}>
 
                 {this.state.courses.map((course) => (

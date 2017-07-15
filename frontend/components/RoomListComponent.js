@@ -2,20 +2,18 @@ import React from 'react';
 import RoomPreviewComponent from './RoomPreviewComponent';
 
 const displayMessage =
-    'Room List Component';
+'Room List Component';
 // class component
-const RoomListComponent = () => {
-    return (
-        <div>
-            {/* title for chat room component */}
-            <div style={{color: "red"}}>{displayMessage}</div>
-
-            {/* list of each chatroom component */}
+class RoomListComponent extends React.Component {
+    
+    render(){
+        return (
             <div>
-                <RoomPreviewComponent />
+                <h1 style={{textAlign: "center"}}> Current Classes that need Assistance </h1>
+                <RoomPreviewComponent grade={this.props.grade} subject={this.props.subject}/>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 
