@@ -11,18 +11,16 @@ import Routes from '../routes';
 
 
 const AppContainer = (props) => {
-  const socket = io();
-
   return (
     <div>
       <Link to="/">
       <span className={'hometitle'}>
-        LOGO
+        OUR FIRST WEBPAGE
       </span>
     </Link>
     { Routes }
   </div>
   );
-};
+}
 
 export default AppContainer;

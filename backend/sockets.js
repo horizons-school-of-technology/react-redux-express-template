@@ -13,10 +13,11 @@ module.exports = function(io) {
     /** LISTENERS FOR ROOM PREVIEW **/
     // RECEIVE REQUEST FOR ALL ROOMS
     socket.on('getrooms', () => {
+      console.log('SERVER RECEIVED GET ROOMS');
       socket.emit('getrooms', roomUsers);
     });
 
-    
+
 
 
     /** LISTENERS FOR CHAT ROOM **/

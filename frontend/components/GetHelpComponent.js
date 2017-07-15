@@ -12,6 +12,7 @@ class GetHelpComponent extends React.Component {
         const defaultUsername = "Guest"+Math.round(Math.random()*100);
 
         this.state = {
+            socket: io(),
             grade: '',
             subject: '',
             currentRoom: false,
@@ -38,6 +39,9 @@ class GetHelpComponent extends React.Component {
       console.log('grade', this.state.grade, 'subject', this.state.subject)
         this.setState({currentRoom: true})
         e.preventDefault();
+
+        const roomName = this.state.grade + ' ' + this.state.subject;
+        this.state.socket.emit('room', {this.socket})
     }
 
     render(){

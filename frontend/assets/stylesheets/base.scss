@@ -1,5 +1,20 @@
-h1 {
-  font-family: helvetica;
+.h1 {
+  padding-bottom: 50px;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 50px;
+  color: #00568c
+}
+
+.h2 {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 40px;
+  color: #00568c
+}
+
+.h3 {
+  font-family: 'Source Sans Pro';
   font-weight: 200;
   margin: 0px;
 }
@@ -92,14 +107,145 @@ h1 {
 .chatroom_new_message_text {
   width: 80%;
   flex: 7;
-  // background-color: __INSERT COLOR__
 
 }
 .chatroom_new_message_btn {
   flex: 1;
   margin-left: 5px;
-  // background-color: __INSERT COLOR__
+  font-size: 30px;
+  color: #00568c
+}
 
+.h4 {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 25px;
+  color: #00568c
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 120px
+}
+
+.hometopbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 65vh
+}
+
+.homebottombox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 55vh
+}
+
+.homeboxbuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.homeboxabout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 100px
+}
+
+.homebutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 200px;
+  padding-right: 200px;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.loginbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 120px;
+  padding-right: 120px;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 50px
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.logo {
+  height: 130px;
+}
+
+.aboutimg {
+  width: 200px;
+}
+
+.infoimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+}
+
+.info {
+  padding-top: 50px;
+  height: 250px
+}
+
+.desk {
+  padding-top: 50px;
+  height: 220px
+}
+
+.pink {
+  background-color: #ffc6c9
+}
+
+.yellow {
+  background-color: #fff0e2
+}
+
+.blue {
+  background-color: #00568c
+}
+
+.toppad {
+  padding-top: 50px
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 200px
 }
 
 .hometitle {

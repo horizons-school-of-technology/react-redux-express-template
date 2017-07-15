@@ -17,7 +17,6 @@ const app = express();
 mongoose.connect(configDB.url); // connect to our database
 
 //Configure Passport
-// require('./backend/config/passport')(passport);
 const configPassport = require('./backend/config/passport');
 configPassport(passport);
 
@@ -52,15 +51,13 @@ auth(app, passport);
 //-------LOGIN WALL-----
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Route that leads to the React App!
-app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/public/index.html');
-});
-
-
 //Protected API Routes
 app.use('/api', api);
 
+//Route that leads to the React App!
+app.get('/*', (request, response) => {
+  response.sendFile(__dirname + '/public/index.html');
+});
 server.listen(PORT, error => {
     error
     ? console.error(error)
