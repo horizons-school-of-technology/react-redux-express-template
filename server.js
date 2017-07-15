@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const api = require('./backend/api');
 var passport = require('passport');
 var passportConfig = require('./backend/config/passport.js')(passport);
