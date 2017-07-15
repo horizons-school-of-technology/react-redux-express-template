@@ -1,8 +1,4 @@
 import React from 'react';
-// const io = require('socket.io-client');
-// import ReactDOM from 'react-dom';
-
-var socket = io('http://localhost');
 
 import ChatRoomMessages from './ChatRoomMessages';
 
@@ -12,17 +8,33 @@ class ChatRoom extends React.Component {
     // expected state: ACTIVEUSERS (array), SOCKET
 
     super(props);
+    console.log('username in cr:', this.props.username);
+
     this.state = {
       socket: io(),
-      activeUsers: []
+      activeUsers: [],
+      username: this.props.username,
+      roomName: 'default',
     };
   }
 
-  // componentDidMount() {
-  //   // socket listeners added to ChatRoom as soon as it's rendered
-  // }
+  join(room) {
+    // console.log(room);
+    this.setState({roomName: room});
+    this.state.socket.emit('room', {requestedRoom: room, username: this.state.username});
+    console.log('reaches here in join');
+  }
+
+  componentDidMount() {
+    this.join(this.state.roomName);
+    // socket listeners added to ChatRoom as soon as it's rendered
+    this.state.socket.on('updateusers', (data) => {
+      this.setState({activeUsers: data})
+    });
+  }
 
   render () {
+    console.log('ACTIVE USERS: ', this.state.activeUsers);
     return (
 
       <div className="chatroom">
@@ -39,10 +51,17 @@ class ChatRoom extends React.Component {
         <div id="chatroom_messages_box">
           <h2>While waiting for a tutor, chat with students in this room: </h2>
 
+          <h4 className="text-center"> Current users: {this.state.activeUsers.map((user, index) => {
+            var returnUser = user;
+            if (index !== this.state.activeUsers.length-1) {
+              returnUser += ", ";
+            }
+            return <span className="bold" key={index}> {returnUser}</span>  })}
+          </h4>
           <ChatRoomMessages
             grade={this.props.grade}
             subject={this.props.subject}
-            username={this.props.username}
+            username={this.state.username}
             socket={this.state.socket}
           />
         </div>

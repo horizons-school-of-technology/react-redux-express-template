@@ -5,12 +5,14 @@ import Title from '../components/Title';
 import ChatRoom from '../components/ChatRoom';
 
 const AppContainer = ({ name }) => {
+  var defaultUsername = "Guest"+Math.round(Math.random()*100);
   return (
     <div>
       <Title name={name} />
 
       {/*test chatroom*/}
-      <ChatRoom grade={5} subject={"Physics"} username="Amanda"/>
+
+      <ChatRoom grade={5} subject={"Physics"} username={defaultUsername}/>
     </div>
   );
 };

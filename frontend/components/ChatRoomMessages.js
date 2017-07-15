@@ -9,22 +9,28 @@ class ChatRoomMessages extends React.Component {
     //    TYPINGUSERS (array), SOCKET, MESSAGE (string of current message)
 
     super(props);
+
+    console.log('username in msgs:', this.props.username);
     this.state = {
-      socket: props.socket,
+      socket: this.props.socket,
       messages: [],
-      username: props.username,
+      username: this.props.username,
       typingusers: [],
       message: ""
     }
   }
 
+
+
   componentDidMount () {
+
+
     // socket listeners: message, typing, stoptyping
     this.state.socket.on('message', (msgData) => {
-      // console.log('reached message on app');
       var newMessages = this.state.messages.slice();
       newMessages.push(`${msgData.username}: ${msgData.content}`);
       this.setState({messages: newMessages});
+      console.log('NEW MESSAGES:', this.state.messages);
     });
 
     this.state.socket.on('typing', (typingData) => {
