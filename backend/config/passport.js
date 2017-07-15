@@ -21,14 +21,7 @@ module.exports = function(passport) {
         });
     });
 
-    // code for login (use('local-login', new LocalStategy))
-    // code for signup (use('local-signup', new LocalStategy))
-    // code for facebook (use('facebook', new FacebookStrategy))
-    // code for twitter (use('twitter', new TwitterStrategy))
-
-    // =========================================================================
-    // GOOGLE ==================================================================
-    // =========================================================================
+    // Google Authentication Strategy
     passport.use(new GoogleStrategy({
 
         clientID        : configAuth.googleAuth.clientID,
@@ -37,11 +30,7 @@ module.exports = function(passport) {
 
     },
     function(token, refreshToken, profile, done) {
-        console.log('made it to this callback!!');
-        console.log('token:', token);
-        console.log('refreshToken:', refreshToken);
         console.log('profile:', profile);
-        console.log('done:', done);
 
 
         // make the code asynchronous
