@@ -16,24 +16,11 @@ const AppContainer = ({ name }) => {
       <ChatRoom grade={5} subject={"Physics"} username={defaultUsername}/>
     </div>
   );
+}
 
 
 AppContainer.propTypes = {
   name: PropTypes.string,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.name
-  };
-};
-
-const mapDispatchToProps = (/* dispatch */) => {
-  return {
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppContainer);
+export default AppContainer;
