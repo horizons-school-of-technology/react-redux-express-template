@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 // import Title from '../components/Title';
-import HomeComponent from '../components/HomeComponent';
-import SplashComponent from '../components/SplashComponent';
+import HomeComponent from '../components/Home/HomeComponent';
+import SplashComponent from '../components/Login/SplashComponent';
+import ChatComponent from '../components/Chat/ChatComponent';
 
 const AppContainer = ({ name }) => {
     return (
         <div>
-            <SplashComponent/>
+            <ChatComponent/>
         </div>
     );
 };

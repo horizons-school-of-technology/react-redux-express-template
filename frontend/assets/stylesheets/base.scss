@@ -1,38 +1,18 @@
-.h1 {
-  padding-bottom: 50px;
-  font-family: 'Source Sans Pro';
-  font-weight: 600;
-  font-size: 50px;
-  color: #00568c
-}
-
-.h2 {
-  font-family: 'Source Sans Pro';
-  font-weight: 600;
-  font-size: 40px;
-  color: #00568c
-}
-
-.h3 {
-  font-family: 'Source Sans Pro';
-  font-weight: 200;
-  font-size: 30px;
-  color: #00568c
-}
-
-.h4 {
-  font-family: 'Source Sans Pro';
-  font-weight: 600;
-  font-size: 25px;
-  color: #00568c
-}
-
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 120px
+}
+
+//CONTAINERS/BUTTONS
+
+.chatcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .hometopbox {
@@ -103,6 +83,52 @@
   width: 500px;
 }
 
+//CHAT
+
+.chatboxheader {
+  display: flex;
+  width: 80vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  justify-content: space-between;
+}
+
+.chatbox {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 80vw;
+}
+
+.chatbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  margin-left: 20px
+}
+
+.chatbuttoncontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputfield {
+  margin-top: 3vh;
+  height: 3vh;
+  border-radius: 20px
+}
+
+
+//IMAGES
+
 .logo {
   height: 130px;
 }
@@ -128,6 +154,46 @@
   height: 220px
 }
 
+//FONTS
+
+.h1 {
+  padding-bottom: 50px;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 50px;
+  color: #00568c
+}
+
+.h2 {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 40px;
+  color: #00568c
+}
+
+.h3 {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-size: 30px;
+  color: #00568c
+}
+
+.h4 {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-size: 25px;
+  color: #00568c
+}
+
+.chat {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-size: 20px;
+  color: #00568c
+}
+
+//COLORS
+
 .pink {
   background-color: #ffc6c9
 }
@@ -144,10 +210,10 @@
   padding-top: 50px
 }
 
-.test {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80vw;
-  height: 200px
-}
+// .test {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 80vw;
+//   height: 200px
+// }
