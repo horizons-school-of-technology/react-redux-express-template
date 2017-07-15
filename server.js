@@ -20,6 +20,13 @@ mongoose.connect(configDB.url); // connect to our database
 const configPassport = require('./backend/config/passport');
 configPassport(passport);
 
+// START SOCKET SERVER STUFF
+const server            = require('http').Server(app);
+const io                = require('socket.io')(server);
+const socketConfig = require ('./backend/sockets.js');
+socketConfig(io);
+// END SOCKET SERVER STUFF
+
 //Express Middleware
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -53,7 +60,7 @@ app.get('/', (request, response) => {
 //Protected API Routes
 app.use('/api', api);
 
-app.listen(PORT, error => {
+server.listen(PORT, error => {
     error
     ? console.error(error)
     : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
