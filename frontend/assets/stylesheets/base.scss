@@ -174,6 +174,7 @@
 .h3 {
   font-family: 'Source Sans Pro';
   font-weight: 200;
+
   font-size: 30px;
   color: #00568c
 }
@@ -210,10 +211,98 @@
   padding-top: 50px
 }
 
-// .test {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 80vw;
-//   height: 200px
-// }
+//CHATROOM component -- currently inside APPCONTAINER
+.chatroom {
+  // width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-items: center;
+  padding: 5%;
+
+}
+.chatroom_header {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+
+}
+.chatroom_title {
+  flex: 6;
+
+}
+.chatroom_count {
+  flex: 1;
+
+}
+.chatroom_countDescrip {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.chatroom_messages_box {
+  flex: 6;
+
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+}
+.chatroom_messages_box h2 {
+  flex: 1;
+
+}
+// CHATROOMMESSAGES component -- inside CHATROOM
+.chatroom_messages {
+  flex: 6;
+
+}
+.chatroom_msg {
+  font-size: 18px;
+  margin: 5px 10px;
+  // font-weight: 400;
+
+}
+.own_msg {
+  color: grey; // any color but different from other msgs!
+
+}
+.system_msg {
+  color: grey; // any color but different from other msgs!
+  font-style: italic;
+
+}
+.chatroom_msg_username {
+  font-weight: bold;
+
+}
+.chatroom_msg_content {
+  //any style for each message body
+}
+.typing_user {
+  font-style: italic;
+
+}
+.chatroom_new_message {
+  display: flex;
+  flex-basis: none;
+  align-items: center;
+}
+.chatroom_new_message_text {
+  width: 80%;
+  flex: 7;
+  // background-color: __INSERT COLOR__
+
+}
+.chatroom_new_message_btn {
+  flex: 1;
+  margin-left: 5px;
+  // background-color: __INSERT COLOR__
+
+}
