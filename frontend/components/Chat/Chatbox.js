@@ -3,6 +3,8 @@ import React from 'react';
 const Chatbox = () => {
     return (
     <div>
+
+
       <div className = "chatcontainer">
         <div className = "chatboxheader">
           <div>
@@ -17,6 +19,8 @@ const Chatbox = () => {
             </button>
           </div>
         </div>
+
+
         <div className = "chatbox yellow">
           <span className = "chat">Grade 5 Physics</span>
           <span className = "chat">Grade 5 Physics</span>
@@ -24,6 +28,8 @@ const Chatbox = () => {
           <input className = "inputfield" placeholder = " Write your message..."/>
         </div>
       </div>
+
+
       <center><img src="/img/desk.png" className = "desk"/></center>
     </div>
     );

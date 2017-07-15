@@ -78,18 +78,20 @@ class ChatRoomMessages extends React.Component {
 
   render () {
     return (
-      <div className="chatroom_messages">
-
+      <div className="chatbox yellow">
         {/* map through array of messages, print out all */}
         {this.state.messages.map((msg, index) => {
           var classes = "chatroom_msg";
           var bp = msg.indexOf(':');
           var username = msg.substring(0, bp);
 
-          if (username === 'SYSTEM') {
-            classes += " system_msg";
+          if (username === 'System') {
+            classes += " own_msg system_msg";
           } else if (username === this.state.username) {
-            classes += " own_msg text-right";
+            classes += " text-right chatred";
+          }
+          else {
+            classes += " chatblue";
           }
 
           var message = msg.substring(bp+2, msg.length);
@@ -117,13 +119,13 @@ class ChatRoomMessages extends React.Component {
             placeholder="Type in your answer(s)..."
             value={this.state.message}
             onChange={(e) => {this.handleChange(e)}}
-            className="form-control"
+            className="form-control inputfield" //FIX
           />
           <input
             id="chatroom_new_message_btn"
             type="submit"
             value="Send"
-            className="btn btn-primary"
+            className="red sendbutton btn btn-primary"
           />
         </form>
 

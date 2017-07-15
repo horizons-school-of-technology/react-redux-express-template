@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 
 import HomeComponent from '../components/Home/HomeComponent';
+import HomeHeaderComponent from '../components/Header';
 import SplashComponent from '../components/Login/SplashComponent';
 import ChatComponent from '../components/Chat/ChatComponent';
 
@@ -11,13 +12,10 @@ import Title from '../components/Title';
 import ChatRoom from '../components/ChatRoom';
 
 const AppContainer = ({ name }) => {
-  var defaultUsername = "Guest"+Math.round(Math.random()*100);
+  var defaultUsername = "Guest" + Math.round(Math.random()*100);
   return (
     <div>
-      <Title name={name} />
-
-      {/*test chatroom*/}
-
+      <HomeHeaderComponent/>
       <ChatRoom grade={5} subject={"Physics"} username={defaultUsername}/>
     </div>
   );
