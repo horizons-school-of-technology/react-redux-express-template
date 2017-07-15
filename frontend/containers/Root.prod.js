@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
+import {Route, BrowserRouter as Router} from 'react-router-dom';
 import AppContainer from './AppContainer.js';
+import DevTools from './DevTools';
+import createHistory from 'history/createBrowserHistory';
 
-export default function Root({ store }) {
-    return (
-        <Provider store={store}>
-            <AppContainer />
-        </Provider>
-    );
+export const history = createHistory();
+
+export default function Root() {
+  return (
+    <div>
+      <Router history={history}>
+        <Route path="/" component={AppContainer}/>
+      </Router>
+    </div>
+  );
 }
 
 Root.propTypes = {
-    store: PropTypes.object.isRequired
 };

@@ -7,16 +7,6 @@ module.exports = {
     ],
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
-                options: {
-                    configFile: '.eslintrc',
-                    failOnWarning: false,
-                    failOnError: false
-                }
-            },
             { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
         ],
@@ -26,13 +16,17 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '/public'),
-        publicPath: '/',
+        publicPath: '/public',
         filename: 'bundle.js'
     },
     devtool: 'cheap-eval-source-map',
     devServer: {
+        // historyApiFallback: {
+        //   index: './index.html'
+        // },
         contentBase: './public',
-        hot: true
+        hot: true,
+
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),

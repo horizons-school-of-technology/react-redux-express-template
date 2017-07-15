@@ -1,32 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, Route } from 'react-router-dom';
 import Title from '../components/Title';
+// import TutorHomeComponent from '../components/TutorHomeComponent';
+// import TutorRegisterComponent from '../components/TutorRegisterComponent';
+// import StudentHomeComponent from '../components/StudentHomeComponent';
+// import HomeComponent from '../components/HomeComponent';
+import Routes from '../routes';
 
-const AppContainer = ({ name }) => {
-    return (
-        <div>
-            <Title name={name} />
-        </div>
-    );
-};
+const AppContainer = (props) => {
+  return (
+    <div>
+      <Link to="/">
+        <span className={'hometitle'}>
+          OUR FIRST WEBPAGE
+        </span>
+      </Link>
+      { Routes }
+    </div>
+  );
+}
 
-AppContainer.propTypes = {
-    name: PropTypes.string,
-};
-
-const mapStateToProps = (state) => {
-    return {
-        name: state.name
-    };
-};
-
-const mapDispatchToProps = (/* dispatch */) => {
-    return {
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(AppContainer);
+export default AppContainer;
