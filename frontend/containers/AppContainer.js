@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+// import Title from '../components/Title';
+import HomeComponent from '../components/HomeComponent';
+import SplashComponent from '../components/SplashComponent';
 
 const AppContainer = ({ name }) => {
     return (
         <div>
-            <Title name={name} />
+            <SplashComponent/>
         </div>
     );
 };
