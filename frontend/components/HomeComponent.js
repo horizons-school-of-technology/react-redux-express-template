@@ -9,9 +9,10 @@ const displayMessage =
   'home Component!';
 
 // class component
-const HomeComponent = () => {
+const HomeComponent = (props) => {
     return (
         <div>
+            <h1>Amanda{props.amanda}</h1>
             <button style={{width: 100, height: 50}}>
                 <Link to="/student/home">Student</Link>
             </button>

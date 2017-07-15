@@ -1,7 +1,7 @@
 
 module.exports = function(io) {
-  // START SOCKET SERVER STUFF PART 2
-  var roomUsers = {}; //
+  // let rooms = {};
+  var roomUsers = {}; // object with room as key, and room users as value
   var typingPeople = {}; //object with username and timeout key-value pairs
 
   io.on('connection', socket => {
@@ -10,8 +10,17 @@ module.exports = function(io) {
     socket.room = 'DEFAULT';
     /**  REPLACE WITH NEW ROOM  **/
 
+    //
+    // /** LISTENERS FOR ROOM PREVIEW **/
+    // // RECEIVE REQUEST FOR ALL ROOMS
+    // socket.on('getrooms', () => {
+    //   socket.emit('getrooms', roomUsers);
+    // });
+    //
+    //
 
-    /** LISTENERS **/
+
+    /** LISTENERS FOR CHAT ROOM **/
     // RECEIVE ROOM
     socket.on('room', ({requestedRoom, username}) => {
       if (!requestedRoom) {
@@ -95,7 +104,7 @@ module.exports = function(io) {
     });
     // RECEIVE DISCONNECT OF SPECIFIC USER
     socket.on('disconnect', ()  => {
-      var oldUsers = roomUsers[socket.room];
+      var oldUsers = roomUsers[socket.room] || [];
       oldUsers.splice(oldUsers.indexOf(socket.username), 1);
       roomUsers[socket.room] = oldUsers;
     })

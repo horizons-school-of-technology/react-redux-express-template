@@ -1,39 +1,59 @@
 import React from 'react';
 // class component
 class RoomPreviewComponent extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            courses: [
-                {Grade: '5', Course: 'Math', Count: 0},
-                {Grade: '6', Course: 'Math', Count: 0},
-                {Grade: '7', Course: 'Math', Count: 0},
-                {Grade: '8', Course: 'Math', Count: 0},
-                {Grade: '5', Course: 'History', Count: 0},
-                {Grade: '7', Course: 'History', Count: 0}]
-        };
+  constructor() {
+    super();
+    this.state = {
+      // socket: this.props.socket,
+      courses: [
+        {Grade: '5', Course: 'Math', Count: 0},
+        {Grade: '6', Course: 'Math', Count: 0},
+        {Grade: '7', Course: 'Math', Count: 0},
+        {Grade: '8', Course: 'Math', Count: 0},
+        {Grade: '5', Course: 'History', Count: 0},
+        {Grade: '7', Course: 'History', Count: 0}
+        ]
+      };
     }
+
+    componentDidMount() {
+      // this.state.socket.emit('getrooms');
+      //
+      // this.state.socket.on('getrooms', (rooms) => {
+      //   let newCourses = [];
+      //   Object.keys(rooms).map((roomName, index) => {
+      //     const bp = roomName.indexOf(' ');
+      //     const grade = roomName.substring(0, bp);
+      //     const subject = roomName.subject(bp+1, roomName.length);
+      //
+      //     newCourses.push({Grade: grade, Course: subject, Count: rooms[roomName].length});
+      //   });
+      //   console.log(newCourses);
+      //   this.setState(courses: newCourses);
+      // });
+    }
+
     render() {
-        return(
+      return(
         <div>
-            {
-                this.state.courses.forEach((course) => {
-                    if(course.Grade === this.props.grade){
-                        console.log(course.Course)
-                    }
-                })}
+          {
+            this.state.courses.forEach((course) => {
+              if(course.Grade === this.props.grade){
+                console.log(course.Course)
+              }
+            })}
 
             <div className={'flexbox'}>
 
-                {this.state.courses.map((course) => (
-                    <button className={'classbutton'}>Grade: {course.Grade}, {course.Course}</button>
-                ))}
+              {this.state.courses.map((course, index) => (
+                <button key={index} className={'classbutton'}>Grade: {course.Grade}, {course.Course}</button>
+              ))}
 
             </div>
-        </div>
+          </div>
         );
+      }
     }
-}
 
 
-export default RoomPreviewComponent;
+    export default RoomPreviewComponent;

@@ -3,15 +3,17 @@ import RoomListComponent from './RoomListComponent';
 import GetHelpComponent from './GetHelpComponent';
 
 const displayMessage =
-  'The React Redux Boilerplate is running successfully!';
+'The React Redux Boilerplate is running successfully!';
 
 // class component
-const TutorHomeComponent = () => {
-    return (
-        <div>
-            <RoomListComponent />
-        </div>
-    );
+const TutorHomeComponent = (props) => {
+  console.log('TUTOR HOME: ', props.socket);
+
+  return (
+    <div>
+      <RoomListComponent socket={props.socket} />
+    </div>
+  );
 };
 
 

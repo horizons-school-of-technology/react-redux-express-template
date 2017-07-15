@@ -7,22 +7,29 @@ import TutorHomeComponent from '../components/TutorHomeComponent';
 import TutorRegisterComponent from '../components/TutorRegisterComponent';
 import StudentHomeComponent from '../components/StudentHomeComponent';
 import HomeComponent from '../components/HomeComponent';
-
+import Routes from '../routes';
 
 
 const AppContainer = (props) => {
-    return (
-        <div>
-            <Link to="/">
-                <span className={'hometitle'}>
-                    LOGO
-                </span>
-            </Link>
-            <Route exact path="/" component={HomeComponent} />
-            <Route exact path="/student/home" component={StudentHomeComponent} />
-            <Route exact path="/tutor/register" component={TutorRegisterComponent} />
-            <Route exact path="/tutor/home" component={TutorHomeComponent} />
-        </div>
+  const amanda = 'ah';
+  const socket = io();
+
+  return (
+    <div>
+      { Routes }
+      <div>sadasdasdas
+        <Link to="/">
+        <span className={'hometitle'}>
+          LOGO
+        </span>
+      </Link>
+      <Link to="/student/home">
+      <span className={'hometitle'}>
+        stuedenthome
+      </span>
+    </Link>
+  </div>
+</div>
 );
 };
 

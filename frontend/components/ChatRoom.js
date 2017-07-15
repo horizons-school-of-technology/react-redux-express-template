@@ -4,14 +4,14 @@ import ChatRoomMessages from './ChatRoomMessages';
 
 class ChatRoom extends React.Component {
   constructor (props) {
-    // expected props: GRADE, SUBJECT, USERNAME
-    // expected state: ACTIVEUSERS (array), SOCKET
+    // expected props: GRADE, SUBJECT, USERNAME, SOCKET
+    // expected state: ACTIVEUSERS (array),
 
     super(props);
     console.log('username in cr:', this.props.username);
 
     this.state = {
-      socket: io(),
+      socket: this.props.socket,
       activeUsers: [],
       username: this.props.username,
       roomName: 'default',

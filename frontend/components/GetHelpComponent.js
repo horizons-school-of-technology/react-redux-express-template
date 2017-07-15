@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import RoomListComponent from './RoomListComponent';
+import Routes from '../routes';
+
 
 
 class GetHelpComponent extends React.Component {
     constructor(props){
         super(props);
+        console.log('PROPS:', this.props);
+        const defaultUsername = "Guest"+Math.round(Math.random()*100);
+
         this.state = {
+            socket: this.props.socket,
             grade: '',
-            subject: ''
+            subject: '',
+            currentRoom: false,
+            username: defaultUsername
         }
         this.handleChangeGrade = this.handleChangeGrade.bind(this)
         this.handleChangeSubject = this.handleChangeSubject.bind(this)
@@ -17,18 +25,28 @@ class GetHelpComponent extends React.Component {
 
     handleChangeGrade(e){
         this.setState({grade: e.target.value})
+        console.log('grade', this.state.grade, 'subject', this.state.subject)
+
     }
 
     handleChangeSubject(e){
         this.setState({subject: e.target.value})
+        console.log('grade', this.state.grade, 'subject', this.state.subject)
+
     }
 
     handleSubmit(e){
-        e.preventDefault()
+      console.log('grade', this.state.grade, 'subject', this.state.subject)
+        this.setState({currentRoom: true})
+        e.preventDefault();
     }
 
     render(){
+      console.log('GET HELP: ', this.props.socket);
+
+        const linkTo = "/chatroom/"+this.state.grade+"/"+this.state.subject;
         return (
+          {Routes}
             <div className={'flexboxcol'}>
                 <h2 style={{flex:1}}>I need help in ....</h2>
                 <form onSubmit={this.handleSubmit} className={'flexbox'}>
@@ -58,11 +76,20 @@ class GetHelpComponent extends React.Component {
                             <option value="Biology">Biology</option>
                         </select>
                     </label>
-                    <Link style={{flex:1}} to="/chatroom">
+                    <Link style={{flex:1}} to={linkTo}>
                         <input type="submit" value="Submit" />
                     </Link>
                 </form>
-                <RoomListComponent grade={this.state.grade} subject={this.state.subject}/>
+                {(this.state.current_room) ?
+                  <ChatRoom grade={this.state.grade}
+                  subject={this.state.subject}
+                  username={this.state.username}
+                  socket={this.state.socket} />
+                  :
+                  <RoomListComponent socket={this.state.socket}
+                    grade={this.state.grade}
+                    subject={this.state.subject}/>
+                }
             </div>
         );
     }
