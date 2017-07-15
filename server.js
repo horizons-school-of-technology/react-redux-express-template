@@ -17,7 +17,6 @@ const app = express();
 mongoose.connect(configDB.url); // connect to our database
 
 //Configure Passport
-// require('./backend/config/passport')(passport);
 const configPassport = require('./backend/config/passport');
 configPassport(passport);
 

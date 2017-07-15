@@ -10,7 +10,6 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log('inside serialize: ', user);
         done(null, user.id);
     });
 
@@ -30,7 +29,6 @@ module.exports = function(passport) {
 
     },
     function(token, refreshToken, profile, done) {
-        console.log('profile:', profile);
 
 
         // make the code asynchronous
