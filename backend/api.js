@@ -7,5 +7,8 @@ const router = express.Router();
 router.use('/users', (req, res) => {
     res.json({ success: true });
 });
+// router.use('/', (req, res) => {
+//     res.sendFile('index.html');
+// });
 
 module.exports = router;
