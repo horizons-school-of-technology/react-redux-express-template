@@ -4,9 +4,8 @@ class RoomPreviewComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      // socket: this.props.socket,
+      socket: io(),
       courses: [
-        {Grade: '5', Course: 'Math', Count: 0},
         {Grade: '6', Course: 'Math', Count: 0},
         {Grade: '7', Course: 'Math', Count: 0},
         {Grade: '8', Course: 'Math', Count: 0},
@@ -17,7 +16,7 @@ class RoomPreviewComponent extends React.Component {
     }
 
     componentDidMount() {
-      // this.state.socket.emit('getrooms');
+      this.state.socket.emit('getrooms');
       //
       // this.state.socket.on('getrooms', (rooms) => {
       //   let newCourses = [];

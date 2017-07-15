@@ -14,7 +14,7 @@ class ChatRoom extends React.Component {
       socket: this.props.socket,
       activeUsers: [],
       username: this.props.username,
-      roomName: 'default',
+      roomName: 'default', // CHANGE TO SUBJECT AND GRADE
     };
   }
 

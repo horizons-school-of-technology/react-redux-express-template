@@ -1,6 +1,5 @@
 
 module.exports = function(io) {
-  // let rooms = {};
   var roomUsers = {}; // object with room as key, and room users as value
   var typingPeople = {}; //object with username and timeout key-value pairs
 
@@ -10,14 +9,14 @@ module.exports = function(io) {
     socket.room = 'DEFAULT';
     /**  REPLACE WITH NEW ROOM  **/
 
-    //
-    // /** LISTENERS FOR ROOM PREVIEW **/
-    // // RECEIVE REQUEST FOR ALL ROOMS
-    // socket.on('getrooms', () => {
-    //   socket.emit('getrooms', roomUsers);
-    // });
-    //
-    //
+
+    /** LISTENERS FOR ROOM PREVIEW **/
+    // RECEIVE REQUEST FOR ALL ROOMS
+    socket.on('getrooms', () => {
+      socket.emit('getrooms', roomUsers);
+    });
+
+    
 
 
     /** LISTENERS FOR CHAT ROOM **/
