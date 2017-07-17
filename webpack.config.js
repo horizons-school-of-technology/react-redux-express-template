@@ -7,16 +7,6 @@ module.exports = {
     ],
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
-                options: {
-                    configFile: '.eslintrc',
-                    failOnWarning: false,
-                    failOnError: false
-                }
-            },
             { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
         ],
