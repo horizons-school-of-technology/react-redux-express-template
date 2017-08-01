@@ -1,4 +1,90 @@
 h1 {
-  font-family: helvetica;
-  font-weight: 200;
+  font-family: Courier;
+  font-weight: 400;
+  font-size: 100px
+}
+
+
+li {
+    font-family: Courier;
+    font-weight: 400;
+    font-size: 20px
+}
+
+p {
+    font-family: Courier;
+    font-weight: 400;
+    font-size: 30px
+}
+
+.nav {
+    background-color: red;
+    color: #96070c;
+}
+
+.flexcontainer {
+   display: flex;
+   justify-content: center;
+   margin: 100px;
+}
+
+.container {
+   border-style: solid;
+   border-radius: 4;
+   border-width: 3;
+   border-color: #96070c;
+   padding: 10px;
+   margin: 100px;
+}
+
+body {
+  background-color: 'lavender';
+  font-family: 'Roboto', sans-serif;
+}
+
+.toolbar {
+  background-color: white;
+  padding: 15px;
+  padding-bottom: 20px;
+}
+
+.right-align {
+  text-align: right
+}
+
+.center-align {
+  text-align: center
+}
+
+.editor {
+  background-color: #D1C4E9;
+  border-style: double;
+  border-color: 'black';
+  min-height: 300px;
+  padding: 15px;
+  margin: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-width: 300px;
+  border-width: 1px;
+}
+
+.toolbar > button{
+  width: 46px;
+  min-width: 0 !important;
+}
+
+.portalbox {
+  border-color: 'black';
+  border-width: 1px;
+  border-bottom-style: solid;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.buttonDiv {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
 }
