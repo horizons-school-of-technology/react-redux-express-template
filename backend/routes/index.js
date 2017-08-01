@@ -9,4 +9,8 @@ router.use(function(req, res, next) {
     }
 });
 
+router.post('/createNewBook', function(req, res) {
+    // createNewBook
+});
+
 module.exports = router;

@@ -19,22 +19,27 @@ class Registration extends React.Component {
 
     onSubmit() {
     // Send a POST request
-        axios({
-            method: 'POST',
-            url: 'http://localhost:3000/registration', // need to define this route
-            data: {
-                username: this.state.username,
-                email: this.state.email,
-                password: this.state.password, // Hash this password?
-            }
-        })
-          .then(response => {
-              if (response.data.success) {
-                  this.setState({isRegistered: true});
-              } else {
-                  console.log('server error with registration, try back later please!');
-              }
-          });
+        const email = this.state.email;
+        if (email.substr(email.length-3) !== 'edu') {
+            alert('Email must be a valid .edu address.');
+        } else {
+            axios({
+                method: 'POST',
+                url: 'http://localhost:3000/registration', // need to define this route
+                data: {
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password, // Hash this password?
+                }
+            })
+              .then(response => {
+                  if (response.data.success) {
+                      this.setState({isRegistered: true});
+                  } else {
+                      console.log('server error with registration, try back later please!');
+                  }
+              });
+        }
     }
 
     render() {
