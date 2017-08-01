@@ -11,8 +11,9 @@ class Routes extends Component {
             <App>
                 <Switch>
                     <Route exact path='/' component={AppContainer}/>
-                    <Route path='/students' component={Login}/>
+                    <Route path='/students' component={Students}/>
                     <Route path='/writers' component={Writers}/>
+                    <Route path='/login' component={Login}/>
                 </Switch>
             </App>
         )
