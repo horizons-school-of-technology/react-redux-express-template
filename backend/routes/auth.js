@@ -1,56 +1,38 @@
-const express = require('express');
-const router = express.Router();
-var models = require('../models/models');
+var express = require('express');
+var router = express.Router();
+
+
+var models = require('../models/models.js');
+var User = models.User;
 
 module.exports = function(passport) {
-  // GET registration page
-    router.get('/register', function(req, res) {
-        res.render('registration');
-    });
 
-    // POST registration page
-    var validateReq = function(userData) {
-        return (userData.password === userData.passwordRepeat);
-    };
-
-    router.post('/register', function(req, res) {
-      // validation step
-        if (!validateReq(req)) {
-            res.render('/register', {
-                error: "Passwords don't match."
-            });
-        }
-        var u = new models.User({
-            username: req.body.username,
-            password: req.body.password
-        });
-      u.save(function(err, user) {
-        if (err) {
-          console.log(err);
-          res.status(500).redirect('/register');
-          return;
-        }
-        console.log(user);
-        res.redirect('/login');
-      });
-    });
-
-    // GET Login page
-    router.get('/login', function(req, res) {
-      res.render('login');
-    });
+  router.post('/login', passport.authenticate('local'), function(req, res){
+    res.json({success: true, user: req.user})
+  });
 
 
-    // POST Login page
-    router.post('/login', passport.authenticate('local'), function(req, res) {
-      res.redirect('/');
-    });
+  router.post('/registration', function(req, res){
+    console.log(req.body);
+    var newUser = new User({
+      username: req.body.username,
+      password: req.body.password,
+      documentsOwned: [],
+      documentsSharedWithMe: []
+    })
+    console.log("this is newUser: ", newUser);
+    newUser.save(function(err, user){
+      if(err){
+        console.log(err)
+      } else {
+        res.json({success: true})
+      }
+    })
+  });
 
-    // GET Logout page
-    router.get('/logout', function(req, res) {
-      req.logout();
-      res.redirect('/login');
-    });
+  router.get('/registration', function(req, res) {
+    res.sendStatus(200);
+  });
 
-    return router;
-};
+  return router;
+}
