@@ -2,14 +2,14 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 const routes = require('./backend/routes/index');
 var auth = require('./backend/routes/auth');
-var express = require('express')
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-//models
+// models
 var models = require('./backend/models/models');
 var User = models.User;
 
