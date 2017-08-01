@@ -45,7 +45,7 @@ class Registration extends React.Component {
           <div>
             <center>
               <br/><br/>
-            <h1> Textbook Exchange</h1>
+            <h1>BookSwap</h1>
             <h3>Register to sell your books!</h3>
             <TextField
               id="text-field-default"

@@ -50,16 +50,16 @@ class Login extends React.Component {
               <div>
                 <center>
                   <br/><br/>
-                <h1>R E E D O C S</h1>
-                <h3>LOGIN</h3>
+                <h1>BookSwap</h1>
+                <h3>Login to sell your books!</h3>
                 <TextField
-                  hintText="username"
-                  floatingLabelText="username"
+                  hintText="email"
+                  floatingLabelText="email"
                   floatingLabelStyle={{'color': '#B39DDB'}}
                   underlineFocusStyle={{'borderBottom': 'solid #000000'}}
-                  onChange={(e) => this.setState({username: e.target.value})}
+                  onChange={(e) => this.setState({email: e.target.value})}
                   type="text"
-                  name="username"
+                  name="email"
                 /><br />
                 <TextField
                   hintText="password"

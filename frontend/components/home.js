@@ -33,13 +33,13 @@ class Home extends React.Component {
         <div>
                 <AppBar
                     className="nav"
-                    title="Bobcat Book Exchange"
+                    title="BookSwap"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={<FlatButton label="Login" containerElement={<Link to="/login" />} />}
                 />
             <div style={style}>
             <center>
-                <h1>Bobcat Book Exchange</h1>
+                <h1>BookSwap</h1>
             </center>
             <center>
                 <RaisedButton label="Buy A Book" style={button} />

@@ -21,7 +21,7 @@ class How extends React.Component {
               <div>
                   <AppBar
                       className="nav"
-                      title="Bobcat Book Exchange"
+                      title="BookSwap"
                       iconClassNameRight="muidocs-icon-navigation-expand-more"
                       iconElementRight={<FlatButton label="Login" />}
                   />
