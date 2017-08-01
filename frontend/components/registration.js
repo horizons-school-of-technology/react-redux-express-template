@@ -4,6 +4,7 @@ import {Redirect, Link} from 'react-router-dom';
 var axios = require('axios');
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import styles from '../assets/stylesheets/base.scss';
 
 class Registration extends React.Component {
     constructor(props) {

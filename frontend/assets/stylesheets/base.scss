@@ -36,3 +36,55 @@ p {
    padding: 10px;
    margin: 100px;
 }
+
+body {
+  background-color: 'lavender';
+  font-family: 'Roboto', sans-serif;
+}
+
+.toolbar {
+  background-color: white;
+  padding: 15px;
+  padding-bottom: 20px;
+}
+
+.right-align {
+  text-align: right
+}
+
+.center-align {
+  text-align: center
+}
+
+.editor {
+  background-color: #D1C4E9;
+  border-style: double;
+  border-color: 'black';
+  min-height: 300px;
+  padding: 15px;
+  margin: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-width: 300px;
+  border-width: 1px;
+}
+
+.toolbar > button{
+  width: 46px;
+  min-width: 0 !important;
+}
+
+.portalbox {
+  border-color: 'black';
+  border-width: 1px;
+  border-bottom-style: solid;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.buttonDiv {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
