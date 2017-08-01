@@ -35,7 +35,7 @@ class Home extends React.Component {
                 className='nav'
                 title="Bobcat Book Exchange"
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
-                iconElementRight={<FlatButton label="Login" />}
+                iconElementRight={<FlatButton label="Login" containerElement={<Link to="/login" />}
             />
             <div style={style}>
             <center>
