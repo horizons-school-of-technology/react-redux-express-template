@@ -1,11 +1,11 @@
-const PORT = process.env.PORT || 3000;
-const path = require('path');
-const routes = require('./backend/routes/index');
-var auth = require('./backend/routes/auth');
-var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const PORT = process.env.PORT || 3000;
+const path = require('path');
+var express = require('express');
+var app = express();
+const routes = require('./backend/routes/index');
+var auth = require('./backend/routes/auth');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -16,9 +16,7 @@ var User = models.User;
 var session = require('express-session');
 var connect = mongoose.connect(process.env.MONGODB_URI);
 
-
 // app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(session({ secret: 'keyboard cat' }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
