@@ -4,10 +4,6 @@ var models = require('../models/models.js');
 var User = models.User;
 
 module.exports = function(passport) {
-    // router.get('/register', function(req, res) {
-    //     res.render('registration');
-    // });
-
     router.post('/login', passport.authenticate('local'), function(req, res) {
         res.json({success: true, user: req.user});
     });
@@ -28,10 +24,6 @@ module.exports = function(passport) {
             }
         });
     });
-
-    // router.get('/registration', function(req, res) {
-    //     res.sendStatus(200);
-    // });
 
     return router;
 };

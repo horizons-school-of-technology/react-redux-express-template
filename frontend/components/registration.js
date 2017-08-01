@@ -4,6 +4,7 @@ import {Redirect, Link} from 'react-router-dom';
 var axios = require('axios');
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import '../assets/stylesheets/base.scss';
 
 class Registration extends React.Component {
     constructor(props) {
@@ -44,8 +45,8 @@ class Registration extends React.Component {
           <div>
             <center>
               <br/><br/>
-            <h1> C U R L D O C S</h1>
-            <h3>REGISTER</h3>
+            <h1> Textbook Exchange</h1>
+            <h3>Register to sell your books!</h3>
             <TextField
               id="text-field-default"
               floatingLabelText="username"
