@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Home from './components/home';
 import How from './components/how';
+import Login from './components/login';
 import Registration from './components/registration';
 import ReactDOM from 'react-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -21,9 +22,10 @@ ReactDOM.render(
               <Switch>
                   <Redirect from="/" to ="/home" strict />
               </Switch>
-              <Route strict path="/home" component={Home}/>
-              <Route strict path="/how" component={How}/>
-              <Route strict path="/register" component={Registration}/>
+              <Route strict path='/home' component={Home}/>
+              <Route strict path='/how' component={How}/>
+              <Route strict path='/register' component={Registration}/>
+              <Route strict path='/login' component={Login}/>
           </div>
         </MuiThemeProvider>
     </HashRouter>,

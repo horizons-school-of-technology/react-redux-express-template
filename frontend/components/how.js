@@ -9,6 +9,7 @@ import '../assets/stylesheets/base.scss';
 //     backgroundColor: "#96070c",
 //     fontColor: "#FFEBEE",
 // }
+
 class How extends React.Component {
     constructor(props) {
         super(props);
