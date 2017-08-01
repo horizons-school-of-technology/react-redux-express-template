@@ -22,10 +22,10 @@ ReactDOM.render(
               <Switch>
                   <Redirect from="/" to ="/home" strict />
               </Switch>
-              <Route strict path='/home' component={Home}/>
-              <Route strict path='/how' component={How}/>
-              <Route strict path='/register' component={Registration}/>
-              <Route strict path='/login' component={Login}/>
+              <Route strict path="/home" component={Home}/>
+              <Route strict path="/how" component={How}/>
+              <Route strict path="/register" component={Registration}/>
+              <Route strict path="/login" component={Login}/>
           </div>
         </MuiThemeProvider>
     </HashRouter>,
