@@ -12,6 +12,18 @@ app.get('/', (request, response) => {
 
 app.use('/api', api);
 
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(PORT, error => {
     error
     ? console.error(error)

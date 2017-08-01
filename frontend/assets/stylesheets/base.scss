@@ -1,4 +1,38 @@
 h1 {
-  font-family: helvetica;
-  font-weight: 200;
+  font-family: Courier;
+  font-weight: 400;
+  font-size: 100px
+}
+
+
+li {
+    font-family: Courier;
+    font-weight: 400;
+    font-size: 20px
+}
+
+p {
+    font-family: Courier;
+    font-weight: 400;
+    font-size: 30px
+}
+
+.nav {
+    background-color: red;
+    color: #96070c;
+}
+
+.flexcontainer {
+   display: flex;
+   justify-content: center;
+   margin: 100px;
+}
+
+.container {
+   border-style: solid;
+   border-radius: 4;
+   border-width: 3;
+   border-color: #96070c;
+   padding: 10px;
+   margin: 100px;
 }
