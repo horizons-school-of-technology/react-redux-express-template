@@ -31,12 +31,13 @@ class Home extends React.Component {
     render(){
         return (
         <div>
-            <AppBar
-                className='nav'
-                title="Bobcat Book Exchange"
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
-                iconElementRight={<FlatButton label="Login" />}
-            />
+                <AppBar
+                    className='nav'
+                    title="Bobcat Book Exchange"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={<FlatButton label="Login" containerElement={<Link to="/login" />} />}
+                />
+            
             <div style={style}>
             <center>
                 <h1>Bobcat Book Exchange</h1>
