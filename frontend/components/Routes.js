@@ -4,6 +4,7 @@ import AppContainer from '../containers/AppContainer';
 import App from './App';
 import Login from '../containers/Login';
 import Writers from './Writers';
+import Students from './Students';
 
 class Routes extends Component {
     render() {

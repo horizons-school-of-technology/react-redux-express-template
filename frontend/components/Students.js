@@ -1,7 +1,11 @@
+import React from 'react';
+
 const Students = () => (
     <div>
-        <div>
+        <h1>
             Welcome to CramBerry !!!
-        </div>
+        </h1>
     </div>
 )
+
+export default Students;
