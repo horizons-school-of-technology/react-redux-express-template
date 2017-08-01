@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Home from './components/home';
 import How from './components/how';
+import Registration from './components/registration';
 import ReactDOM from 'react-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
@@ -21,6 +22,7 @@ ReactDOM.render(
               </Switch>
               <Route strict path='/home' component={Home}/>
               <Route strict path='/how' component={How}/>
+              <Route strict path='/register' component={Registration}/>
           </div>
         </MuiThemeProvider>
     </HashRouter>,

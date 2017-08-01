@@ -11,17 +11,15 @@ mongoose.connect(connect);
 
 var Schema = mongoose.Schema;
 
-
-
 var userSchema = new Schema({
-  username: String,
-  password: String,
-  booksOwned: Array,  //array of document ID's
+    username: String,
+    password: String,
+    booksOwned: Array  // array of document ID's
 });
 
 var User = mongoose.model('User', userSchema);
 
 
 module.exports = {
-  User: User
+    User: User
 };
