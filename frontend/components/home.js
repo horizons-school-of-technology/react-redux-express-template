@@ -30,28 +30,28 @@ class Home extends React.Component {
     }
     render() {
         return (
-          <div>
-              <AppBar
-                  className="nav"
-                  title="Textbook Exchange"
-                  iconClassNameRight="muidocs-icon-navigation-expand-more"
-                  iconElementRight={<FlatButton label="Login" />}
-              />
-              <div style={style}>
-              <center>
-                  <h1>Textbook Exchange</h1>
-              </center>
-              <center>
-                  <RaisedButton label="Buy A Book" style={button} />
-                  <RaisedButton label="Sell A Book" style={button} />
-                  <RaisedButton
-                      label="How It Works"
-                      style={button}
-                      containerElement={<Link to="/how" />}
-                  />
-              </center>
-              </div>
-          </div>
+        <div>
+                <AppBar
+                    className="nav"
+                    title="Bobcat Book Exchange"
+                    iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={<FlatButton label="Login" containerElement={<Link to="/login" />} />}
+                />
+            <div style={style}>
+            <center>
+                <h1>Bobcat Book Exchange</h1>
+            </center>
+            <center>
+                <RaisedButton label="Buy A Book" style={button} />
+                <RaisedButton label="Sell A Book" style={button} />
+                <RaisedButton
+                    label="How It Works"
+                    style={button}
+                    containerElement={<Link to="/how" />}
+                />
+            </center>
+            </div>
+        </div>
         );
     }
 }
