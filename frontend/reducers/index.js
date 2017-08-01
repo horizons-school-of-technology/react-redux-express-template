@@ -8,7 +8,7 @@ import { routerReducer as router } from 'react-router-redux';
 const reducer = (state = {}, action) => {
     let newState = Object.assign({}, state);
     switch (action.type) {
-        case: 'LOGIN':
+        case 'LOGIN':
             newState.user = action.user;
             newState.token = action.token;
         default:

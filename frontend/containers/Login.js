@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {login} from '../actions/index';
+import {login} from '../actions/types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -34,12 +34,14 @@ class LoginPage extends Component {
   }
   onLogin(e) {
     e.preventDefault();
-    axios.post('http://localhost:3000/login', {
+    console.log('button clicked')
+    axios.post('http://localhost:3000/api/login', {
       username: this.state.username,
       password: this.state.password
     })
     .then((res) => {
       if (res.data.success) {
+        console.log('sent to backend')
         this.props.login(res.data.user, res.data.token);
       }
     })
