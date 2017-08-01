@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Title from '../components/Title';
 
-const AppContainer = ({ name }) => {
+const AppContainer = () => {
     return (
         <div>
-            <Title name={name} />
+            <Title />
         </div>
     );
 };
