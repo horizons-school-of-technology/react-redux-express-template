@@ -11,7 +11,11 @@ const Writers = ( ) => {
         </div>
         <div>
             <h2>
-                Post solutions. Earn cash. Contact us at CramBerry@gmail.com.
+                Post solutions. Earn cash. Contact us at <a
+                    href="mailto:cramberry@gmail.com"
+                    target="_top">
+                    CramBerry@gmail.com
+                </a>.
             </h2>
         </div>
     </div>
