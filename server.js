@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded());
-app.use(expressJWT({ secret: 'secret' }).unless({ path: ['/login', '/#', '/', '/register'] }));
+app.use(expressJWT({ secret: 'secret' }).unless({ path: ['/login', '/#', '/', '/api/register'] }));
 app.use(passport.initialize());
 // Mongoose configuration
 // When there is an error, run this function:

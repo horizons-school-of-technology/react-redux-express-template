@@ -5,7 +5,7 @@ import App from './App';
 import Login from '../containers/Login';
 import Writers from './Writers';
 import Students from '../containers/Students';
-
+import Register from '../containers/Register';
 class Routes extends Component {
     render() {
         return (
@@ -14,6 +14,7 @@ class Routes extends Component {
                     <Route exact path='/' component={AppContainer}/>
                     <Route path='/students' component={Students}/>
                     <Route path='/login' component={Login}/>
+                    <Route path='/register' component={Register}/>
                     <Route path='/writers' component={Writers}/>
                 </Switch>
             </App>
