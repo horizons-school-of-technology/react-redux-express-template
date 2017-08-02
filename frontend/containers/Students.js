@@ -8,7 +8,9 @@ import { Redirect } from 'react-router';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
+// const logo = require('../assets/visuals/CramberryMed.png');
 
 
 class Students extends Component {
@@ -85,10 +87,10 @@ class Students extends Component {
         return (
         <div>
             <div style={styles.center}>
-                {/* <img src="./assets/visuals/CramberryMed.png"></img> */}
-                <h1>
+                <img src="./visuals/CramberryMed.png"></img>
+                {/* <h1>
                     CramBerry
-                </h1>
+                </h1> */}
             </div>
             {this.math()}
             {this.econ()}
