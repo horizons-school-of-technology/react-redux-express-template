@@ -7,7 +7,6 @@ import axios from 'axios';
 import TextField from 'material-ui/TextField';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import CSSstyles from './LoginPage.css';
 
 class Login extends Component {
   constructor() {
@@ -15,7 +14,7 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-    //   register: false
+      register: false
     };
     this.usernameChange = this.usernameChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
@@ -50,12 +49,12 @@ class Login extends Component {
       console.log('ERROR', err);
     });
   }
-  // onRegister(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     register: true
-  //   });
-  // }
+  onRegister(e) {
+    e.preventDefault();
+    this.setState({
+      register: true
+    });
+  }
 
   render() {
     // console.log('im in login');
@@ -65,11 +64,12 @@ class Login extends Component {
         console.log('redirecting to students')
       return <Redirect to='/students' />;
     }
-    // if (this.state.register) {
-    //   return <Redirect to='/register' />;
-    // }
+    if (this.state.register) {
+      return <Redirect to='/register' />;
+    }
     return (
-      <div className={CSSstyles.container}>
+      <div style={CSSstyles.container}>
+          <h2> Login </h2>
         <div>
           <form onSubmit={(e) => {this.onLogin(e)}}>
             <TextField
@@ -86,7 +86,7 @@ class Login extends Component {
               onChange={(e) => {this.passwordChange(e)}}
             /><br />
             <RaisedButton type='submit' label="Login" primary={true} style={JSstyles.submit} />
-            {/* <RaisedButton label="Register" secondary={true} style={JSstyles.submit} onClick={(e) => {this.onRegister(e)}} /> */}
+            <RaisedButton label="Register" secondary={true} style={JSstyles.submit} onClick={(e) => {this.onRegister(e)}} />
           </form>
         </div>
       </div>
@@ -119,4 +119,15 @@ const JSstyles = {
   submit: {
     margin: 12,
   }
+};
+
+const CSSstyles = {
+    container: {
+      height: "auto",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      paddingTop: 100
+    }
 };
