@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 const Title = () => {
     return (
         <div>
-            <Link to="/students">Students</Link>
+            <Link to="/login">Students</Link>
             <Link to="/writers">Writers</Link>
         </div>
     );
