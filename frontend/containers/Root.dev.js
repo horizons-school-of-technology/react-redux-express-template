@@ -13,7 +13,7 @@ export default function Root({ store, history }) {
             <ConnectedRouter history={history}>
                 <div>
                     <Routes/>
-                    <DevTools />
+                    {/* <DevTools /> */}
                 </div>
             </ConnectedRouter>
         </Provider>
