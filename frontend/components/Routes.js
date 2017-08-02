@@ -16,6 +16,7 @@ class Routes extends Component {
                     <Route path='/login' component={Login}/>
                     <Route path='/register' component={Register}/>
                     <Route path='/writers' component={Writers}/>
+                    <Route path='/login' component={Login}/>
                 </Switch>
             </App>
         )
