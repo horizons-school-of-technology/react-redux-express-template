@@ -11,6 +11,10 @@ const reducer = (state = {}, action) => {
         case 'LOGIN':
             newState.user = action.user;
             newState.token = action.token;
+            console.log('logged in. token:', newState.token);
+            return newState;
+        case 'LOGOUT':
+            return {};
         default:
             return state;
     }
