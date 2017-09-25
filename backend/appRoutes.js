@@ -28,4 +28,9 @@ module.exports = function(app,passport){
 
   }) //middleware to ensure login
 
+  app.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/');
+  })
+
 };
