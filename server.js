@@ -5,10 +5,9 @@ const PORT = process.env.PORT || 3000;
 const api = require('./backend/routes');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const key=require('./config/keys')
 const bodyParser = require('body-parser');
 const flash=require('connect-flash');
-mongoose.connect(key.mongoURL);
+mongoose.connect(process.env.MONGODB_URI);
 
 app.set('views',__dirname+'/frontend');
 app.set('view engine','ejs')
@@ -32,11 +31,11 @@ require('./config/passport.js')(passport);
 require('./backend/appRoutes')(app,passport);
 
 
-// app.get('/', (request, response) => {
-//     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
-// });
-//
-// app.use('/api', api);
+app.get('/', (request, response) => {
+    response.sendFile(__dirname + '/public/index.html'); // For React/Redux
+});
+
+app.use('/api', api);
 
 app.listen(PORT, error => {
     error
