@@ -1,4 +1,4 @@
-import React, {Component} from 'React';
+import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import MainPageContainer from './MainPageContainer';
