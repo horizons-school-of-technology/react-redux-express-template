@@ -9,7 +9,7 @@ var myHasher = function(password, tempUserData, insertTempUser, callback) {
 };
 
 module.exports = function(nev){
-  var verifURL="http://localhost:"+PORT+"/verification/${URL}";
+  var verifURL="http://localhost:"+PORT+"/account/verification/${URL}";
   nev.configure({
     verificationURL:verifURL,
     persistentUserModel:User,
@@ -32,7 +32,9 @@ module.exports = function(nev){
     hashingFunction:myHasher,
 
     confirmMailOptions:{
-      from:"Do Not Reply - emorycoursecritique <emorycoursecritique@gmail.com>"
+      from:"Do Not Reply - emorycoursecritique <emorycoursecritique@gmail.com>",
+      subject:"Your email has been confirm",
+      text: 'Thank you for confirming your email!'
     }
 
   },(err,options)=>{

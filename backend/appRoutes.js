@@ -8,7 +8,7 @@ module.exports = function(app,passport,nev){
     require('./service/signup.js')(req,res,nev)
   })
 
-  app.get('/signup', (req,res)=>{
+  app.get('/account/signup', (req,res)=>{
     res.render('signup',{message:req.flash('signup message')});
   }) //renders sign up page with possible flash messages
 
