@@ -25,7 +25,7 @@ class SignUpPageContainer extends Component {
         console.log(this.state.password)
         axios({
           method: 'post',
-          url: 'http://localhost:3000/signup',
+          url: 'http://localhost:3000/account/signup',
           data: {
             email: this.state.email,
             password: this.state.password
