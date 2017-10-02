@@ -12,15 +12,11 @@ class SignUpPageContainer extends Component {
   }
 
   updateEmail(event){
-    event.preventDefault();
-    console.log(this.state.email);
-    this.setState({email: event.target.email});
+    this.setState({email: event.target.value});
   }
 
   updatePassword(event){
-    event.preventDefault();
-    console.log(this.state.password)
-    this.setState({password: event.target.password});
+    this.setState({password: event.target.value});
   }
 
   signup() {
