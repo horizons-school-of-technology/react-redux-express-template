@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000;
 const api = require('./backend/routes');
 const passport = require('passport');
 const mongoose = require('mongoose');
+//const key=require('./config/keys')
 const bodyParser = require('body-parser');
 const flash=require('connect-flash');
 mongoose.connect(process.env.MONGODB_URI);

@@ -1,2 +1,2 @@
-export NODE_ENV="devlopment"
-export MONGODB_URI="mongodb://spike:1@ds147044.mlab.com:47044/emorycoursereview"
+export NODE_ENV="development"
+export MONGODB_URI="mongodb://anto:1@ds155414.mlab.com:55414/emorycoursereview"

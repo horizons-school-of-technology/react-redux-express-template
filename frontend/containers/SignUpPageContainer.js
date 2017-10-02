@@ -1,11 +1,65 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class SignUpPageContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: "",
+      password: ""
+    }
+  }
+
+  updateEmail(event){
+    event.preventDefault();
+    console.log(this.state.email);
+    this.setState({email: event.target.email});
+  }
+
+  updatePassword(event){
+    event.preventDefault();
+    console.log(this.state.password)
+    this.setState({password: event.target.password});
+  }
+
+  signup() {
+            // Send a POST request
+        console.log(this.state.email)
+        console.log(this.state.password)
+        axios({
+          method: 'post',
+          url: 'http://localhost:3000/signup',
+          data: {
+            email: this.state.email,
+            password: this.state.password
+          }
+        });
+  }
   render() {
     return(
       <div>
-        <h1>SignUp</h1>
+        <h2>SignUp</h2>
+        <div>
+          <input
+           type="text"
+           value={this.state.email}
+           placeholder="email"
+           onChange={(event) => this.updateEmail(event)}
+          />
+          <br />
+          <input
+           type="text"
+           value={this.state.password}
+           placeholder="password"
+           onChange={(event) => this.updatePassword(event)}
+          />
+          <br />
+          <button
+          type="button" onClick={() => this.signup()}>
+          Sign Up!
+          </button>
+        </div>
       </div>
     )
   }
