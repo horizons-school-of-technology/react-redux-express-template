@@ -5,7 +5,9 @@ var bcrypt=require('bcrypt-nodejs');
 
 var userSchema= new Schema({
   email:String,
-  password:String
+  password:String,
+  comments:[String],
+  rated_classes:[Schema.Types.ObjectId] 
 });
 
 userSchema.methods.storeHashedPassword=function(password){
