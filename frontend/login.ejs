@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Log In</title>
+  </head>
+  <body>
+    <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+<!-- show any messages that come back with authentication -->
+<% if (message.length > 0) { %>
+  <div class="alert alert-danger"><%= message %></div>
+<% } %>
+
+<!-- LOGIN FORM -->
+<form action="/account/login" method="post">
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" name="email">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+
+  <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+</form>
+  </body>
+</html>
