@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
+import Body from  "./components/Body";
+import Footer from "./components/Footer"
 
 class MainPageContainer extends Component {
   render() {
     return(
+
       <div>
-        <h1>Hello</h1>
+        <Body />
+        <Footer />
       </div>
     )
   }

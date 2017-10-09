@@ -1,0 +1,58 @@
+ 
+/*home start */
+
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
+
+.bodyWrapper{
+   background: blue; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #002878 , #d2b000); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #002878, #d2b000); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #002878, #d2b000); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #002878 , #d2b000); /* Standard syntax */
+}
+
+.nav-split-color{
+
+  background: linear-gradient(
+    to right, 
+    #002878 0%, 
+    #002878 50%, 
+    #d2b000 50%, 
+    #d2b000 100%
+  );
+
+}
+
+.body-container {
+	  height: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4 )), url('https://www.sph.emory.edu/departments/epi/images/emory%20hospital-aerial%20shot.jpg');
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size: cover;
+    
+}
+
+
+/* home end */
+
+
+
+
+
+/* review start */
+
+
+
+
+
+
+
