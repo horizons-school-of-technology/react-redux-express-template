@@ -5,7 +5,7 @@ const router = express.Router();
 
 // SAMPLE ROUTE
 router.use('/users', (req, res) => {
-    res.json({ success: true });
+  res.json({ success: true });
 });
 
 module.exports = router;
