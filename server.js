@@ -22,6 +22,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
     sequelize.query(`SELECT * FROM users WHERE id = $1`, [id])
+
     .then(user => done(null, user.rows[0]))
     .catch((err) => {throw new Error(err);});
 });

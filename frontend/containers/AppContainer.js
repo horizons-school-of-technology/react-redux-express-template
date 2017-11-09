@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import Title from '../components/Title';
 import DevTools from './DevTools';
 import SideBar from '../components/SideBar';
+import Feed from '../components/Feed';
+import NewPost from '../components/NewPost';
+
 
 import { toggleLoginModal, loginUserClick, registerUserClick, toggleSignUpClick } from '../actions/index';
 
