@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const api = require('./backend/routes');
 const bodyParser = require('body-parser');
-import { User } from './models';
+const { User } = require('./models');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());

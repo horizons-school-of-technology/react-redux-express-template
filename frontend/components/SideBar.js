@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toggleModal } from '../actions/index';
 
-const SideBar = ( isModalOpen ) => {
+const SideBar = ( {isModalOpen, loginRegisterClick} ) => {
     return (
         <div className="sideBar">
           <button>SubmitPost</button>
-          <button>Login</button>
-          <button>Register</button>
+          <button onClick={loginRegisterClick}>Login</button>
+          <button onClick={loginRegisterClick}>Register</button>
           <p>Description</p>
         </div>
     );
 };
 
 SideBar.propTypes = {
-    isModalOpen: PropTypes.Boolean
+    isModalOpen: PropTypes.bool,
+    loginRegisterClick: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -23,10 +25,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (/* dispatch */) => {
-    return {
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+    loginRegisterClick: ()=>{
+        dispatch(toggleModal());
+    }
+});
 
 export default connect(
     mapStateToProps,
