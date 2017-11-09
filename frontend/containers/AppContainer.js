@@ -8,7 +8,7 @@ import Header from  '../components/Header';
 const AppContainer = ({ name }) => {
     return (
         <div>
-            <Header />
+            <Header name={name}/>
             <Title name={name} />
             <DevTools/>
         </div>
