@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 
 const Title = ( { name } ) => {
     return (
-      <div style={{height: '2000px'}}>
-          <h1>{name}</h1>
-      </div>
-        
+        <h1>{name}</h1>
     );
 };
 
