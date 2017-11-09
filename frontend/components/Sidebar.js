@@ -5,6 +5,7 @@ import { RaisedButton, Paper, FlatButton, Dialog, TextField } from 'material-ui'
 import LoginIcon from 'material-ui/svg-icons/social/person';
 import RegisterIcon from 'material-ui/svg-icons/social/person-add';
 import SubmitPostIcon from 'material-ui/svg-icons/editor/border-color';
+import axios from 'axios';
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -17,6 +18,29 @@ export default class Sidebar extends React.Component {
       register_pass: "",
       register_user: "",
     }
+  }
+
+  handleClickSubmit_login() {
+    axios({
+      url: 'http://localhost:3000/api/user/login',
+      method: 'post',
+      data: {
+        username: this.state.login_user,
+        password: this.state.login_pass
+      }
+    })
+  }
+
+  handleClickSubmit_register() {
+    axios({
+      url: 'http://localhost:3000/api/user/register',
+      method: 'post',
+      data: {
+        username: this.state.register_user,
+        password: this.state.register_pass
+      }
+    }).then( x => console.log(x))
+    .catch( err => console.log(err))
   }
 
   handleOpen_login(){
@@ -87,7 +111,7 @@ export default class Sidebar extends React.Component {
         label="Login"
         primary={true}
         disabled={!(this.state.login_pass && this.state.login_user)}
-        onClick={this.handleClose_login.bind(this)}
+        onClick={this.handleClickSubmit_login.bind(this)}
       />,
     ];
     const actions_register = [
@@ -100,7 +124,7 @@ export default class Sidebar extends React.Component {
         label="Register"
         primary={true}
         disabled={!(this.state.register_pass && this.state.register_user)}
-        onClick={this.handleClose_register.bind(this)}
+        onClick={this.handleClickSubmit_register.bind(this)}
       />,
     ];
     if(this.props.side == "left") {
