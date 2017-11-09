@@ -13,7 +13,7 @@ description: "something", loggedIn: '', signUp: false}, action) {
             })
             return state;
         case "Register":
-            axios.post('http://localhost:3000/api/register',{
+            axios.post('http://localhost:3000/api/register', {
               username: action.username,
               password: action.password,
               repeatedPassword: action.rpw
