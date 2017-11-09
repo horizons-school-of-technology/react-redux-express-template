@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Feed from '../components/Feed';
 import Sidebar from '../components/Sidebar';
+import Sidebar2 from '../components/Sidebar2';
 
 // Import Styling
 import styles from '../assets/stylesheets/appcontainer.css'
@@ -18,8 +19,8 @@ const AppContainer = ({ name }) => {
             </div>
             <div className="appcontainer_body_container">
               <Sidebar side={'left'}/>
-              <Feed />
-              <Sidebar />
+                <Feed />
+              <Sidebar2 />
             </div>
         </div>
     );

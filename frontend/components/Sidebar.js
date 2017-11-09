@@ -28,7 +28,12 @@ export default class Sidebar extends React.Component {
         username: this.state.login_user,
         password: this.state.login_pass
       }
+    }).then((resp) => {
+      if (resp.data.user) {
+        // redirect / refresh page and show logged in view
+      }
     })
+    .catch( err => console.log(err))
   }
 
   handleClickSubmit_register() {
@@ -45,7 +50,7 @@ export default class Sidebar extends React.Component {
 
   handleOpen_login(){
     this.setState({open_login: true});
-  };
+  }
 
   handleClose_login(){
     this.setState({open_login: false});
@@ -53,11 +58,11 @@ export default class Sidebar extends React.Component {
       login_pass: "",
       login_user: ""
     })
-  };
+  }
 
   handleOpen_register(){
     this.setState({open_register: true});
-  };
+  }
 
   handleClose_register(){
     this.setState({open_register: false});
@@ -65,7 +70,7 @@ export default class Sidebar extends React.Component {
       register_pass: "",
       register_user: ""
     })
-  };
+  }
 
   handleChangeUser_register(event){
     const target = event.target;
