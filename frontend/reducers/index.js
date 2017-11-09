@@ -1,4 +1,4 @@
-function rootReducer(state = {name: 'Horizons'}, action) {
+function rootReducer(state = {name: 'Horizons Reddit'}, action) {
     switch (action.type) {
         default:
             return state;
