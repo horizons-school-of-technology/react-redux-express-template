@@ -15,25 +15,51 @@ sequelize
 });
 
 var User = sequelize.define('user', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   // ADD MORE ATTRIBUTES HERE
 });
 
+var Posts = sequelize.define('posts', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+
+  fk_post_id: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  img: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  description: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  fk_user_id: {
+    type: Sequelize.INTEGER,
+    sllowNull: false
+  }
+})
+
 module.exports = {
     sequelize,
-    User
+    User,
+    Posts,
     // EXPORT models HERE
 };
