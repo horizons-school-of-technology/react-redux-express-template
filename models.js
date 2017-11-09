@@ -15,20 +15,20 @@ sequelize
 });
 
 const User = sequelize.define('user', {
-    id: { type: Sequelize.INTEGRER, primaryKey: true, autoIncrement: true },
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     username: { type: Sequelize.STRING, allowNull: false, unique: true },
     password: { type: Sequelize.STRING, allowNull: false },
     img_url: Sequelize.STRING
 });
 
 const Post = sequelize.define('post', {
-    id: { type: Sequelize.INTEGRER, primaryKey: true, autoIncrement: true },
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     title: Sequelize.STRING,
     content: { type: Sequelize.STRING(1234), allowNull: false }
 });
 
 const Vote = sequelize.define('vote', {
-    id: { type: Sequelize.INTEGRER, primaryKey: true, autoIncrement: true },
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     up: {type: Sequelize.BOOLEAN, allowNull: false }
 });
 

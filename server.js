@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const api = require('./backend/routes');
 const bodyParser = require('body-parser');
-import { User } from './models';
+const { User } = require('./models');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -15,21 +15,6 @@ app.get('/', (request, response) => {
 });
 
 app.use('/api', api);
-
-app.post('/register', (req, res) => {
-    if (req.body.password !== req.body.password2) {
-        res.status(400).json({"success": false, "error": "Passwords do not match"});
-    } else {
-        User.create({ username: req.body.username, password: req.body.password, img_url: req.body.img_url })
-        .then(() => {
-            res.status(200).json({"success": true});
-        })
-        .catch(err => {
-            console.log('error registering: ', err);
-            res.status(400).json({"success": false, "error": "User with that name already exists."});
-        });
-    }
-});
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
