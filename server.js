@@ -17,29 +17,30 @@ app.get('/', (request, response) => {
 });
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  sequelize.query(`SELECT * FROM users WHERE id = $1`,[id])
+    sequelize.query(`SELECT * FROM users WHERE id = $1`, [id])
+
     .then(user => done(null, user.rows[0]))
     .catch((err) => {throw new Error(err);});
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
-  sequelize.query(`SELECT * FROM users WHERE username = $1`, [username])
-    .then(user => {
-      if(user.rows.length === 0){
-        return done(null, false);
-      } else {
-        bcrypt.compare(password, user.rows[0].password, function(err, res) {
-          if(res){
-            return done(null, user.rows[0]);
+    sequelize.query(`SELECT * FROM users WHERE username = $1`, [username])
+      .then(user => {
+          if(user.rows.length === 0){
+            return done(null, false);
+          } else {
+              bcrypt.compare(password, user.rows[0].password, function(err, res) {
+                  if(res) {
+                      return done(null, user.rows[0]);
+                  }
+              });
           }
-        });
-      }
-    })
-    .catch((err) => {return done(err);});
+      })
+      .catch((err) => {return done(err);});
 }));
 
 app.use(passport.initialize());

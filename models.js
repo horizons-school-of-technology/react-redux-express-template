@@ -14,7 +14,6 @@ sequelize
     console.error('Unable to connect to the database:', err);
 });
 
-// MODELS GO HERE
 var User = sequelize.define('user', {
   id: {
     type: Sequelize.INTEGER,
