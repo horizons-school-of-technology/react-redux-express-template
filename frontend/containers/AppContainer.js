@@ -2,11 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import Title from '../components/Title';
+import DevTools from './DevTools';
+import Header from  '../components/Header';
 
 const AppContainer = ({ name }) => {
     return (
         <div>
+            <Header />
             <Title name={name} />
+            <DevTools/>
         </div>
     );
 };
