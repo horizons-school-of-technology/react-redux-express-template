@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ButtonGroup, ButtonToolbar, Panel, Grid, Row, Col} from 'react-bootstrap';
+import { Panel, Grid, Row, Col} from 'react-bootstrap';
 import SubmitPost from './SubmitPost';
 import Login from './Login';
 import Description from './Description';
