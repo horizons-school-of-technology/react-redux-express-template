@@ -1,23 +1,27 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Header from '../components/Header';
+import Feed from '../components/Feed';
+import SideBar from '../components/SideBar';
 
-const AppContainer = ({ name }) => {
+const AppContainer = () => {
     return (
-        <div>
-            <Title name={name} />
+        <div id="appContainer">
+          <Header/>
+          <div className="main">
+            <Feed/>
+            <SideBar/>
+          </div>
         </div>
     );
 };
 
 AppContainer.propTypes = {
-    name: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
     return {
-        name: state.name
     };
 };
 
