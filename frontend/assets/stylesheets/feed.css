@@ -1,0 +1,12 @@
+.feed_container {
+  background-color: #BDBDBD;
+  width: 100%;
+  flex: 5;
+}
+
+.feed_body {
+  height: 97%;
+  width: 96%;
+  margin: auto;
+  margin-top: 2%;
+}
