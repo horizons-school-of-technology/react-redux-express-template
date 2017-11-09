@@ -1,3 +1,7 @@
-// Action Creators
+const toggleModal = function() {
+    return {
+        type: 'TOGGLE_MODAL'
+    };
+};
 
-// import * as types from './types';
+export { toggleModal };
