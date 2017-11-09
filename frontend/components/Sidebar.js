@@ -2,8 +2,8 @@ import React from 'react';
 import styles from '../assets/stylesheets/sidebar.css'
 import PropTypes from 'prop-types';
 import { RaisedButton, Paper, FlatButton, Dialog, TextField } from 'material-ui';
-import LoginIcon from 'material-ui/svg-icons/social/person-add';
-import RegisterIcon from 'material-ui/svg-icons/social/person';
+import LoginIcon from 'material-ui/svg-icons/social/person';
+import RegisterIcon from 'material-ui/svg-icons/social/person-add';
 import SubmitPostIcon from 'material-ui/svg-icons/editor/border-color';
 
 export default class Sidebar extends React.Component {
@@ -123,7 +123,6 @@ export default class Sidebar extends React.Component {
               <RaisedButton
                 className="login_button"
                 icon={<LoginIcon />}
-                label="Login"
                 labelColor="#06d6a8"
                 onClick={this.handleOpen_login.bind(this)}
                 backgroundColor="white"
@@ -131,7 +130,6 @@ export default class Sidebar extends React.Component {
               <RaisedButton
                 className="register_button"
                 icon={<RegisterIcon />}
-                label="Register"
                 labelColor="white"
                 onClick={this.handleOpen_register.bind(this)}
                 backgroundColor="#06d6a8"
