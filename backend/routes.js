@@ -27,14 +27,20 @@ module.exports = (passport) => {
       .catch((err)=>console.log(err));
     });
 
-  router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  }));
+    router.post('/login', (req, res, next) => {
+        passport.authenticate('local', (err, user) => {
+            console.log('HERE');
+            user ? req.login(user, error => {
+                if(err) {return next(error);}
+                return res.json({success: true});
+            }) : res.json({success: false});
+        })(req, res, next);
+    });
 
     router.use((req, res, next) => {
-        if (! req.user) {
-            res.redirect('/login');
+        console.log(req.user);
+        if (!req.user) {
+            res.status(400).json({success: 'failed'});
         } else {
             next();
         }
@@ -42,8 +48,9 @@ module.exports = (passport) => {
 
     router.get('/logout', (req, res) => {
         req.logout();
-        res.redirect('/');
+        res.status(200).json({success: true});
     });
+
 
     router.get('/:username', (req, res) => {
         User.findOne({where: {username: req.params.username}})

@@ -71,9 +71,5 @@ class Feed extends React.Component {
     }
   }
 
-// Feed.propTypes = {
-//     posts: PropTypes.array,
-// };
-
 
 export default Feed;
