@@ -5,6 +5,7 @@ var router = express.Router();
 module.exports = function (passport, Models) {
 	const { User, Post, Comment, Vote } = Models;
 
+	//testing
 
 	router.post('/login', function (req, res, next) {
 		passport.authenticate('local', function (err, user) {
