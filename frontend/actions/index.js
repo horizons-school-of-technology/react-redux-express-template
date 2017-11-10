@@ -29,3 +29,9 @@ export function toggleSignUpClick() {
         type: 'SIGN_UP'
     };
 }
+
+export function logoutUserClick() {
+    return {
+        type: 'LOG_OUT'
+    };
+}

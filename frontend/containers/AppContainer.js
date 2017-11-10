@@ -8,17 +8,18 @@ import Feed from '../components/Feed';
 import NewPost from '../components/NewPost';
 
 
-import { toggleLoginModal, loginUserClick, registerUserClick, toggleSignUpClick } from '../actions/index';
+import { toggleLoginModal, loginUserClick, registerUserClick, toggleSignUpClick, logoutUserClick } from '../actions/index';
 
-const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp }) => {
+const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, logoutUser }) => {
     return (
         <div>
-            <Header name={name}/>
+            <Header/>
             <Feed />
             <SideBar toggleLogin={toggleLogin}
               loginUser={loginUser}
               registerUser={registerUser}
               toggleSignUp={toggleSignUp}
+              logout={logoutUser}
               state={state}/>
         </div>
     );
@@ -29,7 +30,8 @@ AppContainer.propTypes = {
     toggleLogin: PropTypes.func,
     loginUser: PropTypes.func,
     registerUser: PropTypes.func,
-    toggleSignUp: PropTypes.func
+    toggleSignUp: PropTypes.func,
+    logoutUser: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -43,7 +45,8 @@ const mapDispatchToProps = (dispatch) => {
         toggleLogin: () => {dispatch(toggleLoginModal());},
         loginUser: (u, p) => {dispatch(loginUserClick(u, p));},
         registerUser: (u, p) => {dispatch(registerUserClick(u, p));},
-        toggleSignUp: () => {dispatch(toggleSignUpClick());}
+        toggleSignUp: () => {dispatch(toggleSignUpClick());},
+        logoutUser: () => {dispatch(logoutUserClick());}
     };
 };
 

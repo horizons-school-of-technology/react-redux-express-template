@@ -31,14 +31,11 @@ module.exports = (passport) => {
         successRedirect: '/dashboard',
         failureRedirect: '/login'
     }));
-
-    // router.use((req, res, next) => {
-    //     if (! req.user) {
-    //         res.redirect('/login');
-    //     } else {
-    //         next();
-    //     }
-    // });
+  
+  router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }));
 
     router.get('/logout', (req, res) => {
         req.logout();

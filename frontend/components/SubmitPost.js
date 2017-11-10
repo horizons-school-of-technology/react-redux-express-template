@@ -1,16 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 
-const SubmitPost = ({ }) => {
-    return (
-        <Button>SubmitPost</Button>
-    );
-};
-
-SubmitPost.propTypes = {
-    modalOpen: PropTypes.func
-};
+class SubmitPost extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
+    newPostPage() {
+        this.setState({
+            redirect: true
+        });
+    }
+    render() {
+        return (
+          <div>
+            {
+              (this.state.redirect) ? (<Redirect to="/post/new"/>)
+              : (<Button onClick={() => this.newPostPage()}>SubmitPost</Button>)
+            }
+          </div>
+        );
+    }
+}
 
 
 export default SubmitPost;
