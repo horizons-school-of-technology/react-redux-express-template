@@ -1,72 +1,106 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button, Modal, Glyphicon } from 'react-bootstrap';
+import axios from 'axios';
 
-let username = '';
-let password = '';
-let rPassword = '';
+class Login extends React.Component {
+    constructor(props)  {
+        super(props);
+        this.username = this.refs.username;
+        this.password = this.refs.password;
+        this.rPassword = this.refs.rPassword;
+        this.state = {
+            modalOpen: false,
+            signUp: false
+        };
+    }
+    modalOpen() {
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        });
+    }
+    onSignUp() {
+        this.setState({
+            signUp: false
+        });
+    }
+    login() {
+        axios.post('http://localhost:3000/api/login', {
+            username: this.refs.username.value,
+            password: this.refs.password.value
+        })
+      .then((resp) => {
+          console.log(resp.data);
+          this.setState({
+              modalOpen: false
+          }, () => this.props.onLogin());
+      })
+      .catch(err => {
+          console.log(err);
+      });
+    }
+    register() {
+        axios.post('http://localhost:3000/api/register', {
+            username: this.refs.username.value,
+            password: this.refs.password.value,
+            repeatPassword: this.refs.rPassword.value
+        })
+      .then((resp) => {
+          this.setState({
+              modalOpen: false,
+              signUp: true
+          }, this.onSignUp());
+      })
+      .catch(err => {
+          console.log(err);
+      });
+    }
 
-function onUsernameChange(e) {
-    username = e.target.value;
-}
-function onPasswordChange(e) {
-    password = e.target.value;
-}
-function onRPasswordChange(e) {
-    rPassword = e.target.value;
-    console.log(rPassword);
-}
+    render() {
+      return (
+        <div>
+          <Button onClick={() => this.modalOpen()}>Login OR Register</Button>
+          <Modal show={this.state.modalOpen} onHide={() => this.modalOpen()}>
+            <Modal.Header closeButton>
+              <Modal.Title>Hey Fam!</Modal.Title>
+            </Modal.Header>
 
-const Login = ({ modalOpen, state, login, register, onSignUp }) => {
-    return (
-    <div>
-      <Button onClick={modalOpen}>Login OR Register</Button>
-      <Modal show={state.isModalOpen} onHide={() => modalOpen()}>
-        <Modal.Header closeButton>
-          <Modal.Title>Hey Fam!</Modal.Title>
-        </Modal.Header>
+            <Modal.Body>
+              {(this.state.signUp) ? (
+                <div>
+                  <input type="text" ref="username" placeholder="username"/>
+                  <input type="password" ref="password" placeholder="password" />
+                  <input type="password" ref="rPassword" placeholder="repeat password" />
+                </div>
+              ) : (
+                <div>
+                  <input type="text" ref="username" placeholder="username"/>
+                  <input type="password" ref="password" placeholder="password" />
+                </div>
+              )}
 
-        <Modal.Body>
-          {(state.signUp) ? (
-            <div>
-            <input type="text" onChange={(e) => onUsernameChange(e)} placeholder="username" name="username"/>
-            <input type="password" onChange={(e) => onPasswordChange(e)} placeholder="password" name="password"/>
-            <input type="password" onChange={(e) => onRPasswordChange(e)} placeholder="repeat password" name="rPassword"/>
+            </Modal.Body>
+
+            <Modal.Footer>
+              {(this.state.signUp) ? (
+                <Button bsSize="small" bsStyle="primary" onClick={() => {
+                    this.register();
+                }}><Glyphicon glyph="glyphicon glyphicon-plus" />Confirm</Button>
+                ) : (
+                  <div>
+                    <Button bsSize="small" bsStyle="danger" onClick={() => this.modalOpen()}><Glyphicon glyph="glyphicon glyphicon-remove" /> Close</Button>
+                    <Button bsSize="small" bsStyle="success" onClick={() => {
+                        this.login();
+                    }}><Glyphicon glyph="glyphicon glyphicon-ok" /> Login</Button>
+                      <Button bsSize="small" bsStyle="primary" onClick={() => this.onSignUp()}><Glyphicon glyph="glyphicon glyphicon-plus" /> Sign Up</Button>
+                    </div>
+                  )}
+
+                </Modal.Footer>
+
+              </Modal>
             </div>
-          ) : (
-            <div>
-              <input type="text" onChange={(e) => onUsernameChange(e)} placeholder="username" name="username"/>
-              <input type="password" onChange={(e) => onPasswordChange(e)} placeholder="password" name="password"/>
-            </div>
-          )}
-
-        </Modal.Body>
-
-        <Modal.Footer>
-          {(state.signUp) ? (
-            <Button bsSize="small" bsStyle="primary" onClick={() => register(username, password, rPassword)}><Glyphicon glyph="glyphicon glyphicon-plus" />Confirm</Button>
-          ) : (
-            <div>
-            <Button bsSize="small" bsStyle="danger" onClick={modalOpen}><Glyphicon glyph="glyphicon glyphicon-remove" /> Close</Button>
-            <Button bsSize="small" bsStyle="success" onClick={() => login(username, password)}><Glyphicon glyph="glyphicon glyphicon-ok" /> Login</Button>
-            <Button bsSize="small" bsStyle="primary" onClick={onSignUp}><Glyphicon glyph="glyphicon glyphicon-plus" /> Sign Up</Button>
-          </div>
-          )}
-
-
-        </Modal.Footer>
-
-      </Modal>
-    </div>
-    );
-};
-
-Login.propTypes = {
-    state: PropTypes.object,
-    modalOpen: PropTypes.func,
-    login: PropTypes.func,
-    register: PropTypes.func,
-    onSignUp: PropTypes.func
+        );
+    }
 };
 
 
