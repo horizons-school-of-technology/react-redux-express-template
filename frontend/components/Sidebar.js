@@ -17,7 +17,24 @@ export default class Sidebar extends React.Component {
       login_user: "",
       register_pass: "",
       register_user: "",
+      username: "",
     }
+  }
+
+  handleClickSubmitPost() {
+    this.props.history.push('#/postnew');
+    // window.location.hash = '/postnew'
+  }
+
+  handleClickLogout() {
+    axios({
+      url: "http://localhost:3000/api/user/logout",
+      method: "get"
+    }).then( () =>{
+      this.setState({
+        username: ""
+      })
+    })
   }
 
   handleClickSubmit_login() {
@@ -28,12 +45,12 @@ export default class Sidebar extends React.Component {
         username: this.state.login_user,
         password: this.state.login_pass
       }
-    }).then((resp) => {
-      if (resp.data.user) {
-        // redirect / refresh page and show logged in view
-      }
+    }).then(x => {
+      this.setState({
+        username: x.data.user.username
+      })
+      this.setState({open_login: false});
     })
-    .catch( err => console.log(err))
   }
 
   handleClickSubmit_register() {
@@ -44,13 +61,14 @@ export default class Sidebar extends React.Component {
         username: this.state.register_user,
         password: this.state.register_pass
       }
-    }).then( x => console.log(x))
-    .catch( err => console.log(err))
+    }).then( x => {
+      this.setState({open_register: false});
+    })
   }
 
   handleOpen_login(){
     this.setState({open_login: true});
-  }
+  };
 
   handleClose_login(){
     this.setState({open_login: false});
@@ -58,11 +76,11 @@ export default class Sidebar extends React.Component {
       login_pass: "",
       login_user: ""
     })
-  }
+  };
 
   handleOpen_register(){
     this.setState({open_register: true});
-  }
+  };
 
   handleClose_register(){
     this.setState({open_register: false});
@@ -70,7 +88,7 @@ export default class Sidebar extends React.Component {
       register_pass: "",
       register_user: ""
     })
-  }
+  };
 
   handleChangeUser_register(event){
     const target = event.target;
@@ -106,6 +124,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const actions_login = [
       <FlatButton
         label="Cancel"
@@ -147,23 +166,38 @@ export default class Sidebar extends React.Component {
               label="Submit Post"
               backgroundColor="black"
               labelColor="white"
+              onClick={this.handleClickSubmitPost.bind(this)}
             />
-            <div className="login_register_button_container">
-              <RaisedButton
-                className="login_button"
-                icon={<LoginIcon />}
-                labelColor="#06d6a8"
-                onClick={this.handleOpen_login.bind(this)}
-                backgroundColor="white"
-              />
-              <RaisedButton
-                className="register_button"
-                icon={<RegisterIcon />}
-                labelColor="white"
-                onClick={this.handleOpen_register.bind(this)}
-                backgroundColor="#06d6a8"
-              />
-            </div>
+            {
+              this.state.username ?
+              <div>
+                <h1>{this.state.username}</h1>
+                <RaisedButton
+                  className="logout_button"
+                  label="logout"
+                  labelColor="#06d6a8"
+                  onClick={this.handleClickLogout.bind(this)}
+                  backgroundColor="white"
+                />
+              </div> :
+               <div className="login_register_button_container">
+                <RaisedButton
+                  className="login_button"
+                  icon={<LoginIcon />}
+                  labelColor="#06d6a8"
+                  onClick={this.handleOpen_login.bind(this)}
+                  backgroundColor="white"
+                />
+                <RaisedButton
+                  className="register_button"
+                  icon={<RegisterIcon />}
+                  labelColor="white"
+                  onClick={this.handleOpen_register.bind(this)}
+                  backgroundColor="#06d6a8"
+                />
+              </div>
+            }
+
             <Paper className="description_right_container" zDepth={5}>
               <h1 className="right_sidebar_description_title">
                 Description

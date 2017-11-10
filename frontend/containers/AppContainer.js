@@ -11,7 +11,7 @@ import Sidebar2 from '../components/Sidebar2';
 // Import Styling
 import styles from '../assets/stylesheets/appcontainer.css'
 
-const AppContainer = ({ name }) => {
+const AppContainer = ({ name, history }) => {
     return (
         <div className="appcontainer_container">
             <div className="appcontainer_header_container">
@@ -20,7 +20,7 @@ const AppContainer = ({ name }) => {
             <div className="appcontainer_body_container">
               <Sidebar side={'left'}/>
                 <Feed />
-              <Sidebar2 />
+              <Sidebar history={history}/>
             </div>
         </div>
     );
@@ -28,6 +28,7 @@ const AppContainer = ({ name }) => {
 
 AppContainer.propTypes = {
     name: PropTypes.string,
+    history: PropTypes.object
 };
 
 const mapStateToProps = (state) => {

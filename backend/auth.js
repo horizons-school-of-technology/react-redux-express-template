@@ -3,6 +3,7 @@ const router = express.Router();
 const {User} = require('./models');
 
 router.post('/register', (req, res) => {
+  console.log('process.env.DATABASE_NAME', process.env.DATABASE_NAME);
   User.create({username: req.body.username, password: req.body.password})
   .then(user => {
     res.json({user});

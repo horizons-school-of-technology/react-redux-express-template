@@ -14,6 +14,10 @@ class NewPost extends React.Component {
     this.handleSubmitPost = this.handleSubmitPost.bind(this);
   }
 
+  componentWillReceiveProps() {
+    
+  }
+
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -33,15 +37,18 @@ class NewPost extends React.Component {
   }
 
   render() {
+    console.log("On the new post page.");
     return (
-      <div className='NewPost-container'>
-        <TextField name='postTitle' onChange={this.handleInputChange} hintText='Post Title' />
+      <div>
+       {/* <div className='NewPost-container'> */}
+        <h1>Hello World</h1>
+        {/* <TextField name='postTitle' onChange={this.handleInputChange} hintText='Post Title' />
         <TextField name='postBody' onChange={this.handleInputChange} hintText='Post Body' multiLine={true} />
         <br />
         <RaisedButton label='Choose Attachments' secondary={true} />
         <br />
         <RaisedButton onClick={this.handleSubmitPost} label='Submit' primary={true} />
-        <br />
+        <br /> */}
       </div>
     );
   }
