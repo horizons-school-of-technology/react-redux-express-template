@@ -17,52 +17,54 @@ app.get('/', (request, response) => {
 app.use('/api', api);
 
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
-
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
-
-passport.deserializeUser(async (id, done) => {
-    try {
-        const desUser = await User.findById(id);
-        done(null, desUser);
-    } catch(err) {
-        console.log('error deserializing: ', err);
-        done(null, false);
-    }
-});
-
-passport.use(new LocalStrategy( async (username, password, done) => {
-    try {
-        const user = await User.findOne({ where: { username: username }});
-        if (!user) {
-            done(null, false, {
-                message: 'user not found'
-            });
-        } else if (user.get('password') !== password) {
-            done(null, false, {
-                message: 'wrong password'
-            });
-        } else {
-            done(null, user);
-        }
-    } catch(err) {
-        console.log('error logging in: ', err);
-        done(null, false);
-    }
-}));
+var LocalStrategy = require('passport-local').Strategy;
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/login', passport.authenticate('local', (req, res) => {
+passport.serializeUser((user, done) => {
+    console.log(user);
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id)
+        .then((desUser)=>{
+            done(null, desUser);
+        })
+        .catch((err)=> {
+            console.log('error deserializing: ', err);
+            done(null, false);
+        });
+});
+
+passport.use(new LocalStrategy((username, password, done) => {
+    User.findOne({ where: { username: username }})
+  .then((user)=>{
+      if (!user) {
+          return done(null, false, {
+              message: 'user not found'
+          });
+      } else if (user.get('password') !== password) {
+          return done(null, false, {
+              message: 'wrong password'
+          });
+      }
+      return done(null, user);
+  })
+   .catch((err)=> {
+       // console.log('error logging in: ', err);
+       return done(err, false);
+   });
+}));
+
+app.post('/login', passport.authenticate('local'), (req, res) => {
     if (!req.user) {
         res.status(400).json({"success": false, "error": "Invalid username or password"});
     } else {
         res.status(200).json({"success": true });
     }
-}));
+});
 
 app.listen(PORT, error => {
     error

@@ -3,27 +3,56 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Modal } from "react-bootstrap";
 import { toggleModal } from '../actions/index';
+import axios from 'axios';
 
 class MyModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            password2: '',
+            message: ''
         };
     }
 
-    onPasswordChange(evt) {
+    onFieldChange(evt, field) {
         evt.preventDefault();
+        var newState = Object.assign({}, this.state);
+        newState[field] = evt.target.value;
+        this.setState(newState);
+    }
+
+    async onLogin() {
+        var message;
+        try{
+            await axios.post('/login', {
+                username: this.state.username,
+                password: this.state.password
+            });
+            message = "Login Success.";
+        } catch(err) {
+            message = err.response.data.error;
+        }
         this.setState({
-            password: evt.target.value
+            message,
+            username: "",
+            password: "",
+            password2: ""
         });
     }
 
-    onUsernameChange(evt) {
-        evt.preventDefault();
+    async onRegister() {
+        var message;
+        try{
+            await axios.post('/api/register', this.state);
+            message = "New account registered.";
+        } catch(err) {
+            message = err.response.data.error;
+        }
         this.setState({
-            username: evt.target.value
+            message,
+            password2: ""
         });
     }
 
@@ -34,18 +63,25 @@ class MyModal extends React.Component {
               <Modal.Title>Login/Register</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              <div className="modalMessage">
+                <p>{this.state.message}</p>
+              </div>
               <div>
                 <label>Username</label>
-                <input type="text" name="username" value = {this.state.username} onChange={(evt)=>this.onUsernameChange(evt)}/>
+                <input type="text" name="username" value = {this.state.username} onChange={(evt)=>this.onFieldChange(evt, 'username')}/>
               </div>
               <div>
                 <label>Password</label>
-                <input type="password" name="password" value = {this.state.password} onChange={(evt)=>this.onPasswordChange(evt)}/>
+                <input type="password" name="password" value = {this.state.password} onChange={(evt)=>this.onFieldChange(evt, 'password')}/>
+              </div>
+              <div>
+                <label>Retype Password (if registering new account)</label>
+                <input type="password" name="password2" value = {this.state.password2} onChange={(evt)=>this.onFieldChange(evt, 'password2')}/>
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <button className="btn btn-primary">Login</button>
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary" onClick={()=>this.onLogin()}>Login</button>
+              <button className="btn btn-primary" onClick={()=>this.onRegister()}>Register</button>
             </Modal.Footer>
           </Modal>);
     }

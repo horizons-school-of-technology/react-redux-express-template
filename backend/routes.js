@@ -17,6 +17,8 @@ router.post('/register', (req, res) => {
     }
 });
 
+// MIDDLEWARE NEEDED
+
 router.get('/logout', (req, res) => {
     req.logout();
     res.json({"success": true});
