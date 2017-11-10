@@ -17,6 +17,14 @@ router.post('/register', (req, res) => {
     }
 });
 
+router.use((req, res, next) => {
+    if (!req.user) {
+        res.status(400).json({"success": false, "error": "Not logged in."});
+    } else {
+        next();
+    }
+});
+
 router.get('/logout', (req, res) => {
     req.logout();
     res.json({"success": true});

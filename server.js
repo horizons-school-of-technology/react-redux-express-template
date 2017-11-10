@@ -56,13 +56,13 @@ passport.use(new LocalStrategy( async (username, password, done) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/login', passport.authenticate('local', (req, res) => {
+app.post('/login', passport.authenticate('local'), (req, res) => {
     if (!req.user) {
         res.status(400).json({"success": false, "error": "Invalid username or password"});
     } else {
         res.status(200).json({"success": true });
     }
-}));
+});
 
 app.listen(PORT, error => {
     error
