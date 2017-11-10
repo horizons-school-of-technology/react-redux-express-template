@@ -21,7 +21,6 @@ const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignU
               toggleSignUp={toggleSignUp}
               logout={logoutUser}
               state={state}/>
-            <DevTools />
         </div>
     );
 };
