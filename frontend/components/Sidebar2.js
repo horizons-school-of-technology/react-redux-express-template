@@ -24,7 +24,6 @@ export default class Sidebar2 extends React.Component {
     const endUrl = this.state.modalTitle === 'Login' ? '/login' : '/register';
     axios.post(baseUrl + endUrl, this.state)
     .then(resp => {
-      console.log(resp);
       this.setState({modalIsOpen: false, user: resp.data.user});
     })
     .catch(err => {
@@ -40,15 +39,6 @@ export default class Sidebar2 extends React.Component {
 		};
 	}
 
-  handleLogout() {
-    axios.get(baseUrl + '/logout')
-    .then(() => this.setState({user: null}));
-  }
-
-  handleClickSubmitPost() {
-    window.location.hash = '/post/new'
-  }
-
   render() {
     const actionButtons = [
       <FlatButton
@@ -62,12 +52,7 @@ export default class Sidebar2 extends React.Component {
         onClick={this.handleSubmitUser.bind(this)}
       />,
     ];
-    if (this.props.side == "left") {
-      return (
-        <div className="sidebar_container">
-        </div>
-      );
-    } else {
+    if (this.props.side == "right") {
       return (
         <div className="sidebar_container">
           <div className="sidebar_content">
@@ -77,7 +62,10 @@ export default class Sidebar2 extends React.Component {
               label="Submit Post"
               backgroundColor="black"
               labelColor="white"
-              onClick={this.handleClickSubmitPost.bind(this)}
+              onClick={() => this.state.user ?
+                window.location.hash = '/post/new' :
+                this.setState({modalIsOpen: true, modalTitle: 'Login'})
+              }
             />
             {
               this.state.user ?
@@ -87,7 +75,7 @@ export default class Sidebar2 extends React.Component {
                   className="logout_button"
                   label="logout"
                   labelColor="#06d6a8"
-                  onClick={this.handleLogout.bind(this)}
+                  onClick={() => axios.get(baseUrl + '/logout').then(() => this.setState({user: null}))}
                   backgroundColor="white"
                 />
               </div> :
@@ -97,9 +85,7 @@ export default class Sidebar2 extends React.Component {
                   icon={<LoginIcon />}
                   labelColor="#06d6a8"
                   label='login'
-                  onClick={(e) => {
-                    this.setState({modalIsOpen: true, modalTitle: 'Login'});
-                  }}
+                  onClick={() => this.setState({modalIsOpen: true, modalTitle: 'Login'})}
                   backgroundColor="white"
                 />
                 <RaisedButton
@@ -107,9 +93,7 @@ export default class Sidebar2 extends React.Component {
                   icon={<RegisterIcon />}
                   labelColor="white"
                   label='register'
-                  onClick={(e) => {
-                    this.setState({modalIsOpen: true, modalTitle: 'Register'});
-                  }}
+                  onClick={() => this.setState({modalIsOpen: true, modalTitle: 'Register'})}
                   backgroundColor="#06d6a8"
                 />
             </div>
@@ -143,6 +127,11 @@ export default class Sidebar2 extends React.Component {
               />
             </Dialog>
           </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="sidebar_container">
         </div>
       );
     }

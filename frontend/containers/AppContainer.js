@@ -17,9 +17,9 @@ const AppContainer = ({ name, history }) => {
         <Header />
       </div>
       <div className="appcontainer_body_container">
-        <Sidebar2 side={'left'}/>
+        <Sidebar2 side='left' />
         <Feed />
-        <Sidebar2 history={history}/>
+        <Sidebar2 side='right' history={history}/>
       </div>
     </div>
 );
