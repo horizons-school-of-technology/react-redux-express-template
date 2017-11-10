@@ -15,13 +15,11 @@ const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignU
         <div>
             <Header name={name}/>
             <Feed />
-            <NewPost/>
             <SideBar toggleLogin={toggleLogin}
               loginUser={loginUser}
               registerUser={registerUser}
               toggleSignUp={toggleSignUp}
               state={state}/>
-            <DevTools />
         </div>
     );
 };
