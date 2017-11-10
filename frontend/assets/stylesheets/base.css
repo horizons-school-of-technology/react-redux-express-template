@@ -1,0 +1,59 @@
+body{
+  padding: 20px;
+}
+
+h1 {
+  font-family: helvetica;
+  font-weight: 200;
+}
+
+.thumbnail {
+  width: 60px;
+}
+
+#appContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+}
+
+.main {
+  display: flex;
+}
+
+.feed {
+  flex: 1;
+}
+
+.sideBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+button a {
+  color: black;
+}
+
+button a:hover {
+  text-decoration: none;
+}
+
+.postContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postInfo {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.postViewButton {
+  flex: 1;
+}
