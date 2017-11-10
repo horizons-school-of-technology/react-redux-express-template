@@ -37,6 +37,15 @@ class NewPost extends React.Component {
             </Col>
           </FormGroup>
 
+            <FormGroup controlId="formHorizontalEmail">
+              <Col componentClass={ControlLabel} sm={2}>
+                Links
+              </Col>
+              <Col sm={8}>
+                <FormControl type="text" placeholder="Links" />
+              </Col>
+            </FormGroup>
+
           <Col componentClass={ControlLabel} sm={2}>
             Select image
           </Col>

@@ -14,6 +14,8 @@ const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignU
     return (
         <div>
             <Title name={name} />
+            <Feed />
+            <NewPost/>
             <SideBar toggleLogin={toggleLogin}
               loginUser={loginUser}
               registerUser={registerUser}
@@ -43,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
         toggleLogin: () => {dispatch(toggleLoginModal());},
         loginUser: (u, p) => {dispatch(loginUserClick(u, p));},
         registerUser: (u, p) => {dispatch(registerUserClick(u, p));},
-        toggleSignUp: () => {dispatch(toggleSignUpClick())}
+        toggleSignUp: () => {dispatch(toggleSignUpClick());}
     };
 };
 

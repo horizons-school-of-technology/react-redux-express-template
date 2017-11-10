@@ -31,7 +31,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     sequelize.query(`SELECT * FROM users WHERE username = $1`, [username])
       .then(user => {
           if(user.rows.length === 0){
-            return done(null, false);
+              return done(null, false);
           } else {
               bcrypt.compare(password, user.rows[0].password, function(err, res) {
                   if(res) {
