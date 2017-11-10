@@ -5,16 +5,9 @@ var router = express.Router();
 module.exports = function (passport, Models) {
 	const { User, Post, Comment, Vote } = Models;
 
-	// router.post('/login', passport.authenticate('local'), (req, res) => {
-	// 	console.log('sucess');
-	// 	res.json({
-	// 		success: true,
-	// 		message: 'Login successful!'
-	// 	})
-	// });
 
 	router.post('/login', function (req, res, next) {
-		passport.authenticate('local', function (err, user, info) {
+		passport.authenticate('local', function (err, user) {
 			if (err) {
 				return next(err);
 			} else if (!user) {
