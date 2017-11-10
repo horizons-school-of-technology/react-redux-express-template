@@ -15,11 +15,11 @@ class NewPost extends React.Component {
 
     async makePost() {
         try {
-            await axios.post('/post/new', { title: this.state.title, content: this.state.content} );
+            await axios.post('api/post/new', { title: this.state.title, content: this.state.content} );
             this.props.history.push('/');
         } catch (e) {
             this.setState({
-                message: 'Error making post'
+                message: e.response.data.error
             });
         }
     }
