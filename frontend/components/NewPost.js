@@ -4,67 +4,66 @@ var {FormGroup, FormControl, Col, Form, ControlLabel, HelpBlock} = require('reac
 var axios = require('axios');
 
 class NewPost extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false,
-      title: '',
-      description: '',
-      link: '',
-      image: ''
-    };
-  }
-
-  postNewPost(){
-    axios.post('http://localhost:3000/api/post/new', {
-      postId: null,
-      img: this.state.image,
-      description: this.state.description,
-      title: this.state.title
-    })
-    .catch(e => {
-      console.log("Posting new post failed", e);
-    });
-  }
-  onSubmitPost(){
-    this.setState({
-      redirect: true
-    }, () => this.postNewPost());
-  }
-  onTitleChange(e){
-    this.setState({
-      title: e.target.value
-    });
-  }
-  onDescriptionChange(e){
-    this.setState({
-      description: e.target.value
-    });
-  }
-  onLinkChange(e){
-    this.setState({
-      link: e.target.value
-    });
-  }
-  onImgSelect(e){
-    this.setState({
-      image: e.target.value
-    });
-  }
-  render() {
-    function FieldGroup({ id, type, label, help }) {
-      return (
-        <FormGroup controlId={id}>
-          <ControlLabel>{label}</ControlLabel>
-          <FormControl type={type} />
-          {help && <HelpBlock>{help}</HelpBlock>}
-        </FormGroup>
-      );
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false,
+            title: '',
+            description: '',
+            link: '',
+            image: ''
+        };
     }
 
-    return (
-      (this.state.redirect) ? (<Redirect to="/">) : (
-        <div>
+    postNewPost() {
+        axios.post('http://localhost:3000/api/post/new', {
+            postId: null,
+            img: this.state.image,
+            description: this.state.description,
+            title: this.state.title
+        })
+        .catch(e => {
+            console.log("Posting new post failed", e);
+        });
+    }
+    onSubmitPost() {
+        this.setState({
+            redirect: true
+        }, () => this.postNewPost());
+    }
+    onTitleChange(e) {
+        this.setState({
+            title: e.target.value
+        });
+    }
+    onDescriptionChange(e) {
+        this.setState({
+            description: e.target.value
+        });
+    }
+    onLinkChange(e) {
+        this.setState({
+            link: e.target.value
+        });
+    }
+    onImgSelect(e) {
+        this.setState({
+            image: e.target.value
+        });
+    }
+    render() {
+        function FieldGroup({ id, type, label, help }) {
+            return (
+          <FormGroup controlId={id}>
+            <ControlLabel>{label}</ControlLabel>
+            <FormControl type={type} />
+            {help && <HelpBlock>{help}</HelpBlock>}
+          </FormGroup>
+            );
+        }
+
+        return (
+        (this.state.redirect) ? (<Redirect to="/"/>) : (
           <Form horizontal>
             <FormGroup controlId="formHorizontalEmail">
               <Col componentClass={ControlLabel} sm={2}>
@@ -112,10 +111,9 @@ class NewPost extends React.Component {
               </button>
             </Col>
           </Form>
-        </div>
-      )
-    );
-  }
+        )
+        );
+    }
 }
 
 export default NewPost;

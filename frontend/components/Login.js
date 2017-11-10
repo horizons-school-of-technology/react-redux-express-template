@@ -7,17 +7,17 @@ let password = '';
 let rPassword = '';
 
 function onUsernameChange(e) {
-  username = e.target.value;
+    username = e.target.value;
 }
 function onPasswordChange(e) {
-  password = e.target.value;
+    password = e.target.value;
 }
 function onRPasswordChange(e) {
-  rPassword = e.targat.value;
+    rPassword = e.targat.value;
 }
 
 const Login = ({ modalOpen, state, login, register, onSignUp }) => {
-  return (
+    return (
     <div>
       <Button onClick={modalOpen}>Login OR Register</Button>
       <Modal show={state.isModalOpen} onHide={() => modalOpen()}>
@@ -53,15 +53,15 @@ const Login = ({ modalOpen, state, login, register, onSignUp }) => {
 
       </Modal>
     </div>
-  );
+    );
 };
 
 Login.propTypes = {
-  state: PropTypes.object,
-  modalOpen: PropTypes.func,
-  login: PropTypes.func,
-  register: PropTypes.func,
-  onSignUp: PropTypes.func
+    state: PropTypes.object,
+    modalOpen: PropTypes.func,
+    login: PropTypes.func,
+    register: PropTypes.func,
+    onSignUp: PropTypes.func
 };
 
 
