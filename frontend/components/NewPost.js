@@ -63,7 +63,7 @@ class NewPost extends React.Component {
     }
 
     return (
-      (this.state.redirect) ? (<Redirect to="/">) : (
+      (this.state.redirect) ? (<Redirect to="/" />) : (
         <div>
           <Form horizontal>
             <FormGroup controlId="formHorizontalEmail">

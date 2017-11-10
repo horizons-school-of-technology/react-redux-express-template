@@ -8,23 +8,14 @@ import Description from './Description';
 const SideBar = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, logout }) => {
     return (
       <div style={{  position: 'fixed', top: 90, right: 0, width: '300px', border: '3px solid black', margin: 14}}>
-        <Grid>
-          <Row>
-            <Col xs={3} xsOffset={9}><SubmitPost /></Col>
-          </Row>
-          <Row>
-            <Col xs={3} xsOffset={9}>
+
+          <SubmitPost />
               {(state.loggedIn.length >  0) ? <Button onClick={logout}>Log Out</Button>
             : (<Login modalOpen={toggleLogin} login={loginUser} register={registerUser} onSignUp={toggleSignUp} state={state}/>)}
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={3} xsOffset={9}><Panel header={"Description"}>
+
+            <Panel header={"Description"}>
             <Description description={state.description}/>
             </Panel>
-          </Col>
-          </Row>
-        </Grid>
       </div>
     );
 };

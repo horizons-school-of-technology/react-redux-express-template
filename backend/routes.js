@@ -31,7 +31,7 @@ module.exports = (passport) => {
         successRedirect: '/dashboard',
         failureRedirect: '/login'
     }));
-  
+
   router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
