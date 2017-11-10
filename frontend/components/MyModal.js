@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Modal } from "react-bootstrap";
-import { toggleModal } from '../actions/index';
+import { toggleModal, setUsername } from '../actions/index';
 import axios from 'axios';
 
 class MyModal extends React.Component {
@@ -12,8 +12,15 @@ class MyModal extends React.Component {
             username: '',
             password: '',
             password2: '',
-            message: ''
+            message: '',
+            isModalOpen: this.props.isModalOpen
         };
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            isModalOpen: newProps.isModalOpen
+        });
     }
 
     onFieldChange(evt, field) {
@@ -31,15 +38,17 @@ class MyModal extends React.Component {
                 password: this.state.password
             });
             message = "Login Success.";
+            this.props.setUsername(this.state.username);
         } catch(err) {
+            console.log(err);
             message = err.response.data.error;
+            this.setState({
+                message,
+                username: "",
+                password: "",
+                password2: ""
+            });
         }
-        this.setState({
-            message,
-            username: "",
-            password: "",
-            password2: ""
-        });
     }
 
     async onRegister() {
@@ -58,7 +67,7 @@ class MyModal extends React.Component {
 
     render() {
         return (
-          <Modal show={this.props.isModalOpen} onHide={this.props.closeModal}>
+          <Modal show={this.state.isModalOpen} onHide={this.props.closeModal}>
             <Modal.Header closeButton>
               <Modal.Title>Login/Register</Modal.Title>
             </Modal.Header>
@@ -89,7 +98,8 @@ class MyModal extends React.Component {
 
 MyModal.propTypes = {
     isModalOpen: PropTypes.bool,
-    closeModal: PropTypes.func
+    closeModal: PropTypes.func,
+    setUsername: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -101,6 +111,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     closeModal: ()=>{
         dispatch(toggleModal());
+    },
+    setUsername: (username)=>{
+        dispatch(setUsername(username));
     }
 });
 
