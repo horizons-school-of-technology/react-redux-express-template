@@ -13,13 +13,13 @@ export default function Root({ store }) {
         <HashRouter>
           <Switch>
             <Route exact path="/" component={AppContainer}/>
-            <Route exact path='/feed' component={Feed}/>
-          <Route exact path='/post/new' component={NewPost}/>
+            <Route exact path="/feed" component={Feed}/>
+            <Route exact path="/post/new" component={NewPost}/>
           </Switch>
         </HashRouter>
       </Provider>
     );
-  
+}
 Root.propTypes = {
-  store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired
 };
