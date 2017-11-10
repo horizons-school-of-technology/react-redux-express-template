@@ -11,4 +11,10 @@ const setUsername = function(username) {
     };
 };
 
-export { toggleModal, setUsername };
+const logout = function() {
+    return {
+        type: 'LOGOUT'
+    };
+};
+
+export { toggleModal, setUsername, logout };
