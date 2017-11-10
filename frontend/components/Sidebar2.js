@@ -18,10 +18,9 @@ export default class Sidebar2 extends React.Component {
       password: "",
       user: null,
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmitUser() {
     const endUrl = this.state.modalTitle === 'Login' ? '/login' : '/register';
     axios.post(baseUrl + endUrl, this.state)
     .then(resp => {
@@ -35,7 +34,6 @@ export default class Sidebar2 extends React.Component {
 
 	handleInputChange(key) {
 		return (e) => {
-      console.log(this.state);
 			const state = {};
 			state[key] = e.target.value;
 			this.setState(state);
@@ -47,9 +45,9 @@ export default class Sidebar2 extends React.Component {
     .then(() => this.setState({user: null}));
   }
 
-  // handleClickSubmitPost() {
-  //   window.location.hash = '/postnew'
-  // }
+  handleClickSubmitPost() {
+    window.location.hash = '/post/new'
+  }
 
   render() {
     const actionButtons = [
@@ -61,7 +59,7 @@ export default class Sidebar2 extends React.Component {
       <FlatButton
         label="Submit"
         primary={true}
-        onClick={this.handleSubmit}
+        onClick={this.handleSubmitUser.bind(this)}
       />,
     ];
     if (this.props.side == "left") {
@@ -79,6 +77,7 @@ export default class Sidebar2 extends React.Component {
               label="Submit Post"
               backgroundColor="black"
               labelColor="white"
+              onClick={this.handleClickSubmitPost.bind(this)}
             />
             {
               this.state.user ?

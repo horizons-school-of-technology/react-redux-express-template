@@ -14,7 +14,7 @@ export default function Root({ store, history }) {
           <HashRouter>
             <Switch>
               <Route exact path='/' render={()=><AppContainer history={history}/>}/>
-              <Route exact path='/postnew' render={()=><NewPost history={history}/>}/>
+              <Route exact path='/post/new' render={()=><NewPost history={history}/>}/>
             </Switch>
           </HashRouter>
         </MuiThemeProvider>

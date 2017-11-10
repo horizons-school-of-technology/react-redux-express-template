@@ -10,8 +10,6 @@ class NewPost extends React.Component {
       title: '',
       body: '',
     }
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmitPost = this.handleSubmitPost.bind(this);
   }
 
   handleInputChange(event) {
@@ -24,7 +22,6 @@ class NewPost extends React.Component {
   }
 
   handleSubmitPost() {
-    console.log(this.state);
     axios.post('http://localhost:3000/api/post/new', this.state)
     .then(resp => {
       console.log(resp);
@@ -36,13 +33,14 @@ class NewPost extends React.Component {
   render() {
     return (
       <div className='NewPost-container'>
-        <TextField name='title' onChange={this.handleInputChange} hintText='Post Title' />
-        <TextField name='body' onChange={this.handleInputChange} hintText='Post Body' multiLine={true} />
+        {this.state.title}, {this.state.body}
+        <br />
+        <TextField name='title' onChange={this.handleInputChange.bind(this)} hintText='Post Title' />
+        <br />
+        <TextField name='body' onChange={this.handleInputChange.bind(this)} hintText='Post Body' multiLine={true} />
         <br />
         <RaisedButton label='Choose Attachments' secondary={true} />
-        <br />
-        <RaisedButton onClick={this.handleSubmitPost} label='Submit' primary={true} />
-        <br />
+        <RaisedButton onClick={this.handleSubmitPost.bind(this)} label='Submit' primary={true} />
       </div>
     );
   }

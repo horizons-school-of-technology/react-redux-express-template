@@ -13,9 +13,9 @@ class Feed extends React.Component {
 
   componentDidMount() {
     axios.get("http://localhost:3000/api/post/all")
-    .then( resp => {
+    .then(resp => {
       this.setState({
-        posts: resp.data
+        posts: resp.data.posts
       })
     })
   }
@@ -28,9 +28,11 @@ class Feed extends React.Component {
           zDepth={2}
         >
           <h1>All posts</h1>
-          {
-            this.state.posts.map( x => <div><h1>{x.title}</h1><p>{x.body}</p></div>)
-          }
+          {this.state.posts.map(x => {
+            return (
+              <div key={x.id}><h1>{x.title}</h1><p>{x.body}</p></div>
+            );
+          })}
         </Paper>
       </div>
     );
