@@ -19,9 +19,6 @@ app.use('/api', api);
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 passport.serializeUser((user, done) => {
     console.log(user);
     done(null, user.id);
@@ -57,6 +54,9 @@ passport.use(new LocalStrategy((username, password, done) => {
        return done(err, false);
    });
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
     if (!req.user) {
