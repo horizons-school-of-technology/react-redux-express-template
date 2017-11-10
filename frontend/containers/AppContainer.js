@@ -1,29 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Posts from '../components/Posts';
+import Header from '../components/Header';
 
 const AppContainer = ({ name }) => {
-    return (
+  return (
         <div>
-            <Title name={name} />
+          <Header name={name} />
+          <Posts />
         </div>
-    );
+  );
 };
 
 AppContainer.propTypes = {
-    name: PropTypes.string,
+  name: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
-    return {
-        name: state.name
-    };
+  return {
+    name: state.name
+  };
 };
 
 const mapDispatchToProps = (/* dispatch */) => {
-    return {
-    };
+  return {
+  };
 };
 
 export default connect(
