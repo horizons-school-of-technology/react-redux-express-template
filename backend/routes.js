@@ -28,6 +28,25 @@ module.exports = function(passport) {
         }
     });
 
+    router.get('/post/all', async (req, res) => {
+        try {
+            const allPosts = await Post.findAll({where: { postId: null }});
+            res.status(200).json({"success": true, "posts": allPosts });
+        } catch (e) {
+            res.status(500).json({"success": false, "error": e });
+        }
+    });
+
+    router.get('/post/:postid', async (req, res) => {
+        try {
+            const postDetails = await Post.findOne({ where: { id: req.params.postid } });
+            const comments = await Post.findAll({include: { model: User, where: {id: Sequelize.col('userId')} }, where: {postId: req.params.postid } });
+            res.status(200).json({ "success": true, "post": postDetails, "comments": comments });
+        } catch (e) {
+            res.status(500).json({ "success": false, "error": e });
+        }
+    });
+
     router.use((req, res, next) => {
         console.log('USER: ', req.user);
         if (!req.user) {
@@ -48,25 +67,6 @@ module.exports = function(passport) {
             res.status(200).json({ "success": true });
         } catch (e) {
             res.status(500).json({"success": false, "error": e });
-        }
-    });
-
-    router.get('/post/all', async (req, res) => {
-        try {
-            const allPosts = await Post.findAll({where: { postId: null }});
-            res.status(200).json({"success": true, "posts": allPosts });
-        } catch (e) {
-            res.status(500).json({"success": false, "error": e });
-        }
-    });
-
-    router.get('/post/:postid', async (req, res) => {
-        try {
-            const postDetails = await Post.findOne({ where: { id: req.params.postid } });
-            const comments = await Post.findAll({include: { model: User, where: {id: Sequelize.col('userId')} }, where: {postId: req.params.postid } });
-            res.status(200).json({ "success": true, "post": postDetails, "comments": comments });
-        } catch (e) {
-            res.status(500).json({ "success": false, "error": e });
         }
     });
 

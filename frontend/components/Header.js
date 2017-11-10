@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const Header = ({name}) => {
     return (
         <div className="header">
-          <Title name={name}/>
           <div className="thumbnail"><img src="http://i.imgur.com/JOrrF.png" alt="/reddit.png"/></div>
+          <Title name={name}/>
         </div>
     );
 };
