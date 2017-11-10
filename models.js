@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize(process.env.DATABASE_NAME, 'postgres', process.env.DATABASE_PASSWORD, {
     dialect: 'postgres'
 });
-// fuck u im above the law
+
 sequelize
     .authenticate()
     .then(() => {
