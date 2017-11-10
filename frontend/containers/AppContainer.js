@@ -14,6 +14,7 @@ const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignU
     return (
         <div>
             <Header />
+            <Feed />
             <SideBar toggleLogin={toggleLogin}
               loginUser={loginUser}
               registerUser={registerUser}
