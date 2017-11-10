@@ -24,7 +24,7 @@ class NewPost extends React.Component {
   }
 
   handleSubmitPost() {
-    axios.post('/api/post/new', this.state)
+    axios.post('http://localhost:3000/api/post/new', this.state)
     .then(resp => {
       console.log(resp);
       // TODO reroute user to front page

@@ -1,7 +1,7 @@
 "use strict";
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_NAME, 'postgres', process.env.DATABASE_PASSWORD, {
+var sequelize = new Sequelize(process.env.DATABASE_NAME, 'postgres', null, {
     dialect: 'postgres'
 });
 
