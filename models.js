@@ -1,6 +1,8 @@
 "use strict";
 
 var Sequelize = require('sequelize');
+require('sequelize-hierarchy')(Sequelize);
+
 var sequelize = new Sequelize(process.env.DATABASE_NAME, 'postgres', process.env.DATABASE_PASSWORD, {
     dialect: 'postgres'
 });
@@ -26,6 +28,7 @@ const Post = sequelize.define('post', {
     title: Sequelize.STRING,
     content: { type: Sequelize.STRING(1234), allowNull: false }
 });
+Post.isHierarchy();
 
 const Vote = sequelize.define('vote', {
     id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
