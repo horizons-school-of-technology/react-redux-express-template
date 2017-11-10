@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import styles from '../assets/stylesheets/feed.css'
-import Paper from 'material-ui/Paper';
+import {Paper, RaisedButton} from 'material-ui';
 import axios from 'axios';
 
 class Feed extends React.Component {
@@ -12,12 +13,12 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/post/all")
+    axios.get(localStorage.getItem('webAddress') + '/api/post/all')
     .then(resp => {
       this.setState({
         posts: resp.data.posts
       })
-    })
+    });
   }
 
   render() {
@@ -27,10 +28,13 @@ class Feed extends React.Component {
           className="feed_body"
           zDepth={2}
         >
-          <h1>All posts</h1>
-          {this.state.posts.map(x => {
+          <h1 style={{paddingTop: '1em'}}>All posts</h1>
+          {this.state.posts.map(post => {
             return (
-              <div key={x.id}><h1>{x.title}</h1><p>{x.body}</p></div>
+              <div key={post.id}>
+                <Link to={`/post/${post.id}`}><h2>{post.title}</h2></Link>
+                <p>{post.body}</p>
+              </div>
             );
           })}
         </Paper>

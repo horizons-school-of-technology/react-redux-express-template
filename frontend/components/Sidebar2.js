@@ -6,7 +6,7 @@ import LoginIcon from 'material-ui/svg-icons/social/person';
 import RegisterIcon from 'material-ui/svg-icons/social/person-add';
 import SubmitPostIcon from 'material-ui/svg-icons/editor/border-color';
 import axios from 'axios';
-const baseUrl = 'http://localhost:3000/api/user';
+const baseUrl = localStorage.getItem('webAddress') + '/api/user';
 
 export default class Sidebar2 extends React.Component {
   constructor(props) {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import {TextField, RaisedButton} from 'material-ui';
 
@@ -7,9 +6,20 @@ class NewPost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      body: '',
+      comment: '',
+      post: {title: 'TestTitle', body: 'TestBody'}, // object
     }
+  }
+
+  componentDidMount() {
+    // console.log( this.props.postId );
+    // axios.get(localStorage.getItem('webAddress') + '/api/post/' + this.props.postId)
+    // .then(resp => {
+    //   console.log('componentDidMount, GET post/:postId', resp);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    // });
   }
 
   handleInputChange(event) {
@@ -33,17 +43,18 @@ class NewPost extends React.Component {
   render() {
     return (
       <div className='NewPost-container'>
-        {this.state.title}, {this.state.body}
+        <h1>{this.state.post.title} (id: {this.props.postId})</h1>
+        <p>{this.state.post.body}</p>
         <br />
-        <TextField name='title' onChange={this.handleInputChange.bind(this)} hintText='Post Title' />
         <br />
-        <TextField name='body' onChange={this.handleInputChange.bind(this)} hintText='Post Body' multiLine={true} />
+        <TextField name='comment' onChange={this.handleInputChange.bind(this)} hintText='Comment' multiLine={true} />
         <br />
         <RaisedButton label='Choose Attachments' secondary={true} />
         <RaisedButton onClick={this.handleSubmitPost.bind(this)} label='Submit' primary={true} />
       </div>
     );
   }
+
 }
 
 export default NewPost;
