@@ -57,7 +57,7 @@ module.exports = (passport) => {
 
     router.get('/logout', (req, res) => {
         req.logout();
-        res.redirect('/');
+        res.status(200).json({success: true});
     });
 
     router.get('/:username', (req, res) => {
