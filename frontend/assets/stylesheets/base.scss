@@ -2,3 +2,11 @@ h1 {
   font-family: helvetica;
   font-weight: 200;
 }
+
+.modal-container {
+  position: relative;
+}
+
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
