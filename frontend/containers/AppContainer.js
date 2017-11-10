@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Header from '../components/Header';
 import DevTools from './DevTools';
 import SideBar from '../components/SideBar';
 import Feed from '../components/Feed';
@@ -13,7 +13,7 @@ import { toggleLoginModal, loginUserClick, registerUserClick, toggleSignUpClick 
 const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp }) => {
     return (
         <div>
-            <Title name={name} />
+            <Header name={name}/>
             <Feed />
             <NewPost/>
             <SideBar toggleLogin={toggleLogin}
