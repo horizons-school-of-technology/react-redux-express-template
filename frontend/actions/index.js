@@ -15,12 +15,12 @@ export function loginUserClick(username, password) {
     };
 }
 
-export function registerUserClick(username, password, rpw) {
+export function registerUserClick(username, password, rPassword) {
     return {
         type: 'REGISTER',
         username: username,
         password: password,
-        rpw: rpw
+        rPassword: rPassword
     };
 }
 

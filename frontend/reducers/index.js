@@ -22,17 +22,17 @@ function rootReducer(state = {
                 return state;
             });
             break;
-        case "Register":
+        case "REGISTER":
             axios.post('http://localhost:3000/api/register', {
                 username: action.username,
                 password: action.password,
-                repeatedPassword: action.rpw
+                repeatPassword: action.rPassword
             })
             .catch(err => {
                 console.log(err);
                 return state;
             });
-            return state;
+            return Object.assign({}, state);
         case "SIGN_UP":
             return Object.assign({}, state, {signUp: !state.signUp});
         case "LOG_OUT":
