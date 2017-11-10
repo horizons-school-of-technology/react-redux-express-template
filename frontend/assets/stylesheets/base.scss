@@ -2,3 +2,11 @@ h1 {
   font-family: helvetica;
   font-weight: 200;
 }
+
+.headerContent {
+  background-image: url("http://pic.templetons.com/brad/pano/sfba/best-treas.jpg");
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 5px solid orange;
+}

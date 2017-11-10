@@ -27,15 +27,18 @@ module.exports = (passport) => {
       .catch((err)=>console.log(err));
     });
 
-    router.post('/login', passport.authenticate('local', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/login'
-    }));
-
   router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
   }));
+
+    router.use((req, res, next) => {
+        if (! req.user) {
+            res.redirect('/login');
+        } else {
+            next();
+        }
+    });
 
     router.get('/logout', (req, res) => {
         req.logout();
