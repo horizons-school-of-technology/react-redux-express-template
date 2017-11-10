@@ -45,7 +45,7 @@ const Post = sequelize.define('post', {
   body: {
     type: Sequelize.STRING,
   },
-  parentId: {
+  parent_id: {
     type: Sequelize.INTEGER,// can reference other posts. null if a parent post
   },
 });
