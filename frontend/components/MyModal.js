@@ -26,7 +26,7 @@ class MyModal extends React.Component {
     async onLogin() {
         var message;
         try{
-            await axios.post('/login', {
+            await axios.post('/api/login', {
                 username: this.state.username,
                 password: this.state.password
             });

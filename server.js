@@ -5,16 +5,18 @@ const PORT = process.env.PORT || 3000;
 const api = require('./backend/routes');
 const bodyParser = require('body-parser');
 const { User } = require('./models');
+var session = require('cookie-session');
+var cookieParser = require('cookie-parser');
 
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({keys: [process.env.SECRET || 'h0r1z0n5']}));
 
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
-
-app.use('/api', api);
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -58,13 +60,7 @@ passport.use(new LocalStrategy((username, password, done) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
-    if (!req.user) {
-        res.status(400).json({"success": false, "error": "Invalid username or password"});
-    } else {
-        res.status(200).json({"success": true });
-    }
-});
+app.use('/api', api(passport));
 
 app.listen(PORT, error => {
     error
