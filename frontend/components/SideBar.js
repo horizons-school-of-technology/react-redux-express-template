@@ -7,7 +7,7 @@ import Description from './Description';
 
 const SideBar = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, logout }) => {
     return (
-      <div>
+      <div style={{  position: 'fixed', top: 90, right: 0, width: '300px', border: '3px solid black', margin: 14}}>
         <Grid>
           <Row>
             <Col xs={3} xsOffset={9}><SubmitPost /></Col>
@@ -36,7 +36,6 @@ SideBar.propTypes = {
     registerUser: PropTypes.func,
     toggleSignUp: PropTypes.func,
     logout: PropTypes.func
-
 };
 
 export default SideBar;
