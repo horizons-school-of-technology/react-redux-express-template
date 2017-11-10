@@ -7,5 +7,9 @@ router.post('/post/new', (req, res) => {
   console.log(req.user);
   // Post.create({userId: req.user
 });
+// router.post('/post/new', (req, res) => {
+//   console.log(req);
+//   // Post.create({userId: req.user
+// });
 
 module.exports = router;
