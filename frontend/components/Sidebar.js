@@ -22,8 +22,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleClickSubmitPost() {
-    this.props.history.push('#/postnew');
-    // window.location.hash = '/postnew'
+    window.location.hash = '/postnew'
   }
 
   handleClickLogout() {

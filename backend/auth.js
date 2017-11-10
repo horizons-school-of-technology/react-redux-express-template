@@ -17,14 +17,16 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  const userId = user.get().id;
+  done(null, userId);
 });
 
 passport.deserializeUser((id, done) => {
   User.findById(id)
   .then(user => {
-    const doneUser = Object.assign({}, user.dataValues, {password: null});
-    done(null, doneUser);
+    // const doneUser = Object.assign({}, user.dataValues, {password: null});
+    console.log(user.get());
+    done(null, user.get());
   })
   .catch(err => {
     done(err, null);

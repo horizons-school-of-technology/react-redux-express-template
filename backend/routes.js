@@ -4,7 +4,7 @@ const {User} = require('./models');
 
 // YOUR API ROUTES HERE
 router.post('/post/new', (req, res) => {
-  console.log(req.user);
+  console.log(req);
   // Post.create({userId: req.user
 });
 
