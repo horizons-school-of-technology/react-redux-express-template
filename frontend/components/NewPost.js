@@ -25,7 +25,7 @@ class NewPost extends React.Component {
 
   handleSubmitPost() {
     console.log(this.state);
-    axios.post('http://localhost:3000/api/user/post/new', this.state)
+    axios.post('http://localhost:3000/api/post/new', this.state)
     .then(resp => {
       console.log(resp);
       window.location.hash = '/'

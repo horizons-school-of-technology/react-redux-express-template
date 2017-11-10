@@ -12,7 +12,7 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/user/post/all")
+    axios.get("http://localhost:3000/api/post/all")
     .then( resp => {
       this.setState({
         posts: resp.data
