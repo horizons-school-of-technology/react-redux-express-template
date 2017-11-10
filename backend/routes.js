@@ -27,14 +27,29 @@ module.exports = (passport) => {
       .catch((err)=>console.log(err));
     });
 
-  router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  }));
+    router.post('/login', (req, res, next) => {
+        passport.authenticate('local', (err, user) => {
+            console.log('HERE');
+            user ? req.login(user, error => {
+                if(err) {return next(error);}
+                return res.json({success: true});
+            }) : res.json({success: false});
+        })(req, res, next);
+    });
+
+    router.get('/posts/all', (req, res) => {
+        Post.findAll({
+            where: {fk_post_id: null}
+        })
+        .then((posts) => {
+            console.log(posts);
+            res.json({success: true, posts: posts.dataValues});
+        });
+    });
 
     router.use((req, res, next) => {
         if (! req.user) {
-            res.redirect('/login');
+            res.json({success: false});
         } else {
             next();
         }
@@ -69,7 +84,7 @@ module.exports = (passport) => {
             fk_post_id: req.body.postId,
             img: req.body.img,
             description: req.body.description,
-            fk_user_id: req.user.username,
+            // fk_user_id: req.user.id,
             title: req.body.title
         })
         .then(() => {
@@ -80,15 +95,16 @@ module.exports = (passport) => {
         });
     });
 
-    router.get('/posts/all', (req, res) => {
-        Post.findAll({
-            where: {fk_post_id: null}
-        })
-        .then((posts) => {
-            console.log(posts);
-            res.json({success: true, posts: posts.dataValues});
-        });
+    router.get('/:post_id', (req, res) => {
+        Post.findAll({where: {fk_post_id: this.params.post_id}})
+          .then((comments) => {
+              res.json({
+                  success: true,
+                  comments: comments.dataValues
+              });
+          });
     });
+
 
     // SAMPLE ROUTE
     router.use('/users', (req, res) => {

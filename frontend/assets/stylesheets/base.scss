@@ -10,3 +10,16 @@ h1 {
   background-repeat: no-repeat;
   border: 5px solid orange;
 }
+
+.postContent {
+  display: flex;
+}
+
+.commentHolder {
+  position: relative;
+  left: 100px;
+}
+
+.comment {
+  display: flex;
+}

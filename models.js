@@ -38,7 +38,6 @@ var Post = sequelize.define('posts', {
         primaryKey: true,
         autoIncrement: true
     },
-
     fk_post_id: {
         type: Sequelize.INTEGER,
         allowNull: true

@@ -16,6 +16,7 @@ export function loginUserClick(username, password) {
 }
 
 export function registerUserClick(username, password, rpw) {
+    console.log(username, password, rpw);
     return {
         type: 'REGISTER',
         username: username,
