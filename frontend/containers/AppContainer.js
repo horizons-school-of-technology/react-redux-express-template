@@ -12,18 +12,17 @@ import Sidebar2 from '../components/Sidebar2';
 import styles from '../assets/stylesheets/appcontainer.css'
 
 const AppContainer = ({ name, history }) => {
-    return (
-        <div className="appcontainer_container">
-            <div className="appcontainer_header_container">
-              <Header />
-            </div>
-            <div className="appcontainer_body_container">
-              <Sidebar side={'left'}/>
-                <Feed />
-              <Sidebar history={history}/>
-            </div>
-        </div>
-    );
+  return (
+    <div className="appcontainer_container">
+      <div className="appcontainer_header_container">
+        <Header />
+      </div>
+      <div className="appcontainer_body_container">
+        <Sidebar side={'left'}/>
+        <Sidebar2 history={history}/>
+      </div>
+    </div>
+);
 };
 
 AppContainer.propTypes = {

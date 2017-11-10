@@ -13,51 +13,55 @@ export default class Sidebar2 extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
-      modalType: null,
+      modalTitle: null,
       username: "",
       password: "",
+      user: null,
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    const endUrl = modalType === 'login' ? '/login' : 'register' ? '/register' : null;
-    axios({
-      url: baseUrl + endUrl,
-      method: 'post',
-      data: {
-        username: this.state.username,
-        password: this.state.password
-      }
+    const endUrl = this.state.modalTitle === 'Login' ? '/login' : '/register';
+    axios.post(baseUrl + endUrl, this.state)
+    .then(resp => {
+      console.log(resp);
+      this.setState({modalIsOpen: false, user: resp.data.user});
     })
-  }
-
-  handleOpenModal(){
-    this.setState({modalIsOpen: true});
-  }
-
-  handleCloseModal(){
-    this.setState({modalIsOpen: false});
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value,
+    .catch(err => {
+      console.log(`err with ${endUrl}: ${err}`);
     });
-    console.log(this.state);
   }
+
+	handleInputChange(key) {
+		return (e) => {
+      console.log(this.state);
+			const state = {};
+			state[key] = e.target.value;
+			this.setState(state);
+		};
+	}
+
+  handleLogout() {
+    axios.get(baseUrl + '/logout')
+    .then(() => this.setState({user: null}));
+  }
+
+  // handleClickSubmitPost() {
+  //   window.location.hash = '/postnew'
+  // }
 
   render() {
-    const actions_login = [
+    const actionButtons = [
       <FlatButton
         label="Cancel"
         primary={true}
+        onClick={() => this.setState({modalIsOpen: false})}
       />,
       <FlatButton
         label="Submit"
         primary={true}
+        onClick={this.handleSubmit}
       />,
     ];
     if (this.props.side == "left") {
@@ -76,25 +80,41 @@ export default class Sidebar2 extends React.Component {
               backgroundColor="black"
               labelColor="white"
             />
-            <div className="login_register_button_container">
-              <RaisedButton
-                className="login_button"
-                icon={<LoginIcon />}
-                labelColor="#06d6a8"
-                onClick={(e) => this.handleOpenModal.bind(this, e)}
-                backgroundColor="white"
-              />
-              <RaisedButton
-                className="register_button"
-                icon={<RegisterIcon />}
-                labelColor="white"
-                onClick={(e) => {
-                  console.log(e.target);
-                  this.handleOpenModal.bind(this, e)}
-                }
-                backgroundColor="#06d6a8"
-              />
+            {
+              this.state.user ?
+              <div>
+                <h1>{this.state.username}</h1>
+                <RaisedButton
+                  className="logout_button"
+                  label="logout"
+                  labelColor="#06d6a8"
+                  onClick={this.handleLogout.bind(this)}
+                  backgroundColor="white"
+                />
+              </div> :
+              <div className="login_register_button_container">
+                <RaisedButton
+                  className="login_button"
+                  icon={<LoginIcon />}
+                  labelColor="#06d6a8"
+                  label='login'
+                  onClick={(e) => {
+                    this.setState({modalIsOpen: true, modalTitle: 'Login'});
+                  }}
+                  backgroundColor="white"
+                />
+                <RaisedButton
+                  className="register_button"
+                  icon={<RegisterIcon />}
+                  labelColor="white"
+                  label='register'
+                  onClick={(e) => {
+                    this.setState({modalIsOpen: true, modalTitle: 'Register'});
+                  }}
+                  backgroundColor="#06d6a8"
+                />
             </div>
+            }
             <Paper className="description_right_container" zDepth={5}>
               <h1 className="right_sidebar_description_title">
                 Description
@@ -108,18 +128,19 @@ export default class Sidebar2 extends React.Component {
           </div>
           <div>
             <Dialog
-              title="Login"
-              actions={actions_login}
-              modal={true}
+              title={this.state.modalTitle}
+              actions={actionButtons}
               open={this.state.modalIsOpen}
             >
               <TextField
                 hintText="Username"
-                onChange={this.handleInputChange.bind(this)}
-              /> <br />
+                name={this.state.username}
+                onChange={this.handleInputChange('username')}
+              />
               <TextField
                 hintText="Password"
-                onChange={this.handleInputChange.bind(this)}
+                name={this.state.password}
+                onChange={this.handleInputChange('password')}
               />
             </Dialog>
           </div>
