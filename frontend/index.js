@@ -5,7 +5,7 @@ import Root from './containers/Root';
 
 import './assets/stylesheets/base.scss';
 
-const store = configureStore();
+const store = configureStore({name: 'Horizons Reddit'});
 
 render(
     <Root store={store} history={history} />,

@@ -15,15 +15,18 @@ module.exports = function (passport, Models) {
 
 	router.post('/login', function (req, res, next) {
 		passport.authenticate('local', function (err, user, info) {
-			if (err) { return next(err); }
-			if (!user) {
+			if (err) {
+				return next(err);
+			} else if (!user) {
 				return res.json({
 					success: false,
 					message: 'Login failed!'
 				})
 			}
 			req.logIn(user, function (err) {
-				if (err) { return next(err); }
+				if (err) {
+					return next(err);
+				}
 				return res.json({
 					success: true,
 					message: 'Login successful!'
