@@ -16,7 +16,6 @@ const SideBar = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, lo
             <Col xs={3} xsOffset={9}>
               {(state.loggedIn.length >  0) ? <Button onClick={logout}>Log Out</Button>
             : (<Login modalOpen={toggleLogin} login={loginUser} register={registerUser} onSignUp={toggleSignUp} state={state}/>)}
-
             </Col>
           </Row>
           <Row>
