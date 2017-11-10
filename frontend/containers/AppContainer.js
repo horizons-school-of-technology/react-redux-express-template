@@ -20,7 +20,7 @@ const AppContainer = ({ name }) => {
             <div className="appcontainer_body_container">
               <Sidebar side={'left'}/>
                 <Feed />
-              <Sidebar2 />
+              <Sidebar />
             </div>
         </div>
     );

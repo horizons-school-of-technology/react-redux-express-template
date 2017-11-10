@@ -62,8 +62,8 @@ router.get('/logout', (req, res) => {
 router.get('/:username', (req, res) => {
   User.findOne({where: {username: req.params.username}})
   .then(user => {
-    const resUser = Object.assign({}, user.dataValues, {password: null});
-    res.json({user: resUser});
+    // const resUser = Object.assign({}, user.dataValues, {password: null});
+    res.json({user: user});
   })
   .catch(err => {
     res.json({err});
