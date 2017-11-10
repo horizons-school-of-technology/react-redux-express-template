@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {User} = require('./models');
+const {User,Post} = require('./models');
 
 router.post('/register', (req, res) => {
   console.log('process.env.DATABASE_NAME', process.env.DATABASE_NAME);
@@ -76,5 +76,16 @@ router.get('/:username', (req, res) => {
 router.get('/', (req, res) => {
   res.json({user: req.user});
 });
+
+router.post('/post/new', (req, res) => {
+    Post.create({userId: req.user.id, body: req.body.body, title: req.body.title})
+    .then((resp) => res.json(resp));
+});
+
+router.get('/post/all', (req, res) => {
+    Post.findAll()
+    .then( resp => res.json(resp));
+});
+
 
 module.exports = router;

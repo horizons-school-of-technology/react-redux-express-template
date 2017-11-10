@@ -24,10 +24,11 @@ class NewPost extends React.Component {
   }
 
   handleSubmitPost() {
-    axios.post('http://localhost:3000/api/post/new', this.state)
+    console.log(this.state);
+    axios.post('http://localhost:3000/api/user/post/new', this.state)
     .then(resp => {
       console.log(resp);
-      // TODO reroute user to front page
+      window.location.hash = '/'
     })
     .catch(err => {console.log(err)});
   }
@@ -35,8 +36,8 @@ class NewPost extends React.Component {
   render() {
     return (
       <div className='NewPost-container'>
-        <TextField name='postTitle' onChange={this.handleInputChange} hintText='Post Title' />
-        <TextField name='postBody' onChange={this.handleInputChange} hintText='Post Body' multiLine={true} />
+        <TextField name='title' onChange={this.handleInputChange} hintText='Post Title' />
+        <TextField name='body' onChange={this.handleInputChange} hintText='Post Body' multiLine={true} />
         <br />
         <RaisedButton label='Choose Attachments' secondary={true} />
         <br />
