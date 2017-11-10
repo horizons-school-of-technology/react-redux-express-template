@@ -14,7 +14,7 @@ const Header = ( { name } ) => {
             </div>
           </div>
           <div style={{flex: 3, fontSize: '50px', color: 'white', textShadow: '2px 2px orange', fontFamily:"Arial, Sans-serif" }}>
-            R/ {name}
+            R/ HORIZONS
           </div>
           <div style={{flex: 4}}>
             <Nav>
