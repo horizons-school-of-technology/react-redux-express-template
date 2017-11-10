@@ -9,8 +9,8 @@ import PostPage from '../components/PostPage'
 import DevTools from './DevTools';
 
 export default function Root({ store, history }) {
-  // localStorage.setItem('webAddress', 'http://10.2.106.68:3000');
-  localStorage.setItem('webAddress', 'http://localhost:3000');
+  localStorage.setItem('webAddress', 'http://10.2.106.68:3000');
+  // localStorage.setItem('webAddress', 'http://localhost:3000');
     return (
       <Provider store={store}>
         <MuiThemeProvider>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../assets/stylesheets/sidebar.css'
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { RaisedButton, Paper, FlatButton, Dialog, TextField } from 'material-ui';
 import LoginIcon from 'material-ui/svg-icons/social/person';
 import RegisterIcon from 'material-ui/svg-icons/social/person-add';
@@ -8,7 +8,7 @@ import SubmitPostIcon from 'material-ui/svg-icons/editor/border-color';
 import axios from 'axios';
 const baseUrl = localStorage.getItem('webAddress') + '/api/user';
 
-export default class Sidebar2 extends React.Component {
+class Sidebar2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +25,7 @@ export default class Sidebar2 extends React.Component {
     axios.post(baseUrl + endUrl, this.state)
     .then(resp => {
       this.setState({modalIsOpen: false, user: resp.data.user});
+      this.props.login(resp.data.user);
     })
     .catch(err => {
       console.log(`err with ${endUrl}: ${err}`);
@@ -137,3 +138,19 @@ export default class Sidebar2 extends React.Component {
     }
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (user) => dispatch({type: 'USER', user}),
+  };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Sidebar2);

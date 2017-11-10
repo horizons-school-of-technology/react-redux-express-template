@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const {User} = require('./models');
+const axios = require('axios');
 
 module.exports = (passport) => {
   router.post('/register', (req, res) => {
     User.create({username: req.body.username, password: req.body.password})
     .then(user => {
+      // axios.post('/login', {user})
+      // .then(resp => {console.log(resp)})
+      // .catch(err => {console.log(err)})
       res.json({user});
     })
     .catch(err => {
