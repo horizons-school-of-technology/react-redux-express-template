@@ -54,6 +54,8 @@ Vote.belongsTo(User, {foreignKey: 'fk_voter_id', targetKey: 'id'});
 Vote.belongsTo(Post, {foreignKey: 'fk_post_id', targetKey: 'id'});
 Vote.belongsTo(User, {foreignKey: 'fk_voter_id', targetKey: 'id'});
 Post.belongsTo(Post, {foreignKey: 'fk_parent_post_id', targetKey: 'id'});
+Post.hasMany( Post, { as: 'children', foreignKey: 'postId' } );
+Post.belongsTo( Post, { as: 'parent', foreignKey: 'postId' } );
 
 module.exports = {
     User,

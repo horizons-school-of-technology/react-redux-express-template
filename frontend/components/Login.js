@@ -1,70 +1,99 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import {toggleLoginAction, closeLoginAction} from '../actions/index'
+import axios from 'axios';
+import {toggleSaveUser} from '../actions/index'
 
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
   }
-};
-const Login = ( { isModalOpen, toggleLogin, closeLogin, toggleModal } ) => {
-    return (
+
+  toggleLogin(e) {
+    e.preventDefault();
+
+    axios.post('/api/user/login', {
+      password: this.password.value,
+      username: this.username.value
+    })
+    .then((result) => {
+      console.log('THIS IS THE USER!', result);
+      this.props.saveUser(result.data.user);
+      this.props.toggleModal();
+    })
+    .catch((err) => console.log(err))
+  }
+
+
+
+  toggleRegister(e){
+    e.preventDefault();
+
+    console.log(1);
+    axios.post('/api/user/register', {
+      password: this.password.value,
+      username: this.username.value
+    })
+    .then((result) => {
+      console.log(result);
+      this.props.toggleModal()
+      // this.props.saveUser(result)
+    })
+    .catch((err) => console.log(err))
+  }
+
+
+   render() {
+   return (
       <div>
-      <Button color='pink' onClick= {() => toggleModal()}>
-      <Icon name='checkmark'/> Login/Register
-      </Button>
-        <Modal open={isModalOpen} closeOnDocumentClick= {true}>
+        <Button color='pink' onClick= {() => this.props.toggleModal()}>
+          <Icon name='checkmark'/> Login/Register
+        </Button>
+        <Modal open={this.props.isModalOpen} closeOnDocumentClick= {true}>
               <p>Please enter credentials below:</p>
               <form action='/user/register' method='POST'>
               <input
                 type="text"
                 name='username'
+                ref={(input) => { this.username = input; }}
                 placeholder="Username"
               />
               <input
                   type="password"
                   name='password'
+                  ref={(input) => { this.password = input; }}
                   placeholder="Password"
                 />
-                <Button onclick={() => toggleLogin()} color='green' inverted>
+                <Button onClick={(e) => this.toggleLogin(e)} color='green' inverted>
                   <Icon name='checkmark' /> Login
                 </Button>
-                <Button onclick={() => toggleLogin()} color='green' inverted>
+                <Button onClick={(e) => this.toggleRegister(e)} color='green' inverted>
                   <Icon name='checkmark' /> Register
                 </Button>
-                <Button onClick= {() => closeLogin()} color='red' inverted>
+                <Button onClick= {() => this.props.toggleModal()} color='red' inverted>
                   <Icon name='checkmark' /> Cancel
                 </Button>
               </form>
           </Modal>
-          </div>
+        </div>
     );
-};
+}};
+
 
 Login.propTypes = {
 
 };
-
 const mapStateToProps = (state) => {
     return {
-    isModalOpen: state.isModalOpen
+
     };
 };
 
-const mapDispatchToProps = ( dispatch ) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-      toggleLogin: () => {dispatch(toggleLoginAction())},
-      toggleRegister: () => {dispatch(toggleRegisterAction())},
-      closeLogin: () => {dispatch(closeLoginAction())},
-      toggleModal: () => {dispatch(toggleModalAction())}
+      saveUser: (u) => {dispatch(toggleSaveUser(u))}
     };
 };
 

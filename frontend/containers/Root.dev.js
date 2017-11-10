@@ -8,11 +8,14 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 export default function Root({ store }) {
     return (
         <Provider store={store}>
+          <div>
+          <DevTools/>
           <HashRouter>
             <Switch>
               <Route exact path='/' component = {AppContainer}/>
             </Switch>
          </HashRouter>
+         </div>
         </Provider>
     );
 }

@@ -1,2 +1,2 @@
 /* Action types */
-export const TOGGLE_LOGIN = 'TOGGLE_LOGIN'
+export const TOGGLE_MODAL = 'TOGGLE_MODAL'

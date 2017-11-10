@@ -1,14 +1,15 @@
 // Action Creators
 
 import * as types from './types';
-export function toggleLoginAction() {
+export function toggleModalAction() {
   return {
-    type: types.TOGGLE_LOGIN
+    type: types.TOGGLE_MODAL
   };
 };
 
-export function closeLoginAction() {
+export function toggleSaveUser(obj) {
   return {
-    type: "CLOSE_LOGIN"
-  }
-}
+    type: 'SAVE_USER',
+    obj
+  };
+};

@@ -4,15 +4,18 @@ import SubmitPost from './SubmitPost';
 import Description from './Description';
 import Login from './Login';
 import { connect } from 'react-redux';
+import {toggleModalAction, toggleSaveUser} from '../actions/index'
 
 
 
 
-const SideBar = ( { name } ) => {
+const SideBar = ( { toggleModal, isModalOpen, saveUser, username } ) => {
+  console.log(username);
     return (
         <div>
+        {username}
         <SubmitPost/>
-        <Login/>
+        <Login toggleModal={toggleModal} isModalOpen={isModalOpen} saveUser={saveUser} />
         <Description/>
         </div>
     );
@@ -24,12 +27,17 @@ SideBar.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        name: state.name
+        isModalOpen: state.isModalOpen,
+        username: state.username
     };
 };
 
-const mapDispatchToProps = (/* dispatch */) => {
+const mapDispatchToProps = (dispatch) => {
     return {
+      toggleModal: () => {dispatch(toggleModalAction())},
+      saveUser: (u) => {dispatch(toggleSaveUser(u))}
+
+
     };
 };
 
