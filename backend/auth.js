@@ -13,7 +13,7 @@ module.exports = (passport) => {
               res.json({success: true, user: user});
           })
           .catch(err => {
-              res.json({success: false, error: err});
+              res.json({success: false, err: err});
           });
     });
 
@@ -22,10 +22,8 @@ module.exports = (passport) => {
     });
 
     router.get('/logout', (req, res) => {
-        console.log('in the logout', req.user);
         req.logout();
-        console.log('after logout', req.user);
-        res.redirect('/');
+        res.json({success: true});
     });
 
     return router;

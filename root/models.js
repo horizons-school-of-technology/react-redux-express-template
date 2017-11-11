@@ -29,8 +29,27 @@ var User = sequelize.define('user', {
   // ADD MORE ATTRIBUTES HERE
 });
 
+var Post = sequelize.define('post', {
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    content: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    postId: {
+        type: Sequelize.INTEGER
+    },
+});
+
+Post.hasMany( Post, { as: 'children', foreignKey: 'postId' } );
+Post.belongsTo( Post, { as: 'parent', foreignKey: 'postId' } );
+Post.belongsTo(User);
+
 module.exports = {
     sequelize,
     User,
+    Post,
     // EXPORT models HERE
 };

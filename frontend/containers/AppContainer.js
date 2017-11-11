@@ -7,12 +7,12 @@ import SideBar from '../components/SideBar';
 import AuthModal from '../components/AuthModal';
 import * as actions from '../actions/index';
 
-const AppContainer = ({ isModalOpen, toggleLoginModal, login, username}) => {
+const AppContainer = ({ isModalOpen, toggleLoginModal, login, username, logout, history, getPosts, posts}) => {
     return (
         <div>
             <Header />
-            <SideBar toggleLoginModal={toggleLoginModal} username={username}/>
-            <Feed />
+            <SideBar history={history} toggleLoginModal={toggleLoginModal} username={username} logout={logout}/>
+            <Feed getPosts={getPosts} posts={posts}/>
             <AuthModal isModalOpen={isModalOpen} toggleLoginModal={toggleLoginModal} login={login}/>
         </div>
     );
@@ -21,18 +21,20 @@ const AppContainer = ({ isModalOpen, toggleLoginModal, login, username}) => {
 AppContainer.propTypes = {
     isModalOpen: PropTypes.bool,
     toggleLoginModal: PropTypes.func,
-    // logout: PropTypes.func,
+    logout: PropTypes.func,
     login: PropTypes.func,
     username: PropTypes.string,
-    // password: PropTypes.string
+    history: PropTypes.object,
+    getPosts: PropTypes.func,
+    posts: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    // console.log(state);
     return {
         isModalOpen: state.toggleLoginModal.isModalOpen,
         username: state.login.username,
-        // password: state.register.password,
+        posts: state.getPosts,
     };
 };
 
@@ -41,12 +43,15 @@ const mapDispatchToProps = (dispatch) => {
         toggleLoginModal: () => {
             dispatch(actions.toggleLoginModal());
         },
-        // logout: () => {
-        //     dispatch(actions.logout());
-        // },
+        logout: () => {
+            dispatch(actions.logout());
+        },
         login: (user) => {
-            console.log('here', user);
+            // console.log('here', user);
             dispatch(actions.login(user));
+        },
+        getPosts: (posts) => {
+            dispatch(actions.getPosts(posts));
         }
     };
 };

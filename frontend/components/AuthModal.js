@@ -16,7 +16,7 @@ class AuthModal extends React.Component {
                 this.props.login(response.data.user);
                 this.props.toggleLoginModal();
             } else {
-                console.log("register redirect error", response.data.error);
+                console.log("register redirect error", response.data.err);
             }
         })
         .catch((err) => {
@@ -32,7 +32,7 @@ class AuthModal extends React.Component {
                 this.props.login(response.data.user);
                 this.props.toggleLoginModal();
             } else {
-                console.log("login redirect error", response.data.error);
+                console.log("login redirect error", response.data.err);
             }
         })
         .catch((err) => {

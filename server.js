@@ -2,29 +2,34 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const api = require('./backend/routes');
+// const api = require('./backend/routes');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./root/models').User;
 const routes = require('./backend/routes');
 var auth = require('./backend/auth');
+var session = require('cookie-session');
+// var cookieParser = require('cookie-parser');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(cookieParser());
+app.use(session({keys: [process.env.SECRET || 'h0r1z0n5']}));
 
 passport.serializeUser((user, done) => {
+    console.log('here in serialize');
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   // Find a user by id and call done(null, user)
   // YOUR CODE HERE
+    console.log('here in deserialize');
     User.findById(id)
     .then((user) => {
         console.log('deserialized user is: ', user.dataValues);
@@ -53,6 +58,9 @@ passport.use(new LocalStrategy((username, password, done) => {
         done(null, false);
     });
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', auth(passport));
 app.use('/', routes);

@@ -1,5 +1,5 @@
 function loginReducer(state = {username: "", password: ""}, action) {
-    console.log('here 3', state, action);
+    // console.log('here 3', state, action);
     switch (action.type) {
         case 'LOGIN':
             const newState = Object.assign({}, state);
