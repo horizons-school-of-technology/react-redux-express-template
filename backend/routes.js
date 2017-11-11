@@ -60,6 +60,7 @@ module.exports = (passport) => {
         res.status(200).json({success: true});
     });
 
+
     router.get('/:username', (req, res) => {
         User.findOne({where: {username: req.params.username}})
         .then((user) => {
@@ -95,12 +96,38 @@ module.exports = (passport) => {
         });
     });
 
-    router.get('/:post_id', (req, res) => {
-        Post.findAll({where: {fk_post_id: this.params.post_id}})
-          .then((comments) => {
+    async function recurse(post) {
+        try {
+            var comments = await Post.findAll({where: {fk_post_id: post.id}});
+            if (!comments) {
+                return null;
+            }
+            return Object.assign({}, post, {children: comments.map((comment) => recurse(comment))
+            });
+        } catch (err) {
+            return false;
+        }
+    }
+
+    router.get('/post/:id', (req, res) => {
+        Post.findOne({where: {post_id: req.params.id}})
+          .then((post) => {
+              var comments = recurse(post);
+              if(!comments) {
+                  res.json({
+                      success: false,
+                      comments: null
+                  });
+              }
               res.json({
                   success: true,
-                  comments: comments.dataValues
+                  postContents: comments
+              });
+          })
+          .catch((err) => {
+              res.json({
+                  success: false,
+                  error: err
               });
           });
     });

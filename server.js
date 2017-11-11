@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+var session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -16,13 +17,19 @@ app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
 
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
     User.findOne({where: {id: id}})
-    .then(user => done(null, user.rows[0]))
+    .then(user => done(null, user.dataValues))
     .catch((err) => {throw new Error(err);});
 });
 

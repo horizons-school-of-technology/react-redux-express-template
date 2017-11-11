@@ -22,7 +22,7 @@ class PostPage extends React.Component {
         .then((comments) => {
             console.log(comments.data);
             this.setState({
-                comments: comments.data.comments
+                post: comments.data.postContents
             });
         })
         .catch(e => {
@@ -32,23 +32,27 @@ class PostPage extends React.Component {
     render() {
         return (
             <div className="postContent">
-                <button type="button" className="btn" style={{margin: 5}}>
-                  <span className="glyphicon glyphicon-arrow-up"/>
-                </button>
-                <button type="button" className="btn" style={{margin: 5}}>
-                  <span className="glyphicon glyphicon-arrow-down"/>
-                </button>
-                <div>{this.props.post.title}</div>
-                <div><img src="{this.props.post.img}"/></div>
-                <div>{this.props.post.description}</div>
+                <div className="postHeader">
+                  <button type="button" className="btn" style={{margin: 5}}>
+                    <span className="glyphicon glyphicon-arrow-up"/>
+                  </button>
+                  <button type="button" className="btn" style={{margin: 5}}>
+                    <span className="glyphicon glyphicon-arrow-down"/>
+                  </button>
+                  <div>{this.props.post.title}</div>
+                </div>
                 <div>
-                  {this.state.posts.map((comment) => {
-                    return(
-                      <div className="commentHolder">
-                        <Comment comment={comment}/>
-                      </div>
-                    )
-                  })}
+                  <div><img src="{this.props.post.img}"/></div>
+                  <div>{this.props.post.description}</div>
+                  <div className="postBody">
+                    {this.state.post.children.map((comment) => {
+                      return(
+                        <div className="commentHolder">
+                          <Comment comment={comment}/>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
             </div>
         );
