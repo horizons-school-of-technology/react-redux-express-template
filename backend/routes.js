@@ -72,7 +72,6 @@ module.exports = (passport) => {
     });
 
     router.post('/post/new', (req, res) => {
-        console.log(req.body.img,"new post req.body.link");
         Post.create({
             fk_post_id: req.body.postId,
             img: req.body.img,

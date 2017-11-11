@@ -46,7 +46,6 @@ class Feed extends React.Component {
     })
   }
     render() {
-      console.log(this.state.post[11].img);
       return (
         <div style={{paddingTop: 100}}>
           {
@@ -61,7 +60,7 @@ class Feed extends React.Component {
                       <button type="button" className="btn" style={{margin: 5}}>
                         <span className="glyphicon glyphicon-arrow-down"/>
                       </button>
-                      <img src=`${post.img}` height="50" width="50"/>
+                      <img src={post.img} height="50" width="50"/>
                       <b> {post.title} </b>
                       <p> {post.description} </p>
                     </div>
