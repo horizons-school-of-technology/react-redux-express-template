@@ -1,7 +1,7 @@
 var React = require('react');
 // var { Navbar, FormGroup, FormControl, Button, Checkbox, Col, Form, ControlLabel, HelpBlock} = require('react-bootstrap');
 var axios = require('axios');
-import Comment from './Comment';
+import Comment from '../components/Comment';
 import Header from '../components/Header';
 import Sidebar from '../components/SideBar';
 

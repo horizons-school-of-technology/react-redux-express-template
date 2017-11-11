@@ -22,7 +22,7 @@ class Comment extends React.Component {
         })
     }
 
-    render(){
+    render() {
       return (
         <div className="comment">
           <button type="button" className="btn" style={{margin: 5}}>
