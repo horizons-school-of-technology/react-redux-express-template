@@ -1,0 +1,29 @@
+.header_container {
+  width: 100%;
+  overflow: hidden;
+  flex: 1;
+  position: fixed;
+  height: 100px;
+}
+
+.header_content {
+  height: 98px;
+  width: 100%;
+  display: flex;
+}
+
+.header_container_logo {
+  max-height: 100%;
+  max-width: 30%;
+  width: auto;
+  height: auto;
+  margin-left: 5px;
+  padding: 10px
+}
+
+ .header_container_title{
+   color: #06d6a8;
+   font-family: helvetica, sans-serif;
+   font-size: 40px;
+   font-weight: bold;
+ }
