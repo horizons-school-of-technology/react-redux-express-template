@@ -7,7 +7,7 @@ const auth = require('./backend/auth');
 const api = require('./backend/routes');
 const cookieSession = require('cookie-session');
 
-const { User } = require('./backend/models.js');
+const {User} = require('./backend/models.js');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -17,20 +17,18 @@ app.use(cookieSession({
 }));
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Methods", "OPTIONS, POST, GET");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
-
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Methods", "OPTIONS, POST, GET");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser((user, done) => {
-  console.log('\nSERIALIZE', user);
+  console.log('\nSERIALIZE', user.get());
   const userId = user.id;
   done(null, userId);
 });
@@ -38,7 +36,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   User.findById(id)
   .then(user => {
-    console.log('\nDESERIALIZE', user);
+    console.log('\nDESERIALIZE', user.get());
     done(null, user);
   })
   .catch(err => {
@@ -75,5 +73,5 @@ app.use('/api', api);
 app.listen(PORT, error => {
   error
   ? console.error(error)
-  : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
+  : console.info('==> 🌎 Listening🌎 ');
 });
