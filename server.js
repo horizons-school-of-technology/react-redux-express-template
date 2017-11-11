@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
 const app = express();
-var session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -18,12 +18,10 @@ app.get('/', (request, response) => {
 });
 
 app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true
+    secret: 'a4f8071f-c873-4447-8ee2',
 }));
 
-passport.serializeUser((user, done) => {
+passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
