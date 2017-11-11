@@ -2,19 +2,17 @@
 
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(process.env.DATABASE_NAME, 'postgres', null, {
-    dialect: 'postgres'
+  dialect: 'postgres'
 });
 
-sequelize
-.authenticate()
+sequelize.authenticate()
 .then(() => {
-    console.log('Connection has been established successfully.');
+  console.log('Connection has been established successfully.');
 })
 .catch(err => {
-    console.error('Unable to connect to the database:', err);
+  console.error('Unable to connect to the database:', err);
 });
 
-// MODELS GO HERE
 const User = sequelize.define('user', {
   id: {
     type: Sequelize.INTEGER,
@@ -46,7 +44,7 @@ const Post = sequelize.define('post', {
     type: Sequelize.STRING,
   },
   parent_id: {
-    type: Sequelize.INTEGER,// can reference other posts. null if a parent post
+    type: Sequelize.INTEGER,
   },
 });
 

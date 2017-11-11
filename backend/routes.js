@@ -61,13 +61,13 @@ router.get('/post/:id', (req, res) => {
   });
 });
 
-router.get('/post/:id/:vote', function(req, res){
+router.get('/post/:id/:vote', (req, res) => {
   Vote.findOne({where: {postId: req.params.id, userId: req.user.id}})
   .then( resp => {
 
-    if(resp){
+    if(resp) {
       // They upvoted an upvote --> destroy vote
-      if(resp.dataValues.isUpvote && req.params.vote === 'upvote'){
+      if(resp.dataValues.isUpvote && req.params.vote === 'upvote') {
         Vote.destroy({where: {postId: req.params.id, userId: req.user.id}})
         .then(() => res.json({success: 'true'}));
       }
@@ -79,7 +79,7 @@ router.get('/post/:id/:vote', function(req, res){
       }
 
       // They upvoted a downvote --> change isUpvote to true
-      if(!resp.dataValues.isUpvote && req.params.vote === 'upvote'){
+      if(!resp.dataValues.isUpvote && req.params.vote === 'upvote') {
         Vote.update({isUpvote: 1}, {where: {postId: req.params.id, userId: req.user.id}})
         .then(() => res.json({success: 'true'}));
       }

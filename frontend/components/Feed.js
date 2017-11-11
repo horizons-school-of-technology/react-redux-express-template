@@ -15,9 +15,10 @@ class Feed extends React.Component {
   componentDidMount() {
     axios.get(localStorage.getItem('webAddress') + '/api/post/all')
     .then(resp => {
+      console.log(resp); // TODO: add voteCounts to this GET route
       this.setState({
         posts: resp.data.posts
-      })
+      });
     });
   }
 
