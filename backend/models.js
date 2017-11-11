@@ -50,10 +50,26 @@ const Post = sequelize.define('post', {
   },
 });
 
+const Vote = sequelize.define('vote', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  isUpvote: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+});
+
 Post.belongsTo(User);
+Vote.belongsTo(User);
+Vote.belongsTo(Post);
+Post.hasMany(Vote, { as: 'votes', foreignKey: 'postId' });
 
 module.exports = {
   sequelize,
   User,
   Post,
+  Vote
 };
