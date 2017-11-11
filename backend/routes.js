@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {Post} = require('./models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // YOUR API ROUTES HERE
 router.post('/post/new', (req, res) => {
@@ -10,7 +12,7 @@ router.post('/post/new', (req, res) => {
 });
 
 router.get('/post/all', (req, res) => {
-  Post.findAll()
+  Post.findAll({ where: { parent_id: null }})
   .then(resp => res.json({posts: resp}));
 });
 
