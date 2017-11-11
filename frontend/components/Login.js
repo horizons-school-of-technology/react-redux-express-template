@@ -20,13 +20,15 @@ class Login extends React.Component {
     }
     onSignUp() {
         this.setState({
-            signUp: false
+            signUp: true
         });
     }
     login() {
         axios.post('http://localhost:3000/api/login', {
             username: this.refs.username.value,
             password: this.refs.password.value
+        }, {
+          withCredentials: true
         })
       .then((resp) => {
           console.log(resp.data);
@@ -84,6 +86,7 @@ class Login extends React.Component {
               {(this.state.signUp) ? (
                 <Button bsSize="small" bsStyle="primary" onClick={() => {
                     this.register();
+                    this.onSignUp();
                 }}><Glyphicon glyph="glyphicon glyphicon-plus" />Confirm</Button>
                 ) : (
                   <div>
@@ -101,7 +104,7 @@ class Login extends React.Component {
             </div>
         );
     }
-};
+}
 
 
 export default Login;

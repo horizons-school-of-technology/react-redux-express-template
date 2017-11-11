@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -15,6 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
+
+app.use(session({
+    secret: 'a4f8071f-c873-4447-8ee2',
+}));
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);

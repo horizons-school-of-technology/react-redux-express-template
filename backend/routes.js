@@ -32,15 +32,15 @@ module.exports = (passport) => {
             console.log('HERE');
             user ? req.login(user, error => {
                 if(err) {return next(error);}
-                return res.json({success: true});
+                return res.json({success: true, user: req.user});
             }) : res.json({success: false});
         })(req, res, next);
     });
 
     router.use((req, res, next) => {
-        console.log(req.user);
+        console.log(req.user, "MIddleware req.user is this");
         if (!req.user) {
-            res.status(400).json({success: 'failed'});
+            res.status(401).json({success: 'failed'});
         } else {
             next();
         }
@@ -56,7 +56,7 @@ module.exports = (passport) => {
         User.findOne({where: {username: req.params.username}})
         .then((user) => {
             if(user) {
-                console.log(user.dataValues);
+                console.log(user.dataValues, "USer data values");
                 res.json({success: true, user: Object.assign({}, user.dataValues, {password: null})});
             } else {
                 res.json({success: false, user: null});
@@ -72,17 +72,20 @@ module.exports = (passport) => {
     });
 
     router.post('/post/new', (req, res) => {
+        console.log(req.body.img,"new post req.body.link");
         Post.create({
             fk_post_id: req.body.postId,
             img: req.body.img,
             description: req.body.description,
-            fk_user_id: req.user.username,
+            fk_user_id: req.user.id,
             title: req.body.title
         })
         .then(() => {
+          console.log('then inside');
             res.json({success: true});
         })
         .catch((error)=>{
+          console.log('inside catch', error);
             res.json({success: false, error: error});
         });
     });
@@ -92,8 +95,9 @@ module.exports = (passport) => {
             where: {fk_post_id: null}
         })
         .then((posts) => {
-            console.log(posts);
-            res.json({success: true, posts: posts.dataValues});
+            var newPosts = posts.map(post => post.dataValues);
+            console.log(newPosts);
+            res.json({success: true, posts: newPosts});
         });
     });
 

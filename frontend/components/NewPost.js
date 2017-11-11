@@ -18,9 +18,11 @@ class NewPost extends React.Component {
     postNewPost() {
         axios.post('http://localhost:3000/api/post/new', {
             postId: null,
-            img: this.state.image,
+            img: this.state.link,
             description: this.state.description,
             title: this.state.title
+        }, {
+          withCredentials: true
         })
         .catch(e => {
             console.log("Posting new post failed", e);
@@ -91,7 +93,7 @@ class NewPost extends React.Component {
               </Col>
             </FormGroup>
 
-            <Col componentClass={ControlLabel} sm={2}>
+            {/* <Col componentClass={ControlLabel} sm={2}>
               Select image
             </Col>
             <Col sm={10}>
@@ -102,7 +104,7 @@ class NewPost extends React.Component {
                 help="Select your image that others will see."
                 onSelect={(e) => this.onImgSelect(e)}
               />
-            </Col>
+            </Col> */}
 
             <Col componentClass={ControlLabel} sm={2}>
               <button  onClick={() => this.onSubmitPost()} type="button" className="btn btn-success" style={{margin: 5}}>
