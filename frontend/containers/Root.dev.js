@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import SubmitPost from '../components/SubmitPost';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import AppContainer from './AppContainer.js';
+import PostPage from './PostPage.js';
 
 
 export default function Root({ store }) {
@@ -19,6 +20,7 @@ export default function Root({ store }) {
             <Route exact path="/feed" component={Feed}/>
             <Route exact path="/post/new" component={NewPost}/>
             <Route exact path="/submit/new" component={SubmitPost}/>
+            <Route exact path="/post/page/:id" component={PostPage}/>
           </Switch>
         </HashRouter>
       </Provider>

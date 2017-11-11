@@ -25,7 +25,7 @@ passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser((id, done) => {
     User.findOne({where: {id: id}})
     .then(user => done(null, user.dataValues))
     .catch((err) => {throw new Error(err);});
