@@ -37,6 +37,17 @@ module.exports = (passport) => {
         })(req, res, next);
     });
 
+    router.get('/posts/all', (req, res) => {
+        Post.findAll({
+            where: {fk_post_id: null}
+        })
+        .then((posts) => {
+            var newPosts = posts.map(post => post.dataValues);
+            console.log(newPosts);
+            res.json({success: true, posts: newPosts});
+        });
+    });
+
     router.use((req, res, next) => {
         console.log(req.user, "MIddleware req.user is this");
         if (!req.user) {
@@ -72,7 +83,7 @@ module.exports = (passport) => {
     });
 
     router.post('/post/new', (req, res) => {
-        console.log(req.body.img,"new post req.body.link");
+        console.log(req.body.img, "new post req.body.link");
         Post.create({
             fk_post_id: req.body.postId,
             img: req.body.img,
@@ -81,25 +92,53 @@ module.exports = (passport) => {
             title: req.body.title
         })
         .then(() => {
-          console.log('then inside');
+            console.log('then inside');
             res.json({success: true});
         })
         .catch((error)=>{
-          console.log('inside catch', error);
+            console.log('inside catch', error);
             res.json({success: false, error: error});
         });
     });
 
-    router.get('/posts/all', (req, res) => {
-        Post.findAll({
-            where: {fk_post_id: null}
-        })
-        .then((posts) => {
-            var newPosts = posts.map(post => post.dataValues);
-            console.log(newPosts);
-            res.json({success: true, posts: newPosts});
-        });
+    async function recurse(post) {
+        try {
+            var comments = await Post.findAll({where: {fk_post_id: post.id}});
+            if (!comments) {
+                return Object.assign({}, post);
+            }
+            return Object.assign({}, post, {children: comments.map((comment) => recurse(comment))
+            });
+        } catch (err) {
+            return false;
+        }
+    }
+
+    router.get('/post/:id',  (req, res) => {
+        Post.findOne({where: {id: req.params.id}})
+          .then(async (post) => {
+              var comments = await recurse(post.dataValues);
+              if(!comments) {
+                  res.json({
+                      success: false,
+                      comments: null
+                  });
+              }
+              console.log(comments, 'COMMENTS AFTER RECURSE');
+              res.json({
+                  success: true,
+                  postContents: comments
+              });
+          })
+          .catch((err) => {
+              console.log('Inside catch for findOne');
+              res.json({
+                  success: false,
+                  error: err
+              });
+          });
     });
+
 
     // SAMPLE ROUTE
     router.use('/users', (req, res) => {

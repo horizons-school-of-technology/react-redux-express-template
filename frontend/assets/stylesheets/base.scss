@@ -10,3 +10,33 @@ h1 {
   background-repeat: no-repeat;
   border: 5px solid orange;
 }
+
+.postContent {
+  display: flex;
+  border-radius: 5px;
+  border: 5px solid black;
+  padding-top: 100px;
+  width: 500px;
+}
+
+.commentHolder {
+  position: relative;
+  left: 100px;
+}
+
+.comment {
+  display: flex;
+}
+
+.postHeader {
+  display: flex;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid grey;
+}
+
+.postBody {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px
+}
