@@ -19,7 +19,9 @@ class SideBar extends React.Component {
         });
     }
     logout()  {
-        axios.get('http://localhost:3000/api/logout')
+        axios.get('http://localhost:3000/api/logout', {
+          withCredentials: true
+        })
         .then((resp) => {
           console.log(resp.data);
             this.setState({
