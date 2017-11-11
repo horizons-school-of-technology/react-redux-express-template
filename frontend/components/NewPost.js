@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
 class NewPost extends React.Component {

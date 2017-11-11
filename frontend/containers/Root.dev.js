@@ -5,6 +5,7 @@ import AppContainer from './AppContainer.js';
 import DevTools from './DevTools';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import NewPost from '../components/NewPost';
+import PostPage from '../components/PostPage';
 
 
 export default function Root({ store, history }) {
@@ -16,6 +17,7 @@ export default function Root({ store, history }) {
                 <Switch>
                   <Route exact path="/" component={AppContainer} />
                   <Route exact path="/post/new" component={NewPost}/>
+                  <Route exact path="/post/:id" component={PostPage}/>
                 </Switch>
               </div>
             </HashRouter>

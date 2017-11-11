@@ -41,6 +41,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Link }from 'react-router-dom';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -67,7 +68,7 @@ class Feed extends React.Component {
         return(
       <div>
         Hello Posts
-        {this.props.posts.map((elem) => <li>{elem.title} - {elem.content} by {elem.userId} at {elem.createdAt}</li>)}
+        {this.props.posts.map((elem) => <li><Link to={"/post/" + elem.id}>{elem.title} - {elem.content} by {elem.userId} at {elem.createdAt}</Link></li>)}
       </div>
         );
     }

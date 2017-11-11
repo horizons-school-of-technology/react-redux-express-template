@@ -32,7 +32,6 @@ var User = sequelize.define('user', {
 var Post = sequelize.define('post', {
     title: {
         type: Sequelize.STRING,
-        allowNull: false,
     },
     content: {
         type: Sequelize.STRING,
