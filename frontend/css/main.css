@@ -1,0 +1,64 @@
+.titleBar {
+  background-color: dodgerblue;
+  width: 100vw;
+  height: 15vh;
+}
+
+.titleBar2 {
+  background-color: violet;
+  width: 100vw;
+  height: 15vh;
+}
+
+
+.titleString {
+display: -webkit-inline-box;
+}
+
+.titleString2 {
+display: -webkit-inline-box;
+}
+
+.floatTitle {
+  float: left;
+}
+
+.testFeed {
+  position: absolute;
+  background-color: yellow;
+  height: 100vh;
+  width: 100vw;
+}
+
+.testSideBar {
+  width: 33vw;
+  min-width: 33%;
+  position: relative;
+  float: right;
+  height: 100vh;
+  background-color: white;
+  margin-right: 5px;
+}
+
+.sideBarContainer {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.testFeedIconContainer {
+  margin-left: 33vw;
+  margin-top: 33vh;
+}
+
+.loginRegister {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.sideBarDescriptionTitle {
+  margin-top: 15px;
+}
+
+.logo {
+  /*margin-top: 7px;*/
+}

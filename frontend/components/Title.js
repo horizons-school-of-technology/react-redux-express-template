@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { header } from 'semantic-ui-react';
 
 const Title = ( { name } ) => {
     return (
