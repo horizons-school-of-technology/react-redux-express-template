@@ -7,7 +7,6 @@ import { Header, Icon } from 'semantic-ui-react';
 
 
 const HeadBar = ({ name, isModalOpen }) => {
-  //not passing right value in reducer or not viewing value correctly here
   if(!isModalOpen) {
     return (
       <div className="titleBar2">
@@ -34,11 +33,13 @@ const HeadBar = ({ name, isModalOpen }) => {
 
 HeadBar.propTypes = {
     name: PropTypes.string,
+    isModalOpen: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
     return {
-        name: state.name
+        name: state.name,
+        isModalOpen: state.isModalOpen
     };
 };
 

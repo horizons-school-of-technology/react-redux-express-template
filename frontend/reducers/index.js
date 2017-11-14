@@ -1,4 +1,4 @@
-function rootReducer(state = {name: 'Reddit', isModalOpen: 'true'}, action) {
+function rootReducer(state = {name: 'Reddit', isModalOpen: false}, action) {
     switch (action.type) {
         default:
             return state;
