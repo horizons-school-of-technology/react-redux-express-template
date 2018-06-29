@@ -1,32 +1,21 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Header from '../components/Header';
+import Feed from '../components/Feed';
+import Sidebar2 from '../components/Sidebar2';
 
-const AppContainer = ({ name }) => {
-    return (
-        <div>
-            <Title name={name} />
-        </div>
-    );
+import styles from '../assets/stylesheets/appcontainer.css'
+
+export default function AppContainer() {
+  return (
+    <div className="appcontainer_container">
+      <div className="appcontainer_header_container">
+        <Header />
+      </div>
+      <div className="appcontainer_body_container">
+        <Sidebar2 side='left' />
+        <Feed />
+        <Sidebar2 side='right' />
+      </div>
+    </div>
+  );
 };
-
-AppContainer.propTypes = {
-    name: PropTypes.string,
-};
-
-const mapStateToProps = (state) => {
-    return {
-        name: state.name
-    };
-};
-
-const mapDispatchToProps = (/* dispatch */) => {
-    return {
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(AppContainer);
