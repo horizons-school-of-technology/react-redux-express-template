@@ -1,28 +1,39 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Header from '../components/Header';
+import DevTools from './DevTools';
+import SideBar from '../components/SideBar';
+import Feed from '../components/Feed';
+import NewPost from '../components/NewPost';
 
-const AppContainer = ({ name }) => {
+
+import { toggleLoginModal } from '../actions/index';
+
+const AppContainer = ({ toggleLogin }) => {
     return (
         <div>
-            <Title name={name} />
+            <DevTools />
+            <Header />
+            <Feed />
+            <SideBar toggleLogin={toggleLogin} />
         </div>
     );
 };
 
 AppContainer.propTypes = {
-    name: PropTypes.string,
+    toggleLogin: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
     return {
-        name: state.name
+        state: state
     };
 };
 
-const mapDispatchToProps = (/* dispatch */) => {
+const mapDispatchToProps = (dispatch) => {
     return {
+        toggleLogin: () => {dispatch(toggleLoginModal());}
     };
 };
 
